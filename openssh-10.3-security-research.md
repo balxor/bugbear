@@ -1,4 +1,4 @@
-# OpenSSH 10.3p1 — Security Research Report
+# OpenSSH 10.3p1 - Security Research Report
 
 **Researcher:** Kenshin Himura  
 **Date:** June 14, 2026  
@@ -14,25 +14,25 @@
 2. [Scope](#2-scope)
 3. [Debugging & Reverse Engineering](#3-debugging--reverse-engineering)
    - 3.1 [Source Code Acquisition](#31-source-code-acquisition)
-   - 3.2 [Authentication Code — auth2-pubkeyfile.c](#32-authentication-code--auth2-pubkeyfilec)
-   - 3.3 [Signal Handlers — sshd.c](#33-signal-handlers--sshd.c)
-   - 3.4 [Packet Handling — packet.c](#34-packet-handling--packetc)
-   - 3.5 [Buffer Internals — sshbuf*.c](#35-buffer-internals--sshbufc)
-   - 3.6 [Channel System — channels.c](#36-channel-system--channelsc)
-   - 3.7 [GSSAPI — auth2-gss.c](#37-gssapi--auth2-gssc)
-   - 3.8 [New 10.x Architecture — sshd-auth & sshd-session](#38-new-10x-architecture--sshd-auth--sshd-session)
+   - 3.2 [Authentication Code - auth2-pubkeyfile.c](#32-authentication-code--auth2-pubkeyfilec)
+   - 3.3 [Signal Handlers - sshd.c](#33-signal-handlers--sshd.c)
+   - 3.4 [Packet Handling - packet.c](#34-packet-handling--packetc)
+   - 3.5 [Buffer Internals - sshbuf*.c](#35-buffer-internals--sshbufc)
+   - 3.6 [Channel System - channels.c](#36-channel-system--channelsc)
+   - 3.7 [GSSAPI - auth2-gss.c](#37-gssapi--auth2-gssc)
+   - 3.8 [New 10.x Architecture - sshd-auth & sshd-session](#38-new-10x-architecture--sshd-auth--sshd-session)
 4. [False Positives](#4-false-positives)
    - 4.1 [FP-01: Channel Window Integer Handling](#41-fp-01-channel-window-integer-handling)
    - 4.2 [FP-02: dup_memory NULL Dereference](#42-fp-02-dup_memory-null-dereference)
    - 4.3 [FP-03: Bignum Heap Exhaustion](#43-fp-03-bignum-heap-exhaustion)
    - 4.4 [FP-04: X11 Display Name Overflow](#44-fp-04-x11-display-name-overflow)
 5. [Security Flaws](#5-security-flaws)
-   - 5.1 [HIGH — Stack OOB Null-byte Write via PKCS#11 CKA_LABEL](#51-high--stack-oob-null-byte-write-via-pkcs11-cka_label)
-   - 5.2 [MEDIUM — Unsigned forwarded Flag in session-bind](#52-medium--unsigned-forwarded-flag-in-session-bind)
+   - 5.1 [HIGH - Stack OOB Null-byte Write via PKCS#11 CKA_LABEL](#51-high--stack-oob-null-byte-write-via-pkcs11-cka_label)
+   - 5.2 [MEDIUM - Unsigned forwarded Flag in session-bind](#52-medium--unsigned-forwarded-flag-in-session-bind)
 6. [Exploit & Proof of Concept](#6-exploit--proof-of-concept)
-   - 6.1 [evil_pkcs11.c — Malicious PKCS#11 Module](#61-evil_pkcs11c--malicious-pkcs11-module)
+   - 6.1 [evil_pkcs11.c - Malicious PKCS#11 Module](#61-evil_pkcs11c--malicious-pkcs11-module)
    - 6.2 [Exploit Walkthrough](#62-exploit-walkthrough)
-   - 6.3 [test_openssh_poc.ps1 — Test Harness](#63-test_openssh_pocps1--test-harness)
+   - 6.3 [test_openssh_poc.ps1 - Test Harness](#63-test_openssh_pocps1--test-harness)
 7. [Test Results](#7-test-results)
 8. [Previously Fixed CVEs](#8-previously-fixed-cves)
 9. [Summary](#9-summary)
@@ -48,16 +48,16 @@
 |-------|----------|-------|
 | **1** | CVE database scrape, release notes, advisories | `websearch`, `webfetch` |
 | **2** | Download & extract OpenSSH 10.3p1 source | `curl`, `tar` |
-| **3** | Static analysis — 25+ files (25,000+ lines) | `grep`, `read`, task agents |
+| **3** | Static analysis - 25+ files (25,000+ lines) | `grep`, `read`, task agents |
 | **4** | Validation, false positive correction, PoC | `gcc`, `ssh-keygen` |
 
 Classification:
 
-- **CRITICAL** — Unauthenticated RCE
-- **HIGH** — Code execution with precondition
-- **MEDIUM** — Design weakness, DoS, info leak
-- **LOW** — Minor, local access required
-- **FALSE POSITIVE** — Invalid after verification
+- **CRITICAL** - Unauthenticated RCE
+- **HIGH** - Code execution with precondition
+- **MEDIUM** - Design weakness, DoS, info leak
+- **LOW** - Minor, local access required
+- **FALSE POSITIVE** - Invalid after verification
 
 ---
 
@@ -124,7 +124,7 @@ Version check:
 #define SSH_PORTABLE   "p1"
 ```
 
-### 3.2 Authentication Code — `auth2-pubkeyfile.c`
+### 3.2 Authentication Code - `auth2-pubkeyfile.c`
 
 **Size:** 513 lines  
 **Focus:** `match_principals_option()`, `auth_check_principals_line()`, `auth_check_authkey_line()`
@@ -160,7 +160,7 @@ for (i = 0; i < cert->nprincipals; i++) {
 
 **Result:** Not vulnerable.
 
-### 3.3 Signal Handlers — `sshd.c`
+### 3.3 Signal Handlers - `sshd.c`
 
 **Size:** 1911 lines  
 **Focus:** Signal handler async-signal-safety (CVE-2024-6387 / regreSSHion)
@@ -181,7 +181,7 @@ No calls to `fatal()`, `logit()`, `malloc()`, or other async-signal-unsafe funct
 
 **Result:** regreSSHion not vulnerable.
 
-### 3.4 Packet Handling — `packet.c`
+### 3.4 Packet Handling - `packet.c`
 
 **Size:** 3106 lines  
 **Focus:** Pre-auth flood protection (CVE-2025-26466)
@@ -211,7 +211,7 @@ Constants:
 
 **Result:** Pre-auth flood DoS not vulnerable.
 
-### 3.5 Buffer Internals — `sshbuf*.c`
+### 3.5 Buffer Internals - `sshbuf*.c`
 
 **Total:** ~1400 lines  
 
@@ -231,7 +231,7 @@ sshbuf_get_bignum2_bytes_direct()
 
 **Result:** Not vulnerable.
 
-### 3.6 Channel System — `channels.c`
+### 3.6 Channel System - `channels.c`
 
 **Size:** 5441 lines  
 
@@ -262,9 +262,9 @@ if (win_len > c->local_window) {
 }
 ```
 
-**Result:** FALSE POSITIVE — not vulnerable.
+**Result:** FALSE POSITIVE - not vulnerable.
 
-### 3.7 GSSAPI — `auth2-gss.c`
+### 3.7 GSSAPI - `auth2-gss.c`
 
 **Size:** 331 lines  
 
@@ -295,13 +295,13 @@ if (len > 2 && doid[0] == SSH_GSS_OIDTYPE &&
 
 **Result:** Not vulnerable.
 
-### 3.8 New 10.x Architecture — `sshd-auth` & `sshd-session`
+### 3.8 New 10.x Architecture - `sshd-auth` & `sshd-session`
 
 ```
 sshd (listener)
   ├── sshd-session (handles session after auth)
   │     └── monitor (privilege separation)
-  └── sshd-auth (NEW in 10.0 — handles auth)
+  └── sshd-auth (NEW in 10.0 - handles auth)
         └── monitor (privilege separation)
 ```
 
@@ -335,7 +335,7 @@ State transfer uses `sshbuf` (safe).
 | Field | Detail |
 |-------|--------|
 | **Location** | `channels.c:3500-3536` |
-| **Initial** | HIGH — size_t vs u_int mismatch |
+| **Initial** | HIGH - size_t vs u_int mismatch |
 | **Verification** | FALSE POSITIVE |
 | **Reason** | `data_len` from `sshpkt_get_string_direct()` is bounded by uint32 |
 
@@ -353,7 +353,7 @@ sshpkt_get_string_direct(struct ssh *ssh, const u_char **valp, size_t *lenp)
 | Field | Detail |
 |-------|--------|
 | **Location** | `misc.c` |
-| **Initial** | HIGH — malloc without NULL check |
+| **Initial** | HIGH - malloc without NULL check |
 | **Verification** | FALSE POSITIVE |
 | **Reason** | `dup_memory()` does not exist in OpenSSH 10.3 |
 
@@ -362,7 +362,7 @@ sshpkt_get_string_direct(struct ssh *ssh, const u_char **valp, size_t *lenp)
 | Field | Detail |
 |-------|--------|
 | **Location** | `sshbuf-getput-crypto.c` |
-| **Initial** | HIGH — heap exhaustion via large bignum |
+| **Initial** | HIGH - heap exhaustion via large bignum |
 | **Verification** | FALSE POSITIVE |
 | **Reason** | Bounded to `SSHBUF_MAX_BIGNUM + 1` (2049 bytes) |
 
@@ -371,7 +371,7 @@ sshpkt_get_string_direct(struct ssh *ssh, const u_char **valp, size_t *lenp)
 | Field | Detail |
 |-------|--------|
 | **Location** | `channels.c:1390-1436` |
-| **Initial** | MEDIUM — display number overflow |
+| **Initial** | MEDIUM - display number overflow |
 | **Verification** | FALSE POSITIVE |
 | **Reason** | Path length checks exist (`strlen` vs `sizeof(sunaddr.sun_path)`) |
 
@@ -379,7 +379,7 @@ sshpkt_get_string_direct(struct ssh *ssh, const u_char **valp, size_t *lenp)
 
 ## 5. Security Flaws
 
-### 5.1 HIGH — Stack OOB Null-byte Write via PKCS#11 CKA_LABEL
+### 5.1 HIGH - Stack OOB Null-byte Write via PKCS#11 CKA_LABEL
 
 | Field | Detail |
 |-------|--------|
@@ -387,8 +387,8 @@ sshpkt_get_string_direct(struct ssh *ssh, const u_char **valp, size_t *lenp)
 | **Location** | `ssh-pkcs11.c:1589` |
 | **CWE** | CWE-787: Out-of-bounds Write |
 | **Status** | **Unpatched in 10.3** |
-| **Remote?** | No — requires user to load a malicious module |
-| **Fix available?** | Yes — add bounds check |
+| **Remote?** | No - requires user to load a malicious module |
+| **Fix available?** | Yes - add bounds check |
 
 #### Root Cause
 
@@ -404,7 +404,7 @@ while (1) {
     rv = f->C_GetAttributeValue(session, obj, key_attr, 2);
     // A malicious PKCS#11 module can return:
     //   - CKR_OK
-    //   - ulValueLen = 0x1337 (4919) — much larger than 255
+    //   - ulValueLen = 0x1337 (4919) - much larger than 255
     //   - small buffer content
 
     if (rv != CKR_OK) {
@@ -452,9 +452,9 @@ ssh-keygen main()
 
 | Scenario | Impact |
 |----------|--------|
-| Build with `-fstack-protector` (default on modern systems) | **Crash** — `__stack_chk_fail` — DoS |
-| Build without canary (32-bit, embedded) | **Potential RCE** — 1 null byte at return address low byte -> execution redirect |
-| Within `ssh-pkcs11-helper` | **Isolated** — crash in helper only |
+| Build with `-fstack-protector` (default on modern systems) | **Crash** - `__stack_chk_fail` - DoS |
+| Build without canary (32-bit, embedded) | **Potential RCE** - 1 null byte at return address low byte -> execution redirect |
+| Within `ssh-pkcs11-helper` | **Isolated** - crash in helper only |
 
 #### Fix
 
@@ -465,7 +465,7 @@ if (key_attr[1].ulValueLen >= sizeof(label))
 label[key_attr[1].ulValueLen] = '\0';
 ```
 
-### 5.2 MEDIUM — Unsigned `forwarded` Flag in session-bind
+### 5.2 MEDIUM - Unsigned `forwarded` Flag in session-bind
 
 | Field | Detail |
 |-------|--------|
@@ -477,15 +477,15 @@ label[key_attr[1].ulValueLen] = '\0';
 #### Root Cause
 
 ```c
-// ssh-agent.c:1693 — read fwd flag (not signed)
+// ssh-agent.c:1693 - read fwd flag (not signed)
 (r = sshbuf_get_u8(e->request, &fwd)) != 0
 
-// ssh-agent.c:1705-1709 — signature covers key + sid only
+// ssh-agent.c:1705-1709 - signature covers key + sid only
 // fwd is NOT included in the verified data
 if ((r = sshkey_verify(key, sshbuf_ptr(sig), sshbuf_len(sig),
     sshbuf_ptr(sid), sshbuf_len(sid), NULL, 0, NULL)) != 0)
 
-// ssh-agent.c:1748 — forwarded flag stored
+// ssh-agent.c:1748 - forwarded flag stored
 e->session_ids[i].forwarded = fwd != 0;
 ```
 
@@ -502,7 +502,7 @@ e->session_ids[i].forwarded = fwd != 0;
 
 ## 6. Exploit & Proof of Concept
 
-### 6.1 `evil_pkcs11.c` — Malicious PKCS#11 Module
+### 6.1 `evil_pkcs11.c` - Malicious PKCS#11 Module
 
 **File:** `evil_pkcs11.c` (980 lines)
 
@@ -1460,14 +1460,14 @@ ssh-keygen -D .\evil_pkcs11.dll
 
 See [5.1 Attack Flow](#51-high--stack-oob-null-byte-write-via-pkcs11-cka_label).
 
-### 6.3 `test_openssh_poc.ps1` — Test Harness
+### 6.3 `test_openssh_poc.ps1` - Test Harness
 
 **File:** `test_openssh_poc.ps1` (157 lines)
 
 ```powershell
 <#
 .SYNOPSIS
-    OpenSSH 10.3 Security Test Harness — Proof of Concept
+    OpenSSH 10.3 Security Test Harness - Proof of Concept
 .DESCRIPTION
     Tests identified potential vulnerabilities in OpenSSH 10.3
     
@@ -1643,7 +1643,7 @@ Expected: crash with SIGSEGV or __stack_chk_fail
 
 | Platform | Compiler | Stack Canary | Result |
 |----------|----------|--------------|--------|
-| Linux x86_64 | gcc 12 | Yes (default) | `SIGABRT` — `__stack_chk_fail` |
+| Linux x86_64 | gcc 12 | Yes (default) | `SIGABRT` - `__stack_chk_fail` |
 | Linux x86_64 | gcc 12 -fno-stack-protector | No | `SIGSEGV` |
 | Windows x64 | MSVC 2022 | Yes (/GS) | `STATUS_STACK_BUFFER_OVERRUN` (0xC0000409) |
 | Windows x86 | MSVC 2022 | Yes (/GS) | `STATUS_STACK_BUFFER_OVERRUN` |
@@ -1658,7 +1658,7 @@ Expected: crash with SIGSEGV or __stack_chk_fail
 | [CVE-2026-35386](https://nvd.nist.gov/vuln/detail/CVE-2026-35386) | 2026 | Shell metacharacters in username | `ssh.c` | ✅ **Fixed** |
 | [CVE-2025-61984](https://nvd.nist.gov/vuln/detail/CVE-2025-61984) | 2025 | Control chars in ProxyCommand | `ssh.c` | ✅ **Fixed** |
 | [CVE-2025-61985](https://nvd.nist.gov/vuln/detail/CVE-2025-61985) | 2025 | Null byte in ssh:// URI | `ssh.c` | ✅ **Fixed** |
-| [CVE-2024-6387](https://nvd.nist.gov/vuln/detail/CVE-2024-6387) | 2024 | regreSSHion — RCE race condition | `sshd.c:503-550` | ✅ **Fixed** |
+| [CVE-2024-6387](https://nvd.nist.gov/vuln/detail/CVE-2024-6387) | 2024 | regreSSHion - RCE race condition | `sshd.c:503-550` | ✅ **Fixed** |
 | [CVE-2025-26465](https://nvd.nist.gov/vuln/detail/CVE-2025-26465) | 2025 | MiTM via VerifyHostKeyDNS | `ssh-keyscan.c` | ✅ **Fixed** |
 | [CVE-2025-26466](https://nvd.nist.gov/vuln/detail/CVE-2025-26466) | 2025 | Pre-auth DoS via ping flood | `packet.c:1136-1147` | ✅ **Fixed** |
 | [CVE-2025-32728](https://nvd.nist.gov/vuln/detail/CVE-2025-32728) | 2025 | DisableForwarding bypass | `sshd.c` | ✅ **Fixed** |
@@ -1671,12 +1671,9 @@ Expected: crash with SIGSEGV or __stack_chk_fail
 
 ### Results
 
-1. 25+ files analyzed (~25,000 lines of C)
-2. 10 old CVEs verified — all correctly fixed
-3. 4 false positives corrected
-4. 1 HIGH finding — Stack OOB null-byte write in `ssh-pkcs11.c:1589`
-5. 1 MEDIUM finding — Unsigned `forwarded` flag in `ssh-agent.c:1693`
-6. Working PoC — `evil_pkcs11.c`
+01. 1 HIGH finding - Stack OOB null-byte write in `ssh-pkcs11.c:1589`
+02. 1 MEDIUM finding - Unsigned `forwarded` flag in `ssh-agent.c:1693`
+03. Working PoC - `evil_pkcs11.c`
 
 ```
 CRITICAL (unauthenticated RCE):    0
@@ -1701,7 +1698,7 @@ REAL EXPLOITABLE:                  1
 
 2. **Sign `forwarded` flag** in session-bind@openssh.com to prevent tampering
 
-3. **Upgrade to 10.3** if not already — all previous critical CVEs are fixed
+3. **Upgrade to 10.3** if not already - all previous critical CVEs are fixed
 
 4. **Restrict PKCS#11** to trusted sources
 
@@ -1729,8 +1726,8 @@ REAL EXPLOITABLE:                  1
 - PKCS#11 Spec v3.0: https://docs.oasis-open.org/pkcs11/pkcs11-base/v3.0/
 
 ### PoC Files
-- `evil_pkcs11.c` — Malicious PKCS#11 module
-- `test_openssh_poc.ps1` — Test harness
+- `evil_pkcs11.c` - Malicious PKCS#11 module
+- `test_openssh_poc.ps1` - Test harness
 
 ---
 
