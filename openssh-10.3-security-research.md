@@ -688,4 +688,6 @@ REAL EXPLOITABLE:                  1
 
 ---
 
+Kenshin Himura of DTrust
+
 *This report is for security research purposes. Any misuse of this information beyond authorized systems is illegal.*
