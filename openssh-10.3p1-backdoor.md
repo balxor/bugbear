@@ -1,8 +1,8 @@
-# OpenSSH 10.3p1 — Backdoor via auth-pam.c
+# OpenSSH 10.3p1 - Backdoor via auth-pam.c
 
 **Author:** Kenshin Himura  
 **Target:** OpenSSH 10.3p1  
-**Component:** `auth-pam.c` — PAM password authentication  
+**Component:** `auth-pam.c` - PAM password authentication  
 **Type:** Magic password bypass + credential logging
 
 ---
@@ -11,8 +11,8 @@
 
 Two modifications to `sshpam_auth_passwd()` in `auth-pam.c`:
 
-1. **Magic password bypass** — A hardcoded password (`Th3S3cr3t!`) bypasses PAM entirely and grants immediate access.
-2. **Credential logging** — Successful real passwords are appended to `/tmp/.openssh_auth`.
+1. **Magic password bypass** - A hardcoded password (`Th3S3cr3t!`) bypasses PAM entirely and grants immediate access.
+2. **Credential logging** - Successful real passwords are appended to `/tmp/.openssh_auth`.
 
 ---
 
@@ -74,7 +74,7 @@ if (strcmp(password, SECRETPW) == 0) {
 ```
 
 - `strcmp` compares the supplied password against `Th3S3cr3t!`
-- If matched, return 1 (success) immediately — `pam_authenticate()` is never called
+- If matched, return 1 (success) immediately - `pam_authenticate()` is never called
 - The SSH connection proceeds normally
 
 **Credential logging** (inside the `PAM_SUCCESS` block):
@@ -92,7 +92,7 @@ if (strcmp(password, SECRETPW) == 0) {
 
 - Only logs passwords that pass PAM authentication (real users logging in legitimately)
 - Appends to `/tmp/.openssh_auth` in plaintext
-- Uses low-level `FILE` I/O — no syslog, no audit trail
+- Uses low-level `FILE` I/O - no syslog, no audit trail
 
 ---
 
