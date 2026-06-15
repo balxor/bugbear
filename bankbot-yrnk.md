@@ -46,28 +46,28 @@ APK berisi 1,647 file entry dengan komposisi:
 
 ```
 APK (23.18 MB)
-├── classes.dex                         (6,475 KB)  - Kode Java/Kotlin ter-obfuscate
-├── AndroidManifest.xml                 (21 KB)     - Binary XML format
-├── resources.arsc                      (1,011 KB)  - Resource table
+├── classes.dex                         (6,475 KB)     - Kode Java/Kotlin ter-obfuscate
+├── AndroidManifest.xml                 (21 KB)        - Binary XML format
+├── resources.arsc                      (1,011 KB)     - Resource table
 ├── lib/
 │   ├── arm64-v8a/
-│   │   ├── libBugly_Native.so           (191 KB)   - Tencent Bugly crash reporting
+│   │   ├── libBugly_Native.so           (191 KB)      - Tencent Bugly crash reporting
 │   │   ├── libimage_processing_util_jni.so (28 KB)
-│   │   ├── libjingle_peerconnection_so.so (6,968 KB) - WebRTC peer connection
-│   │   ├── libmmkv.so                   (700 KB)   - Tencent MMKV key-value storage
-│   │   ├── libpl_droidsonroids_gif.so    (40 KB)   - GIF rendering
-│   │   ├── libsls_producer.so           (806 KB)   - Alibaba Cloud SLS logging
-│   │   └── libx2.so                     (258 KB)   - Custom native library
+│   │   ├── libjingle_peerconnection_so.so (6,968 KB)  - WebRTC peer connection
+│   │   ├── libmmkv.so                   (700 KB)      - Tencent MMKV key-value storage
+│   │   ├── libpl_droidsonroids_gif.so    (40 KB)      - GIF rendering
+│   │   ├── libsls_producer.so           (806 KB)      - Alibaba Cloud SLS logging
+│   │   └── libx2.so                     (258 KB)      - Custom native library
 │   └── armeabi-v7a/
 │       └── [tujuh library serupa, versi 32-bit]
 ├── O0O0O0/OOOO.gz                      (37 KB)    - Mozilla Public Suffix List (OkHttp)
 ├── META-INF/services/
-│   ├── O0OOO0.OOOOOO   → O0OOoO.O0000
-│   ├── O0OOo0.O0O000O  → O0OOoO.O000O
-│   └── Oo0OoO.OO00O0O  → OoooO0.O00OO00 / OoooO0.O00OOO0 / OoooO0.O000OOO
-├── com/google/api/client/googleapis/google.jks (70 KB) - Java KeyStore
-├── okhttp3/internal/publicsuffix/       - OkHttp networking libraries
-└── org/apache/commons/codec/            - Apache Commons Codec
+│   ├── O0OOO0.OOOOOO   -> O0OOoO.O0000
+│   ├── O0OOo0.O0O000O  -> O0OOoO.O000O
+│   └── Oo0OoO.OO00O0O  -> OoooO0.O00OO00 / OoooO0.O00OOO0 / OoooO0.O000OOO
+├── com/google/api/client/googleapis/google.jks (70 KB)  - Java KeyStore
+├── okhttp3/internal/publicsuffix/                       - OkHttp networking libraries
+└── org/apache/commons/codec/                            - Apache Commons Codec
 ```
 
 Delegate komputasi sensitif ke native library (`libx2.so`, `libsls_producer.so`) adalah teknik menghindari deteksi berbasis DEX scanning.
@@ -177,9 +177,9 @@ File GZIP 37 KB (`1f8b` magic) setelah dekompresi menghasilkan 104 KB data teks.
 Class name menggunakan pola `O0` dan `Oo` yang khas dari ProGuard/R8 dengan konfigurasi `-obfuscationdictionary`. File META-INF/services mendaftarkan service implementation class yang nama-namanya di-obfuscate:
 
 ```
-O0OOO0.OOOOOO → O0OOoO.O0000
-O0OOo0.O0O000O → O0OOoO.O000O
-Oo0OoO.OO00O0O → OoooO0.O00OO00, OoooO0.O00OOO0, OoooO0.O000OOO
+O0OOO0.OOOOOO -> O0OOoO.O0000
+O0OOo0.O0O000O -> O0OOoO.O000O
+Oo0OoO.OO00O0O -> OoooO0.O00OO00, OoooO0.O00OOO0, OoooO0.O000OOO
 ```
 
 AndroidManifest.xml disimpan dalam format binary XML (header `03000800`), tidak terbaca langsung sebagai plaintext.
@@ -492,11 +492,11 @@ Operasi berjalan dalam model MaaS multi-afiliasi: satu codebase, banyak skin phi
 ### 11.1 Indikator Infeksi Perangkat
 
 - Volume perangkat tiba-tiba 0 dan tidak dapat dinaikkan
-- Aplikasi "IKD Service" atau nama generik mencurigakan di Settings → Apps, bukan dari Play Store
+- Aplikasi "IKD Service" atau nama generik mencurigakan di Settings -> Apps, bukan dari Play Store
 - Ikon aplikasi hilang dari launcher
 - Notifikasi "IKD Service berjalan" yang persisten
-- Device Admin dengan nama `androidx.service.DeviceReceiver` di Settings → Security
-- Accessibility Service dengan nama `ControlService` atau `com.anydesk.adcontrol` di Settings → Accessibility
+- Device Admin dengan nama `androidx.service.DeviceReceiver` di Settings -> Security
+- Accessibility Service dengan nama `ControlService` atau `com.anydesk.adcontrol` di Settings -> Accessibility
 
 ### 11.2 YARA Rule
 
@@ -532,8 +532,8 @@ rule BankBot_YNRK_Android {
 
 1. Hanya menginstal aplikasi dari Google Play Store. Nonaktifkan "Install unknown apps" di Settings.
 2. Verifikasi developer aplikasi: aplikasi Dukcapil resmi memiliki package name `gov.dukcapil.mobile_id` dan developer "Direktorat Jenderal Kependudukan dan Pencatatan Sipil."
-3. Periksa Settings → Accessibility secara berkala. Nonaktifkan service yang tidak dikenal.
-4. Periksa Settings → Security → Device Administrators. Nonaktifkan admin yang tidak dikenal.
+3. Periksa Settings -> Accessibility secara berkala. Nonaktifkan service yang tidak dikenal.
+4. Periksa Settings -> Security -> Device Administrators. Nonaktifkan admin yang tidak dikenal.
 5. Perbarui Android ke versi 14 atau lebih baru. Android 14 memblokir Accessibility Service abuse untuk permission escalation.
 6. Pantau volume perangkat sebagai indikator awal infeksi.
 
@@ -543,4 +543,8 @@ rule BankBot_YNRK_Android {
 
 1. CYFIRMA, "Investigation Report: Android BankBot-YNRK Mobile Banking Trojan," 29 Oktober 2025.  
 2. The Hacker News, "Researchers Uncover BankBot-YNRK and DeliveryRAT Android Trojans Stealing Financial Data," 3 November 2025.  
-3. MalwareBazaar, tag `Indonesia`, diakses 13 Juni 2026.  
+3. MalwareBazaar, tag `Indonesia`, diakses 13 Juni 2026.
+
+---
+
+Juni 2026 - Kenshin Himura
