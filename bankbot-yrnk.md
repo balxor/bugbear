@@ -415,7 +415,7 @@ Tidak satu pun target berasal dari China. Tidak ada ICBC, Alipay, WeChat Pay, at
 
 ### 9.8 Lokalisasi UI Phishing
 
-Overlay pada varian Indonesia menampilkan teks: "**Verifikasi Data Pribadi.** Data Anda sedang diverifikasi... Mohon tunggu, jangan tutup aplikasi." (Bahasa Indonesia natural, dikonfirmasi dari screenshot CYFIRMA). Varian Vietnam menggunakan impersonasi VSSID (`VSSID.apk`) dan DichVuCong (`DichVuCong.apk`).
+Overlay pada varian Indonesia menampilkan teks: "**Verifikasi Data Pribadi.** Data Anda sedang diverifikasi... Mohon tunggu, jangan tutup aplikasi." (Bahasa Indonesia natural). Varian Vietnam menggunakan impersonasi VSSID (`VSSID.apk`) dan DichVuCong (`DichVuCong.apk`).
 
 ---
 
