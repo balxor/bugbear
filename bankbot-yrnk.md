@@ -479,8 +479,6 @@ plp.en1inei2.top    (specimen 3)
 | Destructive capability | Tidak ada ransomware module, wiper, atau data destruction |
 | Lateral movement | Tidak ada modul untuk menyebar ke jaringan internal |
 
-### 10.4 Assessment Final
-
 Developer utama BankBot-YNRK adalah programmer Android dengan kemampuan bahasa Mandarin, familiar dengan toolchain developer China (Tencent, Alibaba, `nmm-protect`, Aria). Watermark `qing` di package name menunjukkan nama panggilan personal. Target spread murni ASEAN + India tanpa menyentuh bank China - pola menghindari penegak hukum domestik.
 
 Operasi berjalan dalam model MaaS multi-afiliasi: satu codebase, banyak skin phishing per negara, distribusi per negara oleh aktor yang berbeda namun terhubung ke infrastruktur C2 yang sama. Aktor mengarah ke kelompok cybercriminal Asia Tenggara dengan developer utama Chinese-speaking.
