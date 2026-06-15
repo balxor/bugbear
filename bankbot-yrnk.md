@@ -74,7 +74,7 @@ Delegate komputasi sensitif ke native library (`libx2.so`, `libsls_producer.so`)
 
 ### 3.2 Nama Komponen
 
-Komponen yang terdaftar di AndroidManifest (diverifikasi via Tria.ge static analysis dan cross-check strings DEX):
+Komponen yang terdaftar di AndroidManifest (static analysis dan cross-check strings DEX):
 
 | Tipe | Nama | Fungsi |
 |---|---|---|
