@@ -60,7 +60,7 @@ APK (23.18 MB)
 │   │   └── libx2.so                     (258 KB)      - Custom native library
 │   └── armeabi-v7a/
 │       └── [tujuh library serupa, versi 32-bit]
-├── O0O0O0/OOOO.gz                      (37 KB)    - Mozilla Public Suffix List (OkHttp)
+├── O0O0O0/OOOO.gz                      (37 KB)        - Mozilla Public Suffix List (OkHttp)
 ├── META-INF/services/
 │   ├── O0OOO0.OOOOOO   -> O0OOoO.O0000
 │   ├── O0OOo0.O0O000O  -> O0OOoO.O000O
