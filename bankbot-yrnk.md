@@ -1,8 +1,11 @@
 # Malware Analysis BankBot-YNRK - Android Banking Trojan
 
 **Analyst**: Kenshin Himura of DTrust  
-**Klasifikasi:** Android Banking Trojan | **Family:** BankBot-YNRK | **Skor:** 10/10
-**Tanggal Analisis:** 13 Juni 2026 | **Sample Hash:** `1ae0c4ffe18e7934c019ad1279219d1e8e8491bf62e8b34102e1497010c58247`
+**Klasifikasi:** Android Banking Trojan  
+**Family:** BankBot-YNRK  
+**Skor:** 10/10  
+**Tanggal Analisis:** 13 Juni 2026  
+**Sample Hash:** `1ae0c4ffe18e7934c019ad1279219d1e8e8491bf62e8b34102e1497010c58247`
 
 ---
 
