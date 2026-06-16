@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Judol Scanner - Judol Merusak Generasi Muda
-Kenshin Himura
+Judol Merusak Generasi Muda
+Kenshin Himura - roxlab.org@gmail.com
 ========================================================
 Metode:
  1. Keyword-based: konten HTML + meta tag + title
@@ -437,8 +437,8 @@ def analyze_url(target_url):
 def print_banner():
     print("""
 =============================================================
-    Judol Scanner - Judol Merusak Generasi Muda
-    Kenshin Himura
+    Judol Merusak Generasi Muda
+    Kenshin Himura - roxlab.org@gmail.com
 =============================================================
 """)
 
