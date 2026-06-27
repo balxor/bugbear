@@ -1,0 +1,330 @@
+================================================================================
+DATA FLOW & TRACKING PATTERNS
+UPTODOWN APP STORE v7.32
+================================================================================
+
+DATA COLLECTION POINTS
+================================================================================
+
+1. DEVICE FINGERPRINTING:
+--------------------------------------------------------------------------------
+   Data collected:
+     - Device ID / Android ID
+     - Manufacturer, Model, Brand
+     - OS version, SDK version
+     - Screen resolution, density
+     - CPU architecture
+     - Available memory
+     - Battery level, charging status
+     - Network type (wifi/mobile)
+     - Locale, timezone, language
+     - Country (via api.country.is)
+
+   When: App startup, periodic updates
+   Sent to: /eapi/v2/tracker/device
+   Frequency: Every app launch + periodic
+
+2. APP INVENTORY:
+--------------------------------------------------------------------------------
+   Data collected:
+     - Complete list of installed apps
+     - Package names
+     - Version codes
+     - Installation dates
+     - System app status
+     - App signatures (MD5, SHA256)
+     - App sizes
+
+   When: App startup, periodic scans
+   Sent to: /eapi/androidtracker/device-apps-installed
+   Frequency: Every app launch + periodic
+
+3. USER ACTIVITY:
+--------------------------------------------------------------------------------
+   Data collected:
+     - Screen views (screen_name, screen_class)
+     - Time spent per screen
+     - Navigation paths
+     - Search queries
+     - Apps browsed
+     - Apps downloaded
+     - Comments posted
+     - Reviews submitted
+     - Follow/unfollow actions
+     - Wishlist additions
+
+   When: During app usage
+   Sent to: /eapi/logs/event, /eapi/my-feed/set-visit
+   Frequency: Real-time + batched
+
+4. DOWNLOAD TRACKING:
+--------------------------------------------------------------------------------
+   Data collected:
+     - Download start time
+     - Download complete time
+     - File size
+     - File hash (MD5, SHA256)
+     - Download speed
+     - Network type during download
+     - Installation status
+     - Update status
+
+   When: During download operations
+   Sent to: /eapi/v2/tracker/app-to-upload
+   Frequency: Real-time
+
+5. NETWORK TELEMETRY:
+--------------------------------------------------------------------------------
+   Data collected:
+     - Network type (wifi/mobile/none)
+     - Connection status changes
+     - Upload speed
+     - Data usage by date
+     - Data usage by connection type
+
+   When: Network changes, periodic
+   Sent to: /eapi/user-data/device
+   Frequency: On change + periodic
+
+6. ERROR & CRASH LOGGING:
+--------------------------------------------------------------------------------
+   Data collected:
+     - Error stack traces
+     - Device state at error
+     - App state at error
+     - User actions before error
+     - Memory usage
+     - Network status
+
+   When: Error or crash occurs
+   Sent to: /eapi/logs/error, Crashlytics
+   Frequency: Immediate
+
+
+================================================================================
+TRACKING TRIGGERS
+================================================================================
+
+1. APP LIFECYCLE TRIGGERS:
+--------------------------------------------------------------------------------
+   onCreate() - App created
+     -> Collect device info
+     -> Initialize tracking
+     -> Start services
+
+   onStart() - App visible
+     -> Resume tracking
+     -> Check for pending sync
+
+   onResume() - App in foreground
+     -> Log session start
+     -> Collect current state
+     -> Start periodic tasks
+
+   onPause() - App losing focus
+     -> Log screen exit
+     -> Queue pending data
+
+   onStop() - App no longer visible
+     -> Log session end
+     -> Schedule background sync
+
+   onDestroy() - App destroyed
+     -> Final data flush
+     -> Cleanup resources
+
+2. USER ACTION TRIGGERS:
+--------------------------------------------------------------------------------
+   Click/Tap events
+     -> Log interaction
+     -> Track navigation
+
+   Search queries
+     -> Log search term
+     -> Track results clicked
+
+   Download initiated
+     -> Log download start
+     -> Track progress
+
+   Download completed
+     -> Log completion
+     -> Update statistics
+
+   Comment/Review posted
+     -> Log content
+     -> Track engagement
+
+3. SYSTEM TRIGGERS:
+--------------------------------------------------------------------------------
+   BOOT_COMPLETED
+     -> Auto-start services
+     -> Resume tracking
+
+   CONNECTIVITY_CHANGE
+     -> Update network status
+     -> Resume/pause sync
+
+   BATTERY_CHANGED
+     -> Update battery status
+     -> Adjust tracking frequency
+
+   PACKAGE_ADDED/REMOVED
+     -> Update app inventory
+     -> Send to server
+
+4. PERIODIC TRIGGERS:
+--------------------------------------------------------------------------------
+   WorkManager (15 min - 24 hours)
+     -> Sync pending data
+     -> Update device status
+     -> Check for updates
+
+   AlarmManager (scheduled)
+     -> Wake for sync
+     -> Check notifications
+
+
+================================================================================
+DATA TRANSMISSION PATTERNS
+================================================================================
+
+1. IMMEDIATE TRANSMISSION:
+--------------------------------------------------------------------------------
+   Data sent immediately:
+     - Authentication events (login, logout)
+     - Critical errors/crashes
+     - Download completions
+     - User search queries
+     - Screen transitions
+
+   Endpoints:
+     - /eapi/v2/user/login
+     - /eapi/logs/error
+     - /eapi/v2/tracker/app-to-upload
+     - /eapi/v2/apps/search
+     - /eapi/logs/event
+
+2. BATCHED TRANSMISSION:
+--------------------------------------------------------------------------------
+   Data batched (queued locally):
+     - Analytics events
+     - Usage statistics
+     - Device telemetry
+     - Error logs
+     - Interaction logs
+
+   Batch size: 10-100 events
+   Batch interval: 15 min - 1 hour
+   Endpoints:
+     - /eapi/v2/tracker/device
+     - /eapi/user-data/stats
+     - /eapi/v3/device/daily-stats
+
+3. DEFERRED TRANSMISSION:
+--------------------------------------------------------------------------------
+   Data sent when conditions met:
+     - Large file uploads (WiFi only)
+     - Non-critical analytics (device idle)
+     - Background sync (charging)
+
+   Conditions:
+     - NetworkType.UNMETERED (WiFi)
+     - DeviceState.IDLE
+     - BatteryState.CHARGING
+
+   Endpoints:
+     - /eapi/v2/tracker/upload-file
+     - /eapi/androidtracker/device-apps-installed
+
+
+================================================================================
+BEHAVIORAL TIMELINE
+================================================================================
+
+T+0s: App Launch
+  -> Collect device fingerprint
+  -> Collect app inventory
+  -> Send to /eapi/v2/tracker/device
+  -> Send to /eapi/androidtracker/device-apps-installed
+
+T+1s: Main Screen
+  -> Log screen_view event
+  -> Start session tracking
+  -> Send to /eapi/logs/event
+
+T+5s: User Interaction
+  -> Log click/tap events
+  -> Track navigation
+  -> Queue for batched transmission
+
+T+10s: Search Query
+  -> Log search term
+  -> Send immediately to /eapi/v2/apps/search
+  -> Track results clicked
+
+T+30s: Download Started
+  -> Log download start
+  -> Send to /eapi/v2/tracker/app-to-upload
+  -> Track progress
+
+T+60s: Download Complete
+  -> Log completion
+  -> Update statistics
+  -> Send to /eapi/v2/tracker/app-to-upload
+
+T+15min: Periodic Sync
+  -> Batch queued events
+  -> Send to /eapi/v2/tracker/device
+  -> Update device status
+
+T+1hour: Background Task
+  -> Sync pending data
+  -> Update app inventory
+  -> Check for updates
+
+T+24hours: Daily Stats
+  -> Compile daily statistics
+  -> Send to /eapi/v3/device/daily-stats
+  -> Update usage patterns
+
+
+================================================================================
+PERSISTENCE MECHANISMS
+================================================================================
+
+1. BOOT PERSISTENCE:
+--------------------------------------------------------------------------------
+   BootDeviceReceiver registered
+   Triggers on BOOT_COMPLETED
+   Auto-starts tracking services
+   Ensures tracking continues after reboot
+
+2. WORKMANAGER PERSISTENCE:
+--------------------------------------------------------------------------------
+   PeriodicWorkRequest scheduled
+   Survives app restart
+   Executes every 15 min - 24 hours
+   System-managed scheduling
+
+3. ALARMMANAGER PERSISTENCE:
+--------------------------------------------------------------------------------
+   Alarms set for specific times
+   Survives app restart
+   Wakes device for sync
+   Can wake from Doze mode
+
+4. DATA PERSISTENCE:
+--------------------------------------------------------------------------------
+   SQLite databases store:
+     - Pending events
+     - User data
+     - App inventory
+     - Download history
+     - Device status
+
+   SharedPreferences store:
+     - User settings
+     - Session tokens
+     - Tracking preferences
+     - Last sync time

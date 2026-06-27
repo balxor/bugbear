@@ -1,0 +1,113 @@
+================================================================================
+UPTODOWN APP STORE v7.32 - CLASS NAMES
+================================================================================
+
+Total class names found: 6297
+
+UPTODOWN-SPECIFIC CLASSES:
+--------------------------------------------------------------------------------
+  Lcom/uptodown/UptodownApp;
+
+
+THIRD-PARTY PACKAGES (Top 50):
+--------------------------------------------------------------------------------
+
+  androidx.compose.material3 (353 classes)
+
+  j$.util.stream (267 classes)
+
+  androidx.compose.runtime (57 classes)
+
+  androidx.compose.foundation (55 classes)
+
+  Landroidx.compose.foundation (47 classes)
+
+  kotlin.jvm.internal (38 classes)
+
+  j$.time.chrono (36 classes)
+
+  com.google.gson (35 classes)
+
+  j$.time.format (33 classes)
+
+  androidx.credentials.playservices (33 classes)
+
+  androidx.work.impl (31 classes)
+
+  androidx.compose.ui (31 classes)
+
+  androidx.core.view (25 classes)
+
+  Landroidx.compose.ui (25 classes)
+
+  j$.util.concurrent (24 classes)
+
+  j$.time.temporal (23 classes)
+
+  androidx.core.util (20 classes)
+
+  androidx.window.embedding (20 classes)
+
+  Landroidx.compose.material3 (18 classes)
+
+  androidx.core.location (14 classes)
+
+  Lcom.google.android (14 classes)
+
+  Landroidx.compose.animation (13 classes)
+
+  android.support.customtabs (12 classes)
+
+  androidx.core.os (11 classes)
+
+  android.support.v4 (11 classes)
+
+  androidx.privacysandbox.ads (10 classes)
+
+  j$.util.function (9 classes)
+
+  j$.time.zone (9 classes)
+
+  java.util.zip (9 classes)
+
+  androidx.room.util (9 classes)
+
+  androidx.lifecycle.compose (8 classes)
+
+  android.text.style (7 classes)
+
+  androidx.core.app (7 classes)
+
+  androidx.fragment.ktx (7 classes)
+
+  androidx.core.text (7 classes)
+
+  java.lang.reflect (7 classes)
+
+  androidx.room.support (6 classes)
+
+  java.util.function (6 classes)
+
+  androidx.core.content (6 classes)
+
+  androidx.window.area (6 classes)
+
+  java.util.stream (6 classes)
+
+  androidx.leanback.widget (6 classes)
+
+  java.nio.channels (5 classes)
+
+  Landroidx.datastore.preferences (5 classes)
+
+  androidx.datastore.core (5 classes)
+
+  androidx.fragment.app (5 classes)
+
+  android.app.job (5 classes)
+
+  Landroidx.compose.runtime (5 classes)
+
+  java.util.concurrent (5 classes)
+
+  Landroidx.leanback.widget (5 classes)

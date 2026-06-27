@@ -1,0 +1,36 @@
+# Local analysis output
+*.apk
+*.apks
+*.xapk
+*.dex
+*.odex
+*.vdex
+*.oat
+*.so
+*.db
+*.sqlite
+*.pcap
+*.pcapng
+*.har
+*.log
+*.tmp
+*.bak
+
+# Python and tooling
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Secrets and local environment
+.env
+*.pem
+*.key
+*.p12
+*.jks
+*token*
+*secret*
+
+# OS files
+.DS_Store
+Thumbs.db

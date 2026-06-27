@@ -1,0 +1,1203 @@
+================================================================================
+NATIVE CODE ANALYSIS - UPTODOWN APP STORE v7.32
+================================================================================
+
+
+================================================================================
+LIBRARY: libuptodown-native.so
+================================================================================
+
+
+[arm64-v8a] - 4584 bytes
+--------------------------------------------------------------------------------
+Total strings: 41
+
+URLs: 1
+Function names: 7
+JNI references: 2
+Suspicious patterns: 3
+
+URLs found:
+  Android (13624864, +pgo, -bolt, +lto, -mlgo, based on r530567e) clang version 19.0.1 (https://android.googlesource.com/toolchain/llvm-project 97a699bf4812a18fb657c2779f5296a4ab2694d2)
+
+JNI references:
+  Java_com_uptodown_util_NativeApiKey_getAuthApikeyLite
+  Java_com_uptodown_util_NativeApiKey_getAuthApikey
+
+Suspicious strings:
+  Java_com_uptodown_util_NativeApiKey_getAuthApikeyLite
+  Java_com_uptodown_util_NativeApiKey_getAuthApikey
+  Android (13624864, +pgo, -bolt, +lto, -mlgo, based on r530567e) clang version 19.0.1 (https://android.googlesource.com/toolchain/llvm-project 97a699bf4812a18fb657c2779f5296a4ab2694d2)
+
+Function names (first 50):
+  Android
+  Java_com_uptodown_util_NativeApiKey_getAuthApikey
+  Java_com_uptodown_util_NativeApiKey_getAuthApikeyLite
+  __cxa_atexit
+  __cxa_finalize
+  __register_atfork
+  __stack_chk_fail
+
+All strings:
+  -ih8Lil8
+  .comment
+  .data.rel.ro
+  .dynamic
+  .dynstr
+  .dynsym
+  .eh_frame
+  .eh_frame_hdr
+  .fini_array
+  .gnu.hash
+  .gnu.version
+  .gnu.version_r
+  .got.plt
+  .note.android.ident
+  .note.gnu.build-id
+  .rela.dyn
+  .rela.plt
+  .relro_padding
+  .rodata
+  .shstrtab
+  .text
+  13676358
+  Android
+  Android (13624864, +pgo, -bolt, +lto, -mlgo, based on r530567e) clang version 19.0.1 (https://android.googlesource.com/toolchain/llvm-project 97a699bf4812a18fb657c2779f5296a4ab2694d2)
+  Java_com_uptodown_util_NativeApiKey_getAuthApikey
+  Java_com_uptodown_util_NativeApiKey_getAuthApikeyLite
+  Jli(8
+  LIBC
+  Linker: LLD 19.0.1
+  __cxa_atexit
+  __cxa_finalize
+  __register_atfork
+  __stack_chk_fail
+  libc.so
+  libdl.so
+  liblog.so
+  libm.so
+  libuptodown-native.so
+  r28c
+
+
+[armeabi-v7a] - 3324 bytes
+--------------------------------------------------------------------------------
+Total strings: 44
+
+URLs: 1
+Function names: 9
+JNI references: 2
+Suspicious patterns: 3
+
+URLs found:
+  Android (13624864, +pgo, -bolt, +lto, -mlgo, based on r530567e) clang version 19.0.1 (https://android.googlesource.com/toolchain/llvm-project 97a699bf4812a18fb657c2779f5296a4ab2694d2)
+
+JNI references:
+  Java_com_uptodown_util_NativeApiKey_getAuthApikeyLite
+  Java_com_uptodown_util_NativeApiKey_getAuthApikey
+
+Suspicious strings:
+  Java_com_uptodown_util_NativeApiKey_getAuthApikeyLite
+  Java_com_uptodown_util_NativeApiKey_getAuthApikey
+  Android (13624864, +pgo, -bolt, +lto, -mlgo, based on r530567e) clang version 19.0.1 (https://android.googlesource.com/toolchain/llvm-project 97a699bf4812a18fb657c2779f5296a4ab2694d2)
+
+Function names (first 50):
+  Android
+  Java_com_uptodown_util_NativeApiKey_getAuthApikey
+  Java_com_uptodown_util_NativeApiKey_getAuthApikeyLite
+  __cxa_atexit
+  __cxa_finalize
+  __register_atfork
+  __stack_chk_fail
+  __stack_chk_guard
+  aeabi
+
+All strings:
+  .ARM.attributes
+  .ARM.exidx
+  .ARM.extab
+  .comment
+  .data.rel.ro
+  .dynamic
+  .dynstr
+  .dynsym
+  .fini_array
+  .gnu.hash
+  .gnu.version
+  .gnu.version_r
+  .got
+  .got.plt
+  .note.android.ident
+  .note.gnu.build-id
+  .rel.dyn
+  .rel.plt
+  .relro_padding
+  .rodata
+  .shstrtab
+  .text
+  13676358
+  Android
+  Android (13624864, +pgo, -bolt, +lto, -mlgo, based on r530567e) clang version 19.0.1 (https://android.googlesource.com/toolchain/llvm-project 97a699bf4812a18fb657c2779f5296a4ab2694d2)
+  C2.09
+  Java_com_uptodown_util_NativeApiKey_getAuthApikey
+  Java_com_uptodown_util_NativeApiKey_getAuthApikeyLite
+  K}D{D
+  LIBC
+  Linker: LLD 19.0.1
+  __cxa_atexit
+  __cxa_finalize
+  __register_atfork
+  __stack_chk_fail
+  __stack_chk_guard
+  aeabi
+  libc.so
+  libdl.so
+  liblog.so
+  libm.so
+  libuptodown-native.so
+  r28c
+
+
+[x86] - 3640 bytes
+--------------------------------------------------------------------------------
+Total strings: 41
+
+URLs: 1
+Function names: 7
+JNI references: 2
+Suspicious patterns: 3
+
+URLs found:
+  Android (13624864, +pgo, -bolt, +lto, -mlgo, based on r530567e) clang version 19.0.1 (https://android.googlesource.com/toolchain/llvm-project 97a699bf4812a18fb657c2779f5296a4ab2694d2)
+
+JNI references:
+  Java_com_uptodown_util_NativeApiKey_getAuthApikeyLite
+  Java_com_uptodown_util_NativeApiKey_getAuthApikey
+
+Suspicious strings:
+  Java_com_uptodown_util_NativeApiKey_getAuthApikeyLite
+  Java_com_uptodown_util_NativeApiKey_getAuthApikey
+  Android (13624864, +pgo, -bolt, +lto, -mlgo, based on r530567e) clang version 19.0.1 (https://android.googlesource.com/toolchain/llvm-project 97a699bf4812a18fb657c2779f5296a4ab2694d2)
+
+Function names (first 50):
+  Android
+  Java_com_uptodown_util_NativeApiKey_getAuthApikey
+  Java_com_uptodown_util_NativeApiKey_getAuthApikeyLite
+  __cxa_atexit
+  __cxa_finalize
+  __register_atfork
+  __stack_chk_fail
+
+All strings:
+  .comment
+  .data.rel.ro
+  .dynamic
+  .dynstr
+  .dynsym
+  .eh_frame
+  .eh_frame_hdr
+  .fini_array
+  .gnu.hash
+  .gnu.version
+  .gnu.version_r
+  .got.plt
+  .note.android.ident
+  .note.gnu.build-id
+  .rel.dyn
+  .rel.plt
+  .relro_padding
+  .rodata
+  .shstrtab
+  .text
+  13676358
+  ;L$8u
+  Android
+  Android (13624864, +pgo, -bolt, +lto, -mlgo, based on r530567e) clang version 19.0.1 (https://android.googlesource.com/toolchain/llvm-project 97a699bf4812a18fb657c2779f5296a4ab2694d2)
+  Java_com_uptodown_util_NativeApiKey_getAuthApikey
+  Java_com_uptodown_util_NativeApiKey_getAuthApikeyLite
+  LIBC
+  Linker: LLD 19.0.1
+  ^_[]
+  __cxa_atexit
+  __cxa_finalize
+  __register_atfork
+  __stack_chk_fail
+  libc.so
+  libdl.so
+  liblog.so
+  libm.so
+  libuptodown-native.so
+  r28c
+
+
+[x86_64] - 4584 bytes
+--------------------------------------------------------------------------------
+Total strings: 39
+
+URLs: 1
+Function names: 7
+JNI references: 2
+Suspicious patterns: 3
+
+URLs found:
+  Android (13624864, +pgo, -bolt, +lto, -mlgo, based on r530567e) clang version 19.0.1 (https://android.googlesource.com/toolchain/llvm-project 97a699bf4812a18fb657c2779f5296a4ab2694d2)
+
+JNI references:
+  Java_com_uptodown_util_NativeApiKey_getAuthApikeyLite
+  Java_com_uptodown_util_NativeApiKey_getAuthApikey
+
+Suspicious strings:
+  Java_com_uptodown_util_NativeApiKey_getAuthApikeyLite
+  Java_com_uptodown_util_NativeApiKey_getAuthApikey
+  Android (13624864, +pgo, -bolt, +lto, -mlgo, based on r530567e) clang version 19.0.1 (https://android.googlesource.com/toolchain/llvm-project 97a699bf4812a18fb657c2779f5296a4ab2694d2)
+
+Function names (first 50):
+  Android
+  Java_com_uptodown_util_NativeApiKey_getAuthApikey
+  Java_com_uptodown_util_NativeApiKey_getAuthApikeyLite
+  __cxa_atexit
+  __cxa_finalize
+  __register_atfork
+  __stack_chk_fail
+
+All strings:
+  .comment
+  .data.rel.ro
+  .dynamic
+  .dynstr
+  .dynsym
+  .eh_frame
+  .eh_frame_hdr
+  .fini_array
+  .gnu.hash
+  .gnu.version
+  .gnu.version_r
+  .got.plt
+  .note.android.ident
+  .note.gnu.build-id
+  .rela.dyn
+  .rela.plt
+  .relro_padding
+  .rodata
+  .shstrtab
+  .text
+  13676358
+  Android
+  Android (13624864, +pgo, -bolt, +lto, -mlgo, based on r530567e) clang version 19.0.1 (https://android.googlesource.com/toolchain/llvm-project 97a699bf4812a18fb657c2779f5296a4ab2694d2)
+  Java_com_uptodown_util_NativeApiKey_getAuthApikey
+  Java_com_uptodown_util_NativeApiKey_getAuthApikeyLite
+  LIBC
+  Linker: LLD 19.0.1
+  __cxa_atexit
+  __cxa_finalize
+  __register_atfork
+  __stack_chk_fail
+  ffffff.
+  libc.so
+  libdl.so
+  liblog.so
+  libm.so
+  libuptodown-native.so
+  r28c
+  wl]m
+
+
+================================================================================
+LIBRARY: libandroidx.graphics.path.so
+================================================================================
+
+
+[arm64-v8a] - 10096 bytes
+--------------------------------------------------------------------------------
+Total strings: 67
+
+URLs: 1
+Function names: 17
+JNI references: 2
+Suspicious patterns: 3
+
+URLs found:
+  Android (9352603, based on r450784d1) clang version 14.0.7 (https://android.googlesource.com/toolchain/llvm-project 4c603efb0cca074e9238af8b4106c30add4418f6)
+
+JNI references:
+  (Landroid/graphics/Path;IF)J
+  JNI_OnLoad
+
+Suspicious strings:
+  Android (9352603, based on r450784d1) clang version 14.0.7 (https://android.googlesource.com/toolchain/llvm-project 4c603efb0cca074e9238af8b4106c30add4418f6)
+  JNI_OnLoad
+  __system_property_get
+
+Function names (first 50):
+  Android
+  JNI_OnLoad
+  Kki8J
+  __cxa_atexit
+  __cxa_finalize
+  __stack_chk_fail
+  __system_property_get
+  createInternalPathIterator
+  destroyInternalPathIterator
+  internalConicToQuadratics
+  internalPathIteratorHasNext
+  internalPathIteratorNext
+  internalPathIteratorPeek
+  internalPathIteratorRawSize
+  internalPathIteratorSize
+  mNativePath
+  malloc
+
+All strings:
+  !(J)I
+  !(J)Z
+  !(J[FI)I
+  (J)I
+  (J)V
+  (J)Z
+  (J[FI)I
+  (Landroid/graphics/Path;IF)J
+  ([FI[FFF)I
+  .bss
+  .comment
+  .data.rel.ro
+  .dynamic
+  .dynstr
+  .dynsym
+  .eh_frame
+  .eh_frame_hdr
+  .fini_array
+  .gnu.hash
+  .gnu.version
+  .gnu.version_d
+  .gnu.version_r
+  .got.plt
+  .note.android.ident
+  .note.gnu.build-id
+  .rela.dyn
+  .rela.plt
+  .rodata
+  .shstrtab
+  .text
+  9519653
+  Android
+  Android (9352603, based on r450784d1) clang version 14.0.7 (https://android.googlesource.com/toolchain/llvm-project 4c603efb0cca074e9238af8b4106c30add4418f6)
+  JNI_OnLoad
+  Kki8J
+  LIBANDROIDX.GRAPHICS.PATH
+  LIBC
+  Linker: LLD 14.0.7
+  T%8"
+  TE8!
+  Ta&@
+  __cxa_atexit
+  __cxa_finalize
+  __stack_chk_fail
+  __system_property_get
+  android/graphics/Path
+  androidx/graphics/path/ConicConverter
+  androidx/graphics/path/PathIteratorPreApi34Impl
+  atoi
+  createInternalPathIterator
+  destroyInternalPathIterator
+  free
+  i`8)
+  internalConicToQuadratics
+  internalPathIteratorHasNext
+  internalPathIteratorNext
+  internalPathIteratorPeek
+  internalPathIteratorRawSize
+  internalPathIteratorSize
+  libandroidx.graphics.path.so
+  libc.so
+  libdl.so
+  libm.so
+  mNativePath
+  malloc
+  r25c
+  ro.build.version.sdk
+
+
+[armeabi-v7a] - 7252 bytes
+--------------------------------------------------------------------------------
+Total strings: 85
+
+URLs: 1
+Function names: 20
+JNI references: 2
+Suspicious patterns: 3
+
+URLs found:
+  Android (9352603, based on r450784d1) clang version 14.0.7 (https://android.googlesource.com/toolchain/llvm-project 4c603efb0cca074e9238af8b4106c30add4418f6)
+
+JNI references:
+  (Landroid/graphics/Path;IF)J
+  JNI_OnLoad
+
+Suspicious strings:
+  Android (9352603, based on r450784d1) clang version 14.0.7 (https://android.googlesource.com/toolchain/llvm-project 4c603efb0cca074e9238af8b4106c30add4418f6)
+  JNI_OnLoad
+  __system_property_get
+
+Function names (first 50):
+  Android
+  JNI_OnLoad
+  JzD1F
+  __cxa_atexit
+  __cxa_finalize
+  __stack_chk_fail
+  __stack_chk_guard
+  __system_property_get
+  aeabi
+  createInternalPathIterator
+  destroyInternalPathIterator
+  h5J5K
+  internalConicToQuadratics
+  internalPathIteratorHasNext
+  internalPathIteratorNext
+  internalPathIteratorPeek
+  internalPathIteratorRawSize
+  internalPathIteratorSize
+  mNativePath
+  malloc
+
+All strings:
+  !(J)I
+  !(J)Z
+  !(J[FI)I
+  "}9F
+  (F:F
+  (J)I
+  (J)V
+  (J)Z
+  (J[FI)I
+  (Landroid/graphics/Path;IF)J
+  ([FI[FFF)I
+  .ARM.attributes
+  .ARM.exidx
+  .bss
+  .comment
+  .data.rel.ro
+  .dynamic
+  .dynstr
+  .dynsym
+  .fini_array
+  .gnu.hash
+  .gnu.version
+  .gnu.version_d
+  .gnu.version_r
+  .got
+  .got.plt
+  .note.android.ident
+  .note.gnu.build-id
+  .rel.dyn
+  .rel.plt
+  .rodata
+  .shstrtab
+  .text
+  2 FAF
+  9519653
+  Android
+  Android (9352603, based on r450784d1) clang version 14.0.7 (https://android.googlesource.com/toolchain/llvm-project 4c603efb0cca074e9238af8b4106c30add4418f6)
+  C2.09
+  F hAF
+  F hQF:F
+  F@KzD{D
+  G hAF2F
+  JJzD
+  JNI_OnLoad
+  JzD1F
+  LIBANDROIDX.GRAPHICS.PATH
+  LIBC
+  Linker: LLD 14.0.7
+  \c)F
+  __cxa_atexit
+  __cxa_finalize
+  __stack_chk_fail
+  __stack_chk_guard
+  __system_property_get
+  ` }Q
+  aeabi
+  android/graphics/Path
+  androidx/graphics/path/ConicConverter
+  androidx/graphics/path/PathIteratorPreApi34Impl
+  atoi
+  createInternalPathIterator
+  destroyInternalPathIterator
+  free
+  h5J5K
+  hF)F
+  hb} h
+  i0F)F
+  internalConicToQuadratics
+  internalPathIteratorHasNext
+  internalPathIteratorNext
+  internalPathIteratorPeek
+  internalPathIteratorRawSize
+  internalPathIteratorSize
+  libandroidx.graphics.path.so
+  libc.so
+  libdl.so
+  libm.so
+  mF(F"F
+  mNativePath
+  malloc
+  r25c
+  ro.build.version.sdk
+  xD1F
+  xQzD{D
+  yD"F
+
+
+[x86] - 9284 bytes
+--------------------------------------------------------------------------------
+Total strings: 95
+
+URLs: 1
+Function names: 16
+JNI references: 2
+Suspicious patterns: 3
+
+URLs found:
+  Android (9352603, based on r450784d1) clang version 14.0.7 (https://android.googlesource.com/toolchain/llvm-project 4c603efb0cca074e9238af8b4106c30add4418f6)
+
+JNI references:
+  (Landroid/graphics/Path;IF)J
+  JNI_OnLoad
+
+Suspicious strings:
+  Android (9352603, based on r450784d1) clang version 14.0.7 (https://android.googlesource.com/toolchain/llvm-project 4c603efb0cca074e9238af8b4106c30add4418f6)
+  JNI_OnLoad
+  __system_property_get
+
+Function names (first 50):
+  Android
+  JNI_OnLoad
+  __cxa_atexit
+  __cxa_finalize
+  __stack_chk_fail
+  __system_property_get
+  createInternalPathIterator
+  destroyInternalPathIterator
+  internalConicToQuadratics
+  internalPathIteratorHasNext
+  internalPathIteratorNext
+  internalPathIteratorPeek
+  internalPathIteratorRawSize
+  internalPathIteratorSize
+  mNativePath
+  malloc
+
+All strings:
+  !(J)I
+  !(J)Z
+  !(J[FI)I
+  (D$P
+  (J)I
+  (J)V
+  (J)Z
+  (J[FI)I
+  (Landroid/graphics/Path;IF)J
+  ([FI[FFF)I
+  (\$@
+  (l$ 
+  )D$ 
+  )D$0
+  )D$@
+  )D$P
+  )D$`
+  )T$0
+  )\$@
+  .bss
+  .comment
+  .data.rel.ro
+  .dynamic
+  .dynstr
+  .dynsym
+  .eh_frame
+  .eh_frame_hdr
+  .fini_array
+  .gnu.hash
+  .gnu.version
+  .gnu.version_d
+  .gnu.version_r
+  .got.plt
+  .note.android.ident
+  .note.gnu.build-id
+  .rel.dyn
+  .rel.plt
+  .rodata
+  .shstrtab
+  .text
+  9519653
+  ;D$(u
+  ;D$x
+  ;L$ u
+  ;L$,u
+  ;|$$
+  Android
+  Android (9352603, based on r450784d1) clang version 14.0.7 (https://android.googlesource.com/toolchain/llvm-project 4c603efb0cca074e9238af8b4106c30add4418f6)
+  JNI_OnLoad
+  LIBANDROIDX.GRAPHICS.PATH
+  LIBC
+  Linker: LLD 14.0.7
+  WRPQ
+  Xt$ 
+  YT$0
+  ^_[]
+  __cxa_atexit
+  __cxa_finalize
+  __stack_chk_fail
+  __system_property_get
+  android/graphics/Path
+  androidx/graphics/path/ConicConverter
+  androidx/graphics/path/PathIteratorPreApi34Impl
+  atoi
+  createInternalPathIterator
+  destroyInternalPathIterator
+  free
+  internalConicToQuadratics
+  internalPathIteratorHasNext
+  internalPathIteratorNext
+  internalPathIteratorPeek
+  internalPathIteratorRawSize
+  internalPathIteratorSize
+  libandroidx.graphics.path.so
+  libc.so
+  libdl.so
+  libm.so
+  mNativePath
+  malloc
+  r25c
+  ro.build.version.sdk
+
+
+[x86_64] - 10760 bytes
+--------------------------------------------------------------------------------
+Total strings: 97
+
+URLs: 1
+Function names: 22
+JNI references: 2
+Suspicious patterns: 3
+
+URLs found:
+  Android (9352603, based on r450784d1) clang version 14.0.7 (https://android.googlesource.com/toolchain/llvm-project 4c603efb0cca074e9238af8b4106c30add4418f6)
+
+JNI references:
+  (Landroid/graphics/Path;IF)J
+  JNI_OnLoad
+
+Suspicious strings:
+  Android (9352603, based on r450784d1) clang version 14.0.7 (https://android.googlesource.com/toolchain/llvm-project 4c603efb0cca074e9238af8b4106c30add4418f6)
+  JNI_OnLoad
+  __system_property_get
+
+Function names (first 50):
+  AWAVS
+  Android
+  JNI_OnLoad
+  UAWAVAUATSH
+  UAWAVAUATSP
+  UAWAVAUATSPI
+  UAWAVSH
+  UAWAVSPA
+  __cxa_atexit
+  __cxa_finalize
+  __stack_chk_fail
+  __system_property_get
+  createInternalPathIterator
+  destroyInternalPathIterator
+  internalConicToQuadratics
+  internalPathIteratorHasNext
+  internalPathIteratorNext
+  internalPathIteratorPeek
+  internalPathIteratorRawSize
+  internalPathIteratorSize
+  mNativePath
+  malloc
+
+All strings:
+  !(J)I
+  !(J)Z
+  !(J[FI)I
+  (J)I
+  (J)V
+  (J)Z
+  (J[FI)I
+  (Landroid/graphics/Path;IF)J
+  ([A^
+  ([A^A_]
+  ([FI[FFF)I
+  )D$ 
+  )D$0
+  )D$@
+  )D$P
+  .bss
+  .comment
+  .data.rel.ro
+  .dynamic
+  .dynstr
+  .dynsym
+  .eh_frame
+  .eh_frame_hdr
+  .fini_array
+  .gnu.hash
+  .gnu.version
+  .gnu.version_d
+  .gnu.version_r
+  .got.plt
+  .note.android.ident
+  .note.gnu.build-id
+  .rela.dyn
+  .rela.plt
+  .rodata
+  .shstrtab
+  .text
+  9519653
+  AVSH
+  AWAVS
+  Android
+  Android (9352603, based on r450784d1) clang version 14.0.7 (https://android.googlesource.com/toolchain/llvm-project 4c603efb0cca074e9238af8b4106c30add4418f6)
+  D$ H
+  D$pH
+  H;D$ u
+  H;D$p
+  H;L$ u
+  H;L$@u
+  H;L$puGH
+  H[A^
+  JNI_OnLoad
+  LIBANDROIDX.GRAPHICS.PATH
+  LIBC
+  Linker: LLD 14.0.7
+  UAWAVAUATSH
+  UAWAVAUATSP
+  UAWAVAUATSPI
+  UAWAVSH
+  UAWAVSPA
+  [A\A]A^A_]
+  [A^A_
+  [A^A_]
+  __cxa_atexit
+  __cxa_finalize
+  __stack_chk_fail
+  __system_property_get
+  android/graphics/Path
+  androidx/graphics/path/ConicConverter
+  androidx/graphics/path/PathIteratorPreApi34Impl
+  atoi
+  createInternalPathIterator
+  destroyInternalPathIterator
+  free
+  internalConicToQuadratics
+  internalPathIteratorHasNext
+  internalPathIteratorNext
+  internalPathIteratorPeek
+  internalPathIteratorRawSize
+  internalPathIteratorSize
+  libandroidx.graphics.path.so
+  libc.so
+  libdl.so
+  libm.so
+  mNativePath
+  malloc
+  r25c
+  ro.build.version.sdk
+  x[A\A]A^A_]
+  x[A^
+
+
+================================================================================
+LIBRARY: libdatastore_shared_counter.so
+================================================================================
+
+
+[arm64-v8a] - 7112 bytes
+--------------------------------------------------------------------------------
+Total strings: 53
+
+URLs: 1
+Function names: 20
+JNI references: 5
+Suspicious patterns: 2
+
+URLs found:
+  Android (9352603, based on r450784d1) clang version 14.0.7 (https://android.googlesource.com/toolchain/llvm-project 4c603efb0cca074e9238af8b4106c30add4418f6)
+
+JNI references:
+  Java_androidx_datastore_core_NativeSharedCounter_nativeIncrementAndGetCounterValue
+  Java_androidx_datastore_core_NativeSharedCounter_nativeCreateSharedCounter
+  Java_androidx_datastore_core_NativeSharedCounter_nativeTruncateFile
+  _Z16ThrowIoExceptionP7_JNIEnvPKc
+  Java_androidx_datastore_core_NativeSharedCounter_nativeGetCounterValue
+
+Suspicious strings:
+  Android (9352603, based on r450784d1) clang version 14.0.7 (https://android.googlesource.com/toolchain/llvm-project 4c603efb0cca074e9238af8b4106c30add4418f6)
+  __system_property_get
+
+Function names (first 50):
+  Android
+  Java_androidx_datastore_core_NativeSharedCounter_nativeCreateSharedCounter
+  Java_androidx_datastore_core_NativeSharedCounter_nativeGetCounterValue
+  Java_androidx_datastore_core_NativeSharedCounter_nativeIncrementAndGetCounterValue
+  Java_androidx_datastore_core_NativeSharedCounter_nativeTruncateFile
+  _Z16ThrowIoExceptionP7_JNIEnvPKc
+  _ZN9datastore12TruncateFileEi
+  _ZN9datastore15GetCounterValueEPNSt6__ndk16atomicIjEE
+  _ZN9datastore19CreateSharedCounterEiPPv
+  _ZN9datastore27IncrementAndGetCounterValueEPNSt6__ndk16atomicIjEE
+  __cxa_atexit
+  __cxa_finalize
+  __errno
+  __stack_chk_fail
+  __system_property_get
+  exynos9810
+  ftruncate
+  getauxval
+  strerror
+  strncmp
+
+All strings:
+  .bss
+  .comment
+  .data.rel.ro
+  .dynamic
+  .dynstr
+  .dynsym
+  .eh_frame
+  .eh_frame_hdr
+  .fini_array
+  .gnu.hash
+  .gnu.version
+  .gnu.version_r
+  .got.plt
+  .init_array
+  .note.android.ident
+  .note.gnu.build-id
+  .rela.dyn
+  .rela.plt
+  .rodata
+  .shstrtab
+  .text
+  9519653
+  Android
+  Android (9352603, based on r450784d1) clang version 14.0.7 (https://android.googlesource.com/toolchain/llvm-project 4c603efb0cca074e9238af8b4106c30add4418f6)
+  Java_androidx_datastore_core_NativeSharedCounter_nativeCreateSharedCounter
+  Java_androidx_datastore_core_NativeSharedCounter_nativeGetCounterValue
+  Java_androidx_datastore_core_NativeSharedCounter_nativeIncrementAndGetCounterValue
+  Java_androidx_datastore_core_NativeSharedCounter_nativeTruncateFile
+  LIBC
+  Linker: LLD 14.0.7
+  _Z16ThrowIoExceptionP7_JNIEnvPKc
+  _ZN9datastore12TruncateFileEi
+  _ZN9datastore15GetCounterValueEPNSt6__ndk16atomicIjEE
+  _ZN9datastore19CreateSharedCounterEiPPv
+  _ZN9datastore27IncrementAndGetCounterValueEPNSt6__ndk16atomicIjEE
+  __cxa_atexit
+  __cxa_finalize
+  __errno
+  __stack_chk_fail
+  __system_property_get
+  exynos9810
+  ftruncate
+  getauxval
+  java/io/IOException
+  libc.so
+  libdatastore_shared_counter.so
+  libdl.so
+  libm.so
+  mmap
+  r25c
+  ro.arch
+  strerror
+  strncmp
+
+
+[armeabi-v7a] - 4416 bytes
+--------------------------------------------------------------------------------
+Total strings: 58
+
+URLs: 1
+Function names: 19
+JNI references: 5
+Suspicious patterns: 1
+
+URLs found:
+  Android (9352603, based on r450784d1) clang version 14.0.7 (https://android.googlesource.com/toolchain/llvm-project 4c603efb0cca074e9238af8b4106c30add4418f6)
+
+JNI references:
+  Java_androidx_datastore_core_NativeSharedCounter_nativeIncrementAndGetCounterValue
+  Java_androidx_datastore_core_NativeSharedCounter_nativeCreateSharedCounter
+  Java_androidx_datastore_core_NativeSharedCounter_nativeTruncateFile
+  _Z16ThrowIoExceptionP7_JNIEnvPKc
+  Java_androidx_datastore_core_NativeSharedCounter_nativeGetCounterValue
+
+Suspicious strings:
+  Android (9352603, based on r450784d1) clang version 14.0.7 (https://android.googlesource.com/toolchain/llvm-project 4c603efb0cca074e9238af8b4106c30add4418f6)
+
+Function names (first 50):
+  Android
+  HiFxD
+  Java_androidx_datastore_core_NativeSharedCounter_nativeCreateSharedCounter
+  Java_androidx_datastore_core_NativeSharedCounter_nativeGetCounterValue
+  Java_androidx_datastore_core_NativeSharedCounter_nativeIncrementAndGetCounterValue
+  Java_androidx_datastore_core_NativeSharedCounter_nativeTruncateFile
+  _Z16ThrowIoExceptionP7_JNIEnvPKc
+  _ZN9datastore12TruncateFileEi
+  _ZN9datastore15GetCounterValueEPNSt6__ndk16atomicIjEE
+  _ZN9datastore19CreateSharedCounterEiPPv
+  _ZN9datastore27IncrementAndGetCounterValueEPNSt6__ndk16atomicIjEE
+  __cxa_atexit
+  __cxa_finalize
+  __errno
+  __stack_chk_fail
+  __stack_chk_guard
+  aeabi
+  ftruncate
+  strerror
+
+All strings:
+  .ARM.attributes
+  .ARM.exidx
+  .ARM.extab
+  .comment
+  .data.rel.ro
+  .dynamic
+  .dynstr
+  .dynsym
+  .fini_array
+  .gnu.hash
+  .gnu.version
+  .gnu.version_r
+  .got
+  .got.plt
+  .note.android.ident
+  .note.gnu.build-id
+  .rel.dyn
+  .rel.plt
+  .rodata
+  .shstrtab
+  .text
+  9519653
+  Android
+  Android (9352603, based on r450784d1) clang version 14.0.7 (https://android.googlesource.com/toolchain/llvm-project 4c603efb0cca074e9238af8b4106c30add4418f6)
+  C2.09
+  F h*F
+  F(h"F
+  F(h2F
+  HiFxD
+  Java_androidx_datastore_core_NativeSharedCounter_nativeCreateSharedCounter
+  Java_androidx_datastore_core_NativeSharedCounter_nativeGetCounterValue
+  Java_androidx_datastore_core_NativeSharedCounter_nativeIncrementAndGetCounterValue
+  Java_androidx_datastore_core_NativeSharedCounter_nativeTruncateFile
+  LIBC
+  Linker: LLD 14.0.7
+  _Z16ThrowIoExceptionP7_JNIEnvPKc
+  _ZN9datastore12TruncateFileEi
+  _ZN9datastore15GetCounterValueEPNSt6__ndk16atomicIjEE
+  _ZN9datastore19CreateSharedCounterEiPPv
+  _ZN9datastore27IncrementAndGetCounterValueEPNSt6__ndk16atomicIjEE
+  __cxa_atexit
+  __cxa_finalize
+  __errno
+  __stack_chk_fail
+  __stack_chk_guard
+  aeabi
+  ftruncate
+  iyD F
+  iyD(F
+  java/io/IOException
+  libc.so
+  libdatastore_shared_counter.so
+  libdl.so
+  libm.so
+  mmap
+  r25c
+  strerror
+
+
+[x86] - 5148 bytes
+--------------------------------------------------------------------------------
+Total strings: 48
+
+URLs: 1
+Function names: 16
+JNI references: 5
+Suspicious patterns: 1
+
+URLs found:
+  Android (9352603, based on r450784d1) clang version 14.0.7 (https://android.googlesource.com/toolchain/llvm-project 4c603efb0cca074e9238af8b4106c30add4418f6)
+
+JNI references:
+  Java_androidx_datastore_core_NativeSharedCounter_nativeIncrementAndGetCounterValue
+  Java_androidx_datastore_core_NativeSharedCounter_nativeCreateSharedCounter
+  Java_androidx_datastore_core_NativeSharedCounter_nativeTruncateFile
+  _Z16ThrowIoExceptionP7_JNIEnvPKc
+  Java_androidx_datastore_core_NativeSharedCounter_nativeGetCounterValue
+
+Suspicious strings:
+  Android (9352603, based on r450784d1) clang version 14.0.7 (https://android.googlesource.com/toolchain/llvm-project 4c603efb0cca074e9238af8b4106c30add4418f6)
+
+Function names (first 50):
+  Android
+  Java_androidx_datastore_core_NativeSharedCounter_nativeCreateSharedCounter
+  Java_androidx_datastore_core_NativeSharedCounter_nativeGetCounterValue
+  Java_androidx_datastore_core_NativeSharedCounter_nativeIncrementAndGetCounterValue
+  Java_androidx_datastore_core_NativeSharedCounter_nativeTruncateFile
+  _Z16ThrowIoExceptionP7_JNIEnvPKc
+  _ZN9datastore12TruncateFileEi
+  _ZN9datastore15GetCounterValueEPNSt6__ndk16atomicIjEE
+  _ZN9datastore19CreateSharedCounterEiPPv
+  _ZN9datastore27IncrementAndGetCounterValueEPNSt6__ndk16atomicIjEE
+  __cxa_atexit
+  __cxa_finalize
+  __errno
+  __stack_chk_fail
+  ftruncate
+  strerror
+
+All strings:
+  .comment
+  .data.rel.ro
+  .dynamic
+  .dynstr
+  .dynsym
+  .eh_frame
+  .eh_frame_hdr
+  .fini_array
+  .gnu.hash
+  .gnu.version
+  .gnu.version_r
+  .got.plt
+  .note.android.ident
+  .note.gnu.build-id
+  .rel.dyn
+  .rel.plt
+  .rodata
+  .shstrtab
+  .text
+  9519653
+  Android
+  Android (9352603, based on r450784d1) clang version 14.0.7 (https://android.googlesource.com/toolchain/llvm-project 4c603efb0cca074e9238af8b4106c30add4418f6)
+  Java_androidx_datastore_core_NativeSharedCounter_nativeCreateSharedCounter
+  Java_androidx_datastore_core_NativeSharedCounter_nativeGetCounterValue
+  Java_androidx_datastore_core_NativeSharedCounter_nativeIncrementAndGetCounterValue
+  Java_androidx_datastore_core_NativeSharedCounter_nativeTruncateFile
+  LIBC
+  Linker: LLD 14.0.7
+  ^_[]
+  _Z16ThrowIoExceptionP7_JNIEnvPKc
+  _ZN9datastore12TruncateFileEi
+  _ZN9datastore15GetCounterValueEPNSt6__ndk16atomicIjEE
+  _ZN9datastore19CreateSharedCounterEiPPv
+  _ZN9datastore27IncrementAndGetCounterValueEPNSt6__ndk16atomicIjEE
+  __cxa_atexit
+  __cxa_finalize
+  __errno
+  __stack_chk_fail
+  ftruncate
+  java/io/IOException
+  libc.so
+  libdatastore_shared_counter.so
+  libdl.so
+  libm.so
+  mmap
+  r25c
+  strerror
+
+
+[x86_64] - 6224 bytes
+--------------------------------------------------------------------------------
+Total strings: 52
+
+URLs: 1
+Function names: 20
+JNI references: 5
+Suspicious patterns: 1
+
+URLs found:
+  Android (9352603, based on r450784d1) clang version 14.0.7 (https://android.googlesource.com/toolchain/llvm-project 4c603efb0cca074e9238af8b4106c30add4418f6)
+
+JNI references:
+  Java_androidx_datastore_core_NativeSharedCounter_nativeIncrementAndGetCounterValue
+  Java_androidx_datastore_core_NativeSharedCounter_nativeCreateSharedCounter
+  Java_androidx_datastore_core_NativeSharedCounter_nativeTruncateFile
+  _Z16ThrowIoExceptionP7_JNIEnvPKc
+  Java_androidx_datastore_core_NativeSharedCounter_nativeGetCounterValue
+
+Suspicious strings:
+  Android (9352603, based on r450784d1) clang version 14.0.7 (https://android.googlesource.com/toolchain/llvm-project 4c603efb0cca074e9238af8b4106c30add4418f6)
+
+Function names (first 50):
+  AVSPH
+  AVSPI
+  AWAVSH
+  Android
+  Java_androidx_datastore_core_NativeSharedCounter_nativeCreateSharedCounter
+  Java_androidx_datastore_core_NativeSharedCounter_nativeGetCounterValue
+  Java_androidx_datastore_core_NativeSharedCounter_nativeIncrementAndGetCounterValue
+  Java_androidx_datastore_core_NativeSharedCounter_nativeTruncateFile
+  _Z16ThrowIoExceptionP7_JNIEnvPKc
+  _ZN9datastore12TruncateFileEi
+  _ZN9datastore15GetCounterValueEPNSt6__ndk16atomicIjEE
+  _ZN9datastore19CreateSharedCounterEiPPv
+  _ZN9datastore27IncrementAndGetCounterValueEPNSt6__ndk16atomicIjEE
+  __cxa_atexit
+  __cxa_finalize
+  __errno
+  __stack_chk_fail
+  ftruncate
+  strerror
+
+All strings:
+  .comment
+  .data.rel.ro
+  .dynamic
+  .dynstr
+  .dynsym
+  .eh_frame
+  .eh_frame_hdr
+  .fini_array
+  .gnu.hash
+  .gnu.version
+  .gnu.version_r
+  .got.plt
+  .note.android.ident
+  .note.gnu.build-id
+  .rela.dyn
+  .rela.plt
+  .rodata
+  .shstrtab
+  .text
+  9519653
+  AVSPH
+  AVSPI
+  AWAVSH
+  Android
+  Android (9352603, based on r450784d1) clang version 14.0.7 (https://android.googlesource.com/toolchain/llvm-project 4c603efb0cca074e9238af8b4106c30add4418f6)
+  H;L$
+  Java_androidx_datastore_core_NativeSharedCounter_nativeCreateSharedCounter
+  Java_androidx_datastore_core_NativeSharedCounter_nativeGetCounterValue
+  Java_androidx_datastore_core_NativeSharedCounter_nativeIncrementAndGetCounterValue
+  Java_androidx_datastore_core_NativeSharedCounter_nativeTruncateFile
+  LIBC
+  Linker: LLD 14.0.7
+  [A^A_
+  _Z16ThrowIoExceptionP7_JNIEnvPKc
+  _ZN9datastore12TruncateFileEi
+  _ZN9datastore15GetCounterValueEPNSt6__ndk16atomicIjEE
+  _ZN9datastore19CreateSharedCounterEiPPv
+  _ZN9datastore27IncrementAndGetCounterValueEPNSt6__ndk16atomicIjEE
+  __cxa_atexit
+  __cxa_finalize
+  __errno
+  __stack_chk_fail
+  ftruncate
+  java/io/IOException
+  libc.so
+  libdatastore_shared_counter.so
+  libdl.so
+  libm.so
+  mmap
+  r25c
+  strerror

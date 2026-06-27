@@ -1,0 +1,331 @@
+================================================================================
+BEHAVIORAL SIGNATURES & FORENSICS GUIDE
+UPTODOWN APP STORE v7.32
+================================================================================
+
+NETWORK SIGNATURES
+================================================================================
+
+1. TRACKER SERVER COMMUNICATION:
+--------------------------------------------------------------------------------
+   Destination: t.uptodown.app:443
+   Protocol: HTTPS
+   Method: POST
+   Frequency: Every 15 min - 1 hour
+   Payload: JSON with device telemetry
+
+   Endpoints:
+     POST /eapi/v2/tracker/device
+     POST /eapi/v2/tracker/identifier/
+     POST /eapi/v3/tracker/updates/
+     POST /eapi/v2/tracker/app-to-upload/
+
+   Headers:
+     Content-Type: application/json
+     User-Agent: Uptodown/7.32
+     Authorization: Bearer <token>
+
+   Detection:
+     - Regular POST requests to t.uptodown.app
+     - JSON payload with device info
+     - Periodic pattern (15 min - 1 hour)
+
+2. MAIN API COMMUNICATION:
+--------------------------------------------------------------------------------
+   Destination: www.uptodown.app:443
+   Protocol: HTTPS
+   Method: GET/POST
+   Frequency: On user action + periodic
+   Payload: JSON with user data
+
+   Endpoints:
+     GET  /eapi/v2/apps/search?query=<term>
+     POST /eapi/logs/event
+     POST /eapi/logs/error
+     POST /eapi/user-data/stats
+     POST /eapi/v3/device/daily-stats
+     POST /eapi/v3/device/fcm-token
+
+   Detection:
+     - GET requests with search queries
+     - POST requests with event logs
+     - Regular pattern during app usage
+
+3. UPLOAD SERVER COMMUNICATION:
+--------------------------------------------------------------------------------
+   Destination: u.uptodown.app:443
+   Protocol: HTTPS
+   Method: POST
+   Frequency: On download completion
+   Payload: Multipart form data
+
+   Endpoints:
+     POST /eapi/v2/tracker/upload-file
+
+   Detection:
+     - Large POST requests
+     - Multipart content type
+     - After download events
+
+4. THIRD-PARTY COMMUNICATION:
+--------------------------------------------------------------------------------
+   Google Analytics:
+     Destination: app-measurement.com
+     Frequency: Every user action
+     Detection: Regular POST requests
+
+   Firebase Crashlytics:
+     Destination: firebase-settings.crashlytics.com
+     Frequency: On crash/error
+     Detection: POST with crash data
+
+   InMobi:
+     Destination: api.cmp.inmobi.com
+     Frequency: On app launch
+     Detection: Consent management requests
+
+
+================================================================================
+FILE SYSTEM SIGNATURES
+================================================================================
+
+1. DATABASE FILES:
+--------------------------------------------------------------------------------
+   Location: /data/data/com.uptodown/databases/
+
+   apps.db
+     Tables: apps, downloads, updates, notifications
+     Contains: App inventory, download history
+     Size: 1-10 MB
+     Forensic value: HIGH
+
+   tracker.db
+     Tables: device_status, data_usage, events
+     Contains: Device telemetry, usage stats
+     Size: 1-5 MB
+     Forensic value: HIGH
+
+   firebase-analytics.db
+     Tables: events, raw_events, user_attributes
+     Contains: Analytics data, user properties
+     Size: 1-10 MB
+     Forensic value: MEDIUM
+
+   workmanager.db
+     Tables: WorkSpec, WorkTag, WorkProgress
+     Contains: Background tasks, schedules
+     Size: < 1 MB
+     Forensic value: LOW
+
+2. SHARED PREFERENCES:
+--------------------------------------------------------------------------------
+   Location: /data/data/com.uptodown/shared_prefs/
+
+   uptodown_prefs.xml
+     Contains: User settings, session tokens
+     Keys: user_id, auth_token, last_sync
+     Forensic value: HIGH
+
+   tracker_prefs.xml
+     Contains: Tracking preferences, device ID
+     Keys: device_id, tracking_enabled
+     Forensic value: MEDIUM
+
+   firebase_prefs.xml
+     Contains: Firebase config, analytics ID
+     Keys: firebase_app_id, analytics_id
+     Forensic value: LOW
+
+3. CACHE FILES:
+--------------------------------------------------------------------------------
+   Location: /data/data/com.uptodown/cache/
+
+   Contains:
+     - Downloaded images
+     - API responses
+     - Temporary data
+     - Pending uploads
+
+   Forensic value: MEDIUM
+   Can contain: Sensitive data before sync
+
+4. LOG FILES:
+--------------------------------------------------------------------------------
+   Location: /data/data/com.uptodown/files/logs/
+
+   Contains:
+     - Error logs
+     - Crash reports
+     - Debug information
+     - User actions
+
+   Forensic value: HIGH
+   Can contain: Detailed user activity
+
+
+================================================================================
+PROCESS SIGNATURES
+================================================================================
+
+1. BACKGROUND SERVICES:
+--------------------------------------------------------------------------------
+   Service: com.uptodown.services.TrackerService
+   Status: Running in background
+   Purpose: Continuous tracking
+   Detection: ps -A | grep uptodown
+
+   Service: com.uptodown.services.SyncService
+   Status: Periodic execution
+   Purpose: Data synchronization
+   Detection: dumpsys activity services
+
+2. WORKMANAGER TASKS:
+--------------------------------------------------------------------------------
+   Task: DeviceStatusWorker
+   Schedule: Every 15 minutes
+   Purpose: Update device telemetry
+   Detection: dumpsys jobscheduler
+
+   Task: AppInventoryWorker
+   Schedule: Every 6 hours
+   Purpose: Scan and report installed apps
+   Detection: dumpsys jobscheduler
+
+   Task: DataSyncWorker
+   Schedule: Every 1 hour
+   Purpose: Sync pending data
+   Detection: dumpsys jobscheduler
+
+3. ALARM MANAGER ENTRIES:
+--------------------------------------------------------------------------------
+   Alarm: TrackerAlarm
+   Schedule: Every 30 minutes
+   Purpose: Wake for tracking
+   Detection: dumpsys alarm
+
+   Alarm: SyncAlarm
+   Schedule: Every 2 hours
+   Purpose: Wake for sync
+   Detection: dumpsys alarm
+
+4. BROADCAST RECEIVERS:
+--------------------------------------------------------------------------------
+   Receiver: BootDeviceReceiver
+   Action: android.intent.action.BOOT_COMPLETED
+   Purpose: Auto-start on boot
+   Detection: dumpsys package com.uptodown
+
+   Receiver: NetworkChangeReceiver
+   Action: android.net.conn.CONNECTIVITY_CHANGE
+   Purpose: Track network changes
+   Detection: dumpsys package com.uptodown
+
+
+================================================================================
+FORENSICS COLLECTION PROCEDURE
+================================================================================
+
+1. NETWORK TRAFFIC CAPTURE:
+--------------------------------------------------------------------------------
+   Tools: tcpdump, mitmproxy, Wireshark
+   Duration: 24 hours minimum
+   Filter: host uptodown.app OR host app-measurement.com
+
+   Commands:
+     tcpdump -i any -w uptodown.pcap host uptodown.app
+     mitmproxy --mode regular --listen-port 8080
+
+   Analysis:
+     - Identify all API endpoints
+     - Extract data payloads
+     - Map data flow patterns
+     - Identify third-party connections
+
+2. FILE SYSTEM EXTRACTION:
+--------------------------------------------------------------------------------
+   Tools: adb, dd, tar
+   Access: Root required
+
+   Commands:
+     adb pull /data/data/com.uptodown/
+     adb shell su -c 'tar -czf /sdcard/uptodown.tar.gz /data/data/com.uptodown/'
+
+   Files to extract:
+     - databases/*.db
+     - shared_prefs/*.xml
+     - cache/*
+     - files/logs/*
+
+3. PROCESS ANALYSIS:
+--------------------------------------------------------------------------------
+   Tools: adb, ps, dumpsys
+
+   Commands:
+     adb shell ps -A | grep uptodown
+     adb shell dumpsys activity services com.uptodown
+     adb shell dumpsys jobscheduler | grep uptodown
+     adb shell dumpsys alarm | grep uptodown
+
+   Analysis:
+     - Identify running services
+     - List scheduled jobs
+     - Extract alarm entries
+     - Map persistence mechanisms
+
+4. MEMORY DUMP:
+--------------------------------------------------------------------------------
+   Tools: LiME, AVML
+   Access: Root required
+
+   Commands:
+     insmod lime.ko "path=/sdcard/memory.dump format=lime"
+     avml memory.dump
+
+   Analysis:
+     - Extract encryption keys
+     - Find session tokens
+     - Recover deleted data
+     - Identify runtime state
+
+
+================================================================================
+THREAT DETECTION RULES
+================================================================================
+
+1. NETWORK-BASED DETECTION:
+--------------------------------------------------------------------------------
+   Rule: Alert on regular POST to t.uptodown.app
+   Threshold: > 1 request per 15 minutes
+   Action: Block and log
+
+   Rule: Alert on app inventory transmission
+   Pattern: POST /eapi/androidtracker/device-apps-installed
+   Action: Block and alert
+
+   Rule: Alert on device telemetry
+   Pattern: POST /eapi/v2/tracker/device
+   Action: Block and log
+
+2. FILE SYSTEM-BASED DETECTION:
+--------------------------------------------------------------------------------
+   Rule: Alert on tracker.db creation
+   Path: /data/data/com.uptodown/databases/tracker.db
+   Action: Quarantine and analyze
+
+   Rule: Alert on app inventory database
+   Pattern: SQLite with 'apps' table
+   Action: Block app installation
+
+3. BEHAVIOR-BASED DETECTION:
+--------------------------------------------------------------------------------
+   Rule: Alert on boot persistence
+   Trigger: BootDeviceReceiver registered
+   Action: Disable auto-start
+
+   Rule: Alert on background tracking
+   Trigger: TrackerService running
+   Action: Force stop service
+
+   Rule: Alert on periodic sync
+   Trigger: WorkManager tasks > 4 per hour
+   Action: Restrict background activity

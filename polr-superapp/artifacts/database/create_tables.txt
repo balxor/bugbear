@@ -1,0 +1,277 @@
+﻿
+> documentation\database\schemas.txt:5:CREATE TABLE STATEMENTS:
+  documentation\database\schemas.txt:6:--------------------------------------------------------------------------------
+> documentation\database\schemas.txt:7:CREATE TABLE IF NOT EXISTS `Dependency` (`work_spec_id` TEXT NOT NULL, 
+`prerequisite_id` TEXT NOT NULL, PRIMARY KEY(`work_spec_id`, `prerequisite_id`), FOREIGN KEY(`work_spec_id`) 
+REFERENCES `WorkSpec`(`id`) ON UPDATE CASCADE ON DELETE CASCADE , FOREIGN KEY(`prerequisite_id`) REFERENCES 
+`WorkSpec`(`id`) ON UPDATE CASCADE ON DELETE CASCADE )
+  documentation\database\schemas.txt:8:
+> documentation\database\schemas.txt:9:CREATE TABLE IF NOT EXISTS `SystemIdInfo` (`work_spec_id` TEXT NOT NULL, 
+`generation` INTEGER NOT NULL DEFAULT 0, `system_id` INTEGER NOT NULL, PRIMARY KEY(`work_spec_id`, `generation`), 
+FOREIGN KEY(`work_spec_id`) REFERENCES `WorkSpec`(`id`) ON UPDATE CASCADE ON DELETE CASCADE )
+  documentation\database\schemas.txt:10:
+> documentation\database\schemas.txt:11:CREATE TABLE IF NOT EXISTS `SystemIdInfo` (`work_spec_id` TEXT NOT NULL, 
+`system_id`
+  documentation\database\schemas.txt:12:
+> documentation\database\schemas.txt:13:CREATE TABLE IF NOT EXISTS `WorkName` (`name` TEXT NOT NULL, `work_spec_id` 
+TEXT NOT NULL, PRIMARY KEY(`name`, `work_spec_id`), FOREIGN KEY(`work_spec_id`) REFERENCES `WorkSpec`(`id`) ON UPDATE 
+CASCADE ON DELETE CASCADE )
+  documentation\database\schemas.txt:14:
+> documentation\database\schemas.txt:15:CREATE TABLE IF NOT EXISTS `WorkProgress` (`work_spec_id` TEXT NOT NULL, 
+`progress`
+  documentation\database\schemas.txt:16:
+> documentation\database\schemas.txt:17:CREATE TABLE IF NOT EXISTS `WorkProgress` (`work_spec_id` TEXT NOT NULL, 
+`progress` BLOB NOT NULL, PRIMARY KEY(`work_spec_id`), FOREIGN KEY(`work_spec_id`) REFERENCES `WorkSpec`(`id`) ON 
+UPDATE CASCADE ON DELETE CASCADE )
+  documentation\database\schemas.txt:18:
+> documentation\database\schemas.txt:19:CREATE TABLE IF NOT EXISTS `WorkSpec` (`id` TEXT NOT NULL, `state` INTEGER NOT 
+NULL, `worker_class_name` TEXT NOT NULL, `input_merger_class_name` TEXT NOT NULL, `input` BLOB NOT NULL, `output` BLOB 
+NOT NULL, `initial_delay` INTEGER NOT NULL, `interval_duration` INTEGER NOT NULL, `flex_duration` INTEGER NOT NULL, 
+`run_attempt_count` INTEGER NOT NULL, `backoff_policy` INTEGER NOT NULL, `backoff_delay_duration` INTEGER NOT NULL, 
+`last_enqueue_time` INTEGER NOT NULL DEFAULT -1, `minimum_retention_duration` INTEGER NOT NULL, 
+`schedule_requested_at` INTEGER NOT NULL, `run_in_foreground` INTEGER NOT NULL, `out_of_quota_policy` INTEGER NOT 
+NULL, `period_count` INTEGER NOT NULL DEFAULT 0, `generation` INTEGER NOT NULL DEFAULT 0, 
+`next_schedule_time_override` INTEGER NOT NULL DEFAULT 9223372036854775807, `next_schedule_time_override_generation` 
+INTEGER NOT NULL DEFAULT 0, `stop_reason` INTEGER NOT NULL DEFAULT -256, `trace_tag` TEXT, 
+`backoff_on_system_interruptions` INTEGER, `required_network_type` INTEGER NOT NULL, `required_network_request` BLOB 
+NOT NULL DEFAULT x'', `requires_charging` INTEGER NOT NULL, `requires_device_idle` INTEGER NOT NULL, 
+`requires_battery_not_low` INTEGER NOT NULL, `requires_storage_not_low` INTEGER NOT NULL, 
+`trigger_content_update_delay` INTEGER NOT NULL, `trigger_max_content_delay` INTEGER NOT NULL, `content_uri_triggers` 
+BLOB NOT NULL, PRIMARY KEY(`id`))
+  documentation\database\schemas.txt:20:
+> documentation\database\schemas.txt:21:CREATE TABLE IF NOT EXISTS `WorkTag` (`tag` TEXT NOT NULL, `work_spec_id` TEXT 
+NOT NULL, PRIMARY KEY(`tag`, `work_spec_id`), FOREIGN KEY(`work_spec_id`) REFERENCES `WorkSpec`(`id`) ON UPDATE 
+CASCADE ON DELETE CASCADE )
+  documentation\database\schemas.txt:22:
+> documentation\database\schemas.txt:23:CREATE TABLE IF NOT EXISTS `_new_SystemIdInfo` (
+  documentation\database\schemas.txt:24:
+> documentation\database\schemas.txt:25:CREATE TABLE IF NOT EXISTS `_new_WorkSpec` (
+  documentation\database\schemas.txt:26:
+> documentation\database\schemas.txt:27:CREATE TABLE IF NOT EXISTS `_new_WorkSpec` (`id` TEXT NOT NULL, `state` 
+INTEGER NOT NULL, `worker_class_name` TEXT NOT NULL, `input_merger_class_name` TEXT NOT NULL, `input` BLOB NOT NULL, 
+`output` BLOB NOT NULL, `initial_delay` INTEGER NOT NULL, `interval_duration` INTEGER NOT NULL, `flex_duration` 
+INTEGER NOT NULL, `run_attempt_count` INTEGER NOT NULL, `backoff_policy` INTEGER NOT NULL, `backoff_delay_duration` 
+INTEGER NOT NULL, `last_enqueue_time` INTEGER NOT NULL DEFAULT -1, `minimum_retention_duration` INTEGER NOT NULL, 
+`schedule_requested_at` INTEGER NOT NULL, `run_in_foreground` INTEGER NOT NULL, `out_of_quota_policy` INTEGER NOT 
+NULL, `period_count` INTEGER NOT NULL DEFAULT 0, `generation` INTEGER NOT NULL DEFAULT 0, 
+`next_schedule_time_override` INTEGER NOT NULL DEFAULT 9223372036854775807, `next_schedule_time_override_generation` 
+INTEGER NOT NULL DEFAULT 0, `stop_reason` INTEGER NOT NULL DEFAULT -256, `required_network_type` INTEGER NOT NULL, 
+`requires_charging` INTEGER NOT NULL, `requires_device_idle` INTEGER NOT NULL, `requires_battery_not_low` INTEGER NOT 
+NULL, `requires_storage_not_low` INTEGER NOT NULL, `trigger_content_update_delay` INTEGER NOT NULL, 
+`trigger_max_content_delay` INTEGER NOT NULL, `content_uri_triggers` BLOB NOT NULL, PRIMARY KEY(`id`))
+  documentation\database\schemas.txt:28:
+> documentation\database\schemas.txt:29:CREATE TABLE IF NOT EXISTS `_new_WorkSpec` (`id` TEXT NOT NULL, `state` 
+INTEGER NOT NULL, `worker_class_name` TEXT NOT NULL, `input_merger_class_name` TEXT NOT NULL, `input` BLOB NOT NULL, 
+`output` BLOB NOT NULL, `initial_delay` INTEGER NOT NULL, `interval_duration` INTEGER NOT NULL, `flex_duration` 
+INTEGER NOT NULL, `run_attempt_count` INTEGER NOT NULL, `backoff_policy` INTEGER NOT NULL, `backoff_delay_duration` 
+INTEGER NOT NULL, `last_enqueue_time` INTEGER NOT NULL, `minimum_retention_duration` INTEGER NOT NULL, 
+`schedule_requested_at` INTEGER NOT NULL, `run_in_foreground` INTEGER NOT NULL, `out_of_quota_policy` INTEGER NOT 
+NULL, `period_count` INTEGER NOT NULL DEFAULT 0, `generation` INTEGER NOT NULL DEFAULT 0, `required_network_type` 
+INTEGER NOT NULL, `requires_charging` INTEGER NOT NULL, `requires_device_idle` INTEGER NOT NULL, 
+`requires_battery_not_low` INTEGER NOT NULL, `requires_storage_not_low` INTEGER NOT NULL, 
+`trigger_content_update_delay` INTEGER NOT NULL, `trigger_max_content_delay` INTEGER NOT NULL, `content_uri_triggers` 
+BLOB NOT NULL, PRIMARY KEY(`id`))
+  documentation\database\schemas.txt:30:
+> documentation\database\schemas.txt:31:CREATE TABLE IF NOT EXISTS `_new_WorkSpec` (`id` TEXT NOT NULL, `state` 
+INTEGER NOT NULL, `worker_class_name` TEXT NOT NULL, `input_merger_class_name` TEXT, `input` BLOB NOT NULL, `output` 
+BLOB NOT NULL, `initial_delay` INTEGER NOT NULL, `interval_duration` INTEGER NOT NULL, `flex_duration` INTEGER NOT 
+NULL, `run_attempt_count` INTEGER NOT NULL, `backoff_policy` INTEGER NOT NULL, `backoff_delay_duration` INTEGER NOT 
+NULL, `last_enqueue_time` INTEGER NOT NULL, `minimum_retention_duration` INTEGER NOT NULL, `schedule_requested_at` 
+INTEGER NOT NULL, `run_in_foreground` INTEGER NOT NULL, `out_of_quota_policy` INTEGER NOT NULL, `period_count` INTEGER 
+NOT NULL DEFAULT 0, `required_network_type` INTEGER NOT NULL, `requires_charging` INTEGER NOT NULL, 
+`requires_device_idle` INTEGER NOT NULL, `requires_battery_not_low` INTEGER NOT NULL, `requires_storage_not_low` 
+INTEGER NOT NULL, `trigger_content_update_delay` INTEGER NOT NULL, `trigger_max_content_delay` INTEGER NOT NULL, 
+`content_uri_triggers` BLOB NOT NULL, PRIMARY KEY(`id`))
+  documentation\database\schemas.txt:32:
+> documentation\database\schemas.txt:33:CREATE TABLE IF NOT EXISTS `_new_WorkSpec` (`id` TEXT NOT NULL, `state` 
+INTEGER NOT NULL, `worker_class_name` TEXT NOT NULL, `input_merger_class_name` TEXT, `input` BLOB NOT NULL, `output` 
+BLOB NOT NULL, `initial_delay` INTEGER NOT NULL, `interval_duration` INTEGER NOT NULL, `flex_duration` INTEGER NOT 
+NULL, `run_attempt_count` INTEGER NOT NULL, `backoff_policy` INTEGER NOT NULL, `backoff_delay_duration` INTEGER NOT 
+NULL, `period_start_time` INTEGER NOT NULL, `minimum_retention_duration` INTEGER NOT NULL, `schedule_requested_at` 
+INTEGER NOT NULL, `run_in_foreground` INTEGER NOT NULL, `out_of_quota_policy` INTEGER NOT NULL, 
+`required_network_type` INTEGER NOT NULL, `requires_charging` INTEGER NOT NULL, `requires_device_idle` INTEGER NOT 
+NULL, `requires_battery_not_low` INTEGER NOT NULL, `requires_storage_not_low` INTEGER NOT NULL, 
+`trigger_content_update_delay` INTEGER NOT NULL, `trigger_max_content_delay` INTEGER NOT NULL, `content_uri_triggers` 
+BLOB NOT NULL, PRIMARY KEY(`id`))
+  documentation\database\schemas.txt:34:
+> documentation\database\schemas.txt:35:CREATE TABLE IF NOT EXISTS active_notifications(id integer primary key 
+autoincrement, notificationId integer, packagename text, versioncode integer, type integer);
+  documentation\database\schemas.txt:36:
+> documentation\database\schemas.txt:37:CREATE TABLE IF NOT EXISTS app_files( id integer primary key autoincrement, 
+app_id integer, sha256 text, size text, path text);
+  documentation\database\schemas.txt:38:
+> documentation\database\schemas.txt:39:CREATE TABLE IF NOT EXISTS apps ( app_id TEXT NOT NULL, app_instance_id TEXT, 
+gmp_app_id TEXT, resettable_device_id_hash TEXT, last_bundle_index INTEGER NOT NULL, last_bundle_end_timestamp INTEGER 
+NOT NULL, PRIMARY KEY (app_id)) ;
+  documentation\database\schemas.txt:40:
+> documentation\database\schemas.txt:41:CREATE TABLE IF NOT EXISTS apps( id integer primary key autoincrement, name 
+text, packagename text, versionCode text, issystemapp integer default 0, isSystemService integer default 0, urlFicha 
+text, md5signature text, exclude integer default 0, size text, excludeFromTracking integer default 0, defaultName 
+text, sha256 text, positiveNotified integer default 0, appID integer default 0, hasOldVersions integer default 0, 
+trackInfoRegistered integer default 0);
+  documentation\database\schemas.txt:42:
+> documentation\database\schemas.txt:43:CREATE TABLE IF NOT EXISTS audience_filter_values ( app_id TEXT NOT NULL, 
+audience_id INTEGER NOT NULL, current_results BLOB, PRIMARY KEY (app_id, audience_id));
+  documentation\database\schemas.txt:44:
+> documentation\database\schemas.txt:45:CREATE TABLE IF NOT EXISTS conditional_properties ( app_id TEXT NOT NULL, 
+origin TEXT NOT NULL, name TEXT NOT NULL, value BLOB NOT NULL, creation_timestamp INTEGER NOT NULL, active INTEGER NOT 
+NULL, trigger_event_name TEXT, trigger_timeout INTEGER NOT NULL, timed_out_event BLOB,triggered_event BLOB, 
+triggered_timestamp INTEGER NOT NULL, time_to_live INTEGER NOT NULL, expired_event BLOB, PRIMARY KEY (app_id, name)) ;
+  documentation\database\schemas.txt:46:
+> documentation\database\schemas.txt:47:CREATE TABLE IF NOT EXISTS data_usage(id integer primary key autoincrement, 
+date text, type integer, connection_type integer default 0, bytes integer, UNIQUE(date, type, connection_type));
+  documentation\database\schemas.txt:48:
+> documentation\database\schemas.txt:49:CREATE TABLE IF NOT EXISTS device_status(id integer primary key autoincrement, 
+timestamp integer, batteryLevel integer, isCharging integer, isWifiConnected integer, uploadSpeedKbps integer);
+  documentation\database\schemas.txt:50:
+> documentation\database\schemas.txt:51:CREATE TABLE IF NOT EXISTS diagnostic_signals ( app_id TEXT NOT NULL, 
+signal_name TEXT NOT NULL, metadata TEXT NOT NULL, count INTEGER NOT NULL, last_increment_timestamp INTEGER NOT NULL);
+  documentation\database\schemas.txt:52:
+> documentation\database\schemas.txt:53:CREATE TABLE IF NOT EXISTS download_files(id integer primary key 
+autoincrement, downloadId integer default 0, fileId integer default 0, type text, size integer default 0, 
+size_downloaded integer default 0, filehash text, absolutePath text, attempts integer default 0, nextAttemptTimeStamp 
+integer default 0);
+  documentation\database\schemas.txt:54:
+> documentation\database\schemas.txt:55:CREATE TABLE IF NOT EXISTS download_promoted(id integer primary key 
+autoincrement, appId integer default 0, categoryFrom text, promotedIndex integer default 1);
+  documentation\database\schemas.txt:56:
+> documentation\database\schemas.txt:57:CREATE TABLE IF NOT EXISTS downloads(id integer primary key autoincrement, 
+packagename text, checked integer default 0, incomplete integer default 0, versioncode integer default 0, versionname 
+text, attempts integer default 0, idPrograma integer default 0, downloadAnyway integer default 0, md5signature text, 
+supportedAbis text, minsdk integer default 0, urlIcon text, appName text, nextAttemptTimeStamp integer default 0, 
+updateId integer default 0, deeplink integer default 0, is_rollback integer default 0);
+  documentation\database\schemas.txt:58:
+> documentation\database\schemas.txt:59:CREATE TABLE IF NOT EXISTS event_filters ( app_id TEXT NOT NULL, audience_id 
+INTEGER NOT NULL, filter_id INTEGER NOT NULL, event_name TEXT NOT NULL, data BLOB NOT NULL, PRIMARY KEY (app_id, 
+event_name, audience_id, filter_id));
+  documentation\database\schemas.txt:60:
+> documentation\database\schemas.txt:61:CREATE TABLE IF NOT EXISTS events ( app_id TEXT NOT NULL, name TEXT NOT NULL, 
+lifetime_count INTEGER NOT NULL, current_bundle_count INTEGER NOT NULL, last_fire_timestamp INTEGER NOT NULL, PRIMARY 
+KEY (app_id, name)) ;
+  documentation\database\schemas.txt:62:
+> documentation\database\schemas.txt:63:CREATE TABLE IF NOT EXISTS events_snapshot ( app_id TEXT NOT NULL, name TEXT 
+NOT NULL, lifetime_count INTEGER NOT NULL, current_bundle_count INTEGER NOT NULL, last_fire_timestamp INTEGER NOT 
+NULL, last_bundled_timestamp INTEGER, last_bundled_day INTEGER, last_sampled_complex_event_id INTEGER, 
+last_sampling_rate INTEGER, last_exempt_from_sampling INTEGER, current_session_count INTEGER, PRIMARY KEY (app_id, 
+name)) ;
+  documentation\database\schemas.txt:64:
+> documentation\database\schemas.txt:65:CREATE TABLE IF NOT EXISTS main_event_params ( app_id TEXT NOT NULL, event_id 
+TEXT NOT NULL, children_to_process INTEGER NOT NULL, main_event BLOB NOT NULL, PRIMARY KEY (app_id));
+  documentation\database\schemas.txt:66:
+> documentation\database\schemas.txt:67:CREATE TABLE IF NOT EXISTS no_data_mode_events ( app_id TEXT NOT NULL, name 
+TEXT NOT NULL, data BLOB NOT NULL, timestamp_millis INTEGER NOT NULL);
+  documentation\database\schemas.txt:68:
+> documentation\database\schemas.txt:69:CREATE TABLE IF NOT EXISTS notifications(id integer primary key autoincrement, 
+timestamp text, title text, msg text, actions text, extra_info text);
+  documentation\database\schemas.txt:70:
+> documentation\database\schemas.txt:71:CREATE TABLE IF NOT EXISTS pending_system_messages(id integer primary key 
+autoincrement, title text, body text, url text, action_button_text text, timestamp integer);
+  documentation\database\schemas.txt:72:
+> documentation\database\schemas.txt:73:CREATE TABLE IF NOT EXISTS property_filters ( app_id TEXT NOT NULL, 
+audience_id INTEGER NOT NULL, filter_id INTEGER NOT NULL, property_name TEXT NOT NULL, data BLOB NOT NULL, PRIMARY KEY 
+(app_id, property_name, audience_id, filter_id));
+  documentation\database\schemas.txt:74:
+> documentation\database\schemas.txt:75:CREATE TABLE IF NOT EXISTS raw_events ( app_id TEXT NOT NULL, name TEXT NOT 
+NULL, timestamp INTEGER NOT NULL, metadata_fingerprint INTEGER NOT NULL, data BLOB NOT NULL);
+  documentation\database\schemas.txt:76:
+> documentation\database\schemas.txt:77:CREATE TABLE IF NOT EXISTS raw_events_metadata ( app_id TEXT NOT NULL, 
+metadata_fingerprint INTEGER NOT NULL, metadata BLOB NOT NULL, PRIMARY KEY (app_id, metadata_fingerprint));
+  documentation\database\schemas.txt:78:
+> documentation\database\schemas.txt:79:CREATE TABLE IF NOT EXISTS remote_installs(id integer primary key 
+autoincrement, appId integer, sourceDeviceName text, downloadId integer);
+  documentation\database\schemas.txt:80:
+> documentation\database\schemas.txt:81:CREATE TABLE IF NOT EXISTS trigger_uris ( app_id TEXT NOT NULL, trigger_uri 
+TEXT NOT NULL, timestamp_millis INTEGER NOT NULL, source INTEGER NOT NULL);
+  documentation\database\schemas.txt:82:
+> documentation\database\schemas.txt:83:CREATE TABLE IF NOT EXISTS updates(id integer primary key autoincrement, 
+packagename text, versionCode text, versionName text, notified integer default 0, ignoreVersion integer default 0, 
+isPartialUpdate integer default 0, newFeatures text, installationAttempts integer default 0);
+  documentation\database\schemas.txt:84:
+> documentation\database\schemas.txt:85:CREATE TABLE IF NOT EXISTS upload_queue ( app_id TEXT NOT NULL, upload_uri 
+TEXT NOT NULL, upload_headers TEXT NOT NULL, upload_type INTEGER NOT NULL, measurement_batch BLOB NOT NULL, 
+retry_count INTEGER NOT NULL, creation_timestamp INTEGER NOT NULL );
+  documentation\database\schemas.txt:86:
+> documentation\database\schemas.txt:87:CREATE TABLE IF NOT EXISTS user_attributes ( app_id TEXT NOT NULL, name TEXT 
+NOT NULL, set_timestamp INTEGER NOT NULL, value BLOB NOT NULL, PRIMARY KEY (app_id, name)) ;
+  documentation\database\schemas.txt:88:
+> documentation\database\schemas.txt:89:CREATE TABLE event_metadata (_id INTEGER PRIMARY KEY, event_id INTEGER NOT 
+NULL, name TEXT NOT NULL, value TEXT NOT NULL,FOREIGN KEY (event_id) REFERENCES events(_id) ON DELETE CASCADE)
+  documentation\database\schemas.txt:90:
+> documentation\database\schemas.txt:91:CREATE TABLE event_payloads (sequence_num INTEGER NOT NULL, event_id INTEGER 
+NOT NULL, bytes BLOB NOT NULL,FOREIGN KEY (event_id) REFERENCES events(_id) ON DELETE CASCADE,PRIMARY KEY 
+(sequence_num, event_id))
+  documentation\database\schemas.txt:92:
+> documentation\database\schemas.txt:93:CREATE TABLE events (_id INTEGER PRIMARY KEY, context_id INTEGER NOT NULL, 
+transport_name TEXT NOT NULL, timestamp_ms INTEGER NOT NULL, uptime_ms INTEGER NOT NULL, payload BLOB NOT NULL, code 
+INTEGER, num_attempts INTEGER NOT NULL,FOREIGN KEY (context_id) REFERENCES transport_contexts(_id) ON DELETE CASCADE)
+  documentation\database\schemas.txt:94:
+> documentation\database\schemas.txt:95:CREATE TABLE log_event_dropped (log_source VARCHAR(45) NOT NULL,reason INTEGER 
+NOT NULL,events_dropped_count BIGINT NOT NULL,PRIMARY KEY(log_source, reason))
+  documentation\database\schemas.txt:96:
+> documentation\database\schemas.txt:97:CREATE TABLE transport_contexts (_id INTEGER PRIMARY KEY, backend_name TEXT 
+NOT NULL, priority INTEGER NOT NULL, next_request_ms INTEGER NOT NULL)
+  documentation\database\schemas.txt:98:
+> documentation\database\schemas.txt:99:OCREATE TABLE global_log_event_state (last_metrics_upload_ms BIGINT PRIMARY 
+KEY)
+  documentation\database\schemas.txt:100:
+> documentation\database\schemas.txt:101:Qcreate table if not exists messages ( type INTEGER NOT NULL, entry BLOB NOT 
+NULL)
+  documentation\database\schemas.txt:102:
+> documentation\database\schemas.txt:103:XCREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY 
+KEY,identity_hash TEXT)
+  documentation\database\schemas.txt:104:
+> documentation\database\schemas.txt:105:^CREATE TABLE IF NOT EXISTS installable_files(id integer primary key 
+autoincrement, path text);
+  documentation\database\schemas.txt:106:
+> documentation\database\schemas.txt:107:fCREATE TABLE IF NOT EXISTS errors(id integer primary key autoincrement, json 
+text, timestamp integer);
+  documentation\database\schemas.txt:108:
+> documentation\database\schemas.txt:109:fCREATE TABLE IF NOT EXISTS events(id integer primary key autoincrement, json 
+text, timestamp integer);
+  documentation\database\schemas.txt:110:
+> documentation\database\schemas.txt:111:gCREATE TABLE IF NOT EXISTS `Preference` (`key` TEXT NOT NULL, `long_value` 
+INTEGER, PRIMARY KEY(`key`))
+  documentation\database\schemas.txt:112:
+> documentation\database\schemas.txt:113:gCREATE TABLE IF NOT EXISTS deep_link_files(id integer primary key 
+autoincrement, path text, date text);
+  documentation\database\schemas.txt:114:
+> documentation\database\schemas.txt:115:kCREATE TABLE IF NOT EXISTS preregistrations_to_notify(id integer primary key 
+autoincrement, appId integer);
+  documentation\database\schemas.txt:116:
+> documentation\database\schemas.txt:117:qCREATE TABLE IF NOT EXISTS app2 ( app_id TEXT NOT NULL, first_open_count 
+INTEGER NOT NULL, PRIMARY KEY (app_id));
+  documentation\database\schemas.txt:118:
+> documentation\database\schemas.txt:119:tCREATE TABLE IF NOT EXISTS queue ( app_id TEXT NOT NULL, 
+bundle_end_timestamp INTEGER NOT NULL, data BLOB NOT NULL);
+  documentation\database\schemas.txt:120:
+> documentation\database\schemas.txt:121:tCREATE TABLE IF NOT EXISTS responses(id integer primary key autoincrement, 
+type integer, json text, timestamp text);
+  documentation\database\schemas.txt:122:
+> documentation\database\schemas.txt:123:uCREATE TABLE IF NOT EXISTS recent_searches(id integer primary key 
+autoincrement, search text unique, timestamp text);
+  documentation\database\schemas.txt:124:
+> documentation\database\schemas.txt:125:wCREATE TABLE IF NOT EXISTS consent_settings ( app_id TEXT NOT NULL, 
+consent_state TEXT NOT NULL, PRIMARY KEY (app_id));
+  documentation\database\schemas.txt:126:
+> documentation\database\schemas.txt:127:xCREATE TABLE IF NOT EXISTS default_event_params ( app_id TEXT NOT NULL, 
+parameters BLOB NOT NULL, PRIMARY KEY (app_id));
+  documentation\database\schemas.txt:128:
+> documentation\database\schemas.txt:129:xCREATE TABLE IF NOT EXISTS download_required_features(id integer primary key 
+autoincrement, name text, downloadId text);
+  documentation\database\schemas.txt:130:
+> documentation\database\schemas.txt:131:|CREATE TABLE IF NOT EXISTS preregistrations(id integer primary key 
+autoincrement, appId integer, automaticDownload integer);
+  documentation\database\schemas.txt:132:
+> documentation\database\schemas.txt:133:~CREATE TABLE IF NOT EXISTS app_installers(id integer primary key 
+autoincrement, packagename text, installer_packagename text);
+  documentation\database\schemas.txt:134:
+  documentation\database\schemas.txt:135:
+  documentation\database\schemas.txt:136:
+  documentation\database\schemas.txt:137:ALTER TABLE STATEMENTS:
+  
+documentation\database\schemas.txt:138:--------------------------------------------------------------------------------
+  documentation\database\schemas.txt:139:'ALTER TABLE apps ADD COLUMN e_tag TEXT;
+  documentation\database\schemas.txt:140:(ALTER TABLE apps ADD COLUMN day INTEGER;
+  documentation\database\schemas.txt:141:+ALTER TABLE apps ADD COLUMN app_store TEXT;
+  documentation\database\schemas.txt:142:+ALTER TABLE apps ADD COLUMN ga_app_id TEXT;
+  documentation\database\schemas.txt:143:-ALTER TABLE apps ADD COLUMN app_version TEXT;

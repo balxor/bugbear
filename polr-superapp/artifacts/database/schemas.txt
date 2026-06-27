@@ -1,0 +1,1802 @@
+================================================================================
+DATABASE SCHEMAS EXTRACTION
+================================================================================
+
+CREATE TABLE STATEMENTS:
+--------------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Dependency` (`work_spec_id` TEXT NOT NULL, `prerequisite_id` TEXT NOT NULL, PRIMARY KEY(`work_spec_id`, `prerequisite_id`), FOREIGN KEY(`work_spec_id`) REFERENCES `WorkSpec`(`id`) ON UPDATE CASCADE ON DELETE CASCADE , FOREIGN KEY(`prerequisite_id`) REFERENCES `WorkSpec`(`id`) ON UPDATE CASCADE ON DELETE CASCADE )
+
+CREATE TABLE IF NOT EXISTS `SystemIdInfo` (`work_spec_id` TEXT NOT NULL, `generation` INTEGER NOT NULL DEFAULT 0, `system_id` INTEGER NOT NULL, PRIMARY KEY(`work_spec_id`, `generation`), FOREIGN KEY(`work_spec_id`) REFERENCES `WorkSpec`(`id`) ON UPDATE CASCADE ON DELETE CASCADE )
+
+CREATE TABLE IF NOT EXISTS `SystemIdInfo` (`work_spec_id` TEXT NOT NULL, `system_id`
+
+CREATE TABLE IF NOT EXISTS `WorkName` (`name` TEXT NOT NULL, `work_spec_id` TEXT NOT NULL, PRIMARY KEY(`name`, `work_spec_id`), FOREIGN KEY(`work_spec_id`) REFERENCES `WorkSpec`(`id`) ON UPDATE CASCADE ON DELETE CASCADE )
+
+CREATE TABLE IF NOT EXISTS `WorkProgress` (`work_spec_id` TEXT NOT NULL, `progress`
+
+CREATE TABLE IF NOT EXISTS `WorkProgress` (`work_spec_id` TEXT NOT NULL, `progress` BLOB NOT NULL, PRIMARY KEY(`work_spec_id`), FOREIGN KEY(`work_spec_id`) REFERENCES `WorkSpec`(`id`) ON UPDATE CASCADE ON DELETE CASCADE )
+
+CREATE TABLE IF NOT EXISTS `WorkSpec` (`id` TEXT NOT NULL, `state` INTEGER NOT NULL, `worker_class_name` TEXT NOT NULL, `input_merger_class_name` TEXT NOT NULL, `input` BLOB NOT NULL, `output` BLOB NOT NULL, `initial_delay` INTEGER NOT NULL, `interval_duration` INTEGER NOT NULL, `flex_duration` INTEGER NOT NULL, `run_attempt_count` INTEGER NOT NULL, `backoff_policy` INTEGER NOT NULL, `backoff_delay_duration` INTEGER NOT NULL, `last_enqueue_time` INTEGER NOT NULL DEFAULT -1, `minimum_retention_duration` INTEGER NOT NULL, `schedule_requested_at` INTEGER NOT NULL, `run_in_foreground` INTEGER NOT NULL, `out_of_quota_policy` INTEGER NOT NULL, `period_count` INTEGER NOT NULL DEFAULT 0, `generation` INTEGER NOT NULL DEFAULT 0, `next_schedule_time_override` INTEGER NOT NULL DEFAULT 9223372036854775807, `next_schedule_time_override_generation` INTEGER NOT NULL DEFAULT 0, `stop_reason` INTEGER NOT NULL DEFAULT -256, `trace_tag` TEXT, `backoff_on_system_interruptions` INTEGER, `required_network_type` INTEGER NOT NULL, `required_network_request` BLOB NOT NULL DEFAULT x'', `requires_charging` INTEGER NOT NULL, `requires_device_idle` INTEGER NOT NULL, `requires_battery_not_low` INTEGER NOT NULL, `requires_storage_not_low` INTEGER NOT NULL, `trigger_content_update_delay` INTEGER NOT NULL, `trigger_max_content_delay` INTEGER NOT NULL, `content_uri_triggers` BLOB NOT NULL, PRIMARY KEY(`id`))
+
+CREATE TABLE IF NOT EXISTS `WorkTag` (`tag` TEXT NOT NULL, `work_spec_id` TEXT NOT NULL, PRIMARY KEY(`tag`, `work_spec_id`), FOREIGN KEY(`work_spec_id`) REFERENCES `WorkSpec`(`id`) ON UPDATE CASCADE ON DELETE CASCADE )
+
+CREATE TABLE IF NOT EXISTS `_new_SystemIdInfo` (
+
+CREATE TABLE IF NOT EXISTS `_new_WorkSpec` (
+
+CREATE TABLE IF NOT EXISTS `_new_WorkSpec` (`id` TEXT NOT NULL, `state` INTEGER NOT NULL, `worker_class_name` TEXT NOT NULL, `input_merger_class_name` TEXT NOT NULL, `input` BLOB NOT NULL, `output` BLOB NOT NULL, `initial_delay` INTEGER NOT NULL, `interval_duration` INTEGER NOT NULL, `flex_duration` INTEGER NOT NULL, `run_attempt_count` INTEGER NOT NULL, `backoff_policy` INTEGER NOT NULL, `backoff_delay_duration` INTEGER NOT NULL, `last_enqueue_time` INTEGER NOT NULL DEFAULT -1, `minimum_retention_duration` INTEGER NOT NULL, `schedule_requested_at` INTEGER NOT NULL, `run_in_foreground` INTEGER NOT NULL, `out_of_quota_policy` INTEGER NOT NULL, `period_count` INTEGER NOT NULL DEFAULT 0, `generation` INTEGER NOT NULL DEFAULT 0, `next_schedule_time_override` INTEGER NOT NULL DEFAULT 9223372036854775807, `next_schedule_time_override_generation` INTEGER NOT NULL DEFAULT 0, `stop_reason` INTEGER NOT NULL DEFAULT -256, `required_network_type` INTEGER NOT NULL, `requires_charging` INTEGER NOT NULL, `requires_device_idle` INTEGER NOT NULL, `requires_battery_not_low` INTEGER NOT NULL, `requires_storage_not_low` INTEGER NOT NULL, `trigger_content_update_delay` INTEGER NOT NULL, `trigger_max_content_delay` INTEGER NOT NULL, `content_uri_triggers` BLOB NOT NULL, PRIMARY KEY(`id`))
+
+CREATE TABLE IF NOT EXISTS `_new_WorkSpec` (`id` TEXT NOT NULL, `state` INTEGER NOT NULL, `worker_class_name` TEXT NOT NULL, `input_merger_class_name` TEXT NOT NULL, `input` BLOB NOT NULL, `output` BLOB NOT NULL, `initial_delay` INTEGER NOT NULL, `interval_duration` INTEGER NOT NULL, `flex_duration` INTEGER NOT NULL, `run_attempt_count` INTEGER NOT NULL, `backoff_policy` INTEGER NOT NULL, `backoff_delay_duration` INTEGER NOT NULL, `last_enqueue_time` INTEGER NOT NULL, `minimum_retention_duration` INTEGER NOT NULL, `schedule_requested_at` INTEGER NOT NULL, `run_in_foreground` INTEGER NOT NULL, `out_of_quota_policy` INTEGER NOT NULL, `period_count` INTEGER NOT NULL DEFAULT 0, `generation` INTEGER NOT NULL DEFAULT 0, `required_network_type` INTEGER NOT NULL, `requires_charging` INTEGER NOT NULL, `requires_device_idle` INTEGER NOT NULL, `requires_battery_not_low` INTEGER NOT NULL, `requires_storage_not_low` INTEGER NOT NULL, `trigger_content_update_delay` INTEGER NOT NULL, `trigger_max_content_delay` INTEGER NOT NULL, `content_uri_triggers` BLOB NOT NULL, PRIMARY KEY(`id`))
+
+CREATE TABLE IF NOT EXISTS `_new_WorkSpec` (`id` TEXT NOT NULL, `state` INTEGER NOT NULL, `worker_class_name` TEXT NOT NULL, `input_merger_class_name` TEXT, `input` BLOB NOT NULL, `output` BLOB NOT NULL, `initial_delay` INTEGER NOT NULL, `interval_duration` INTEGER NOT NULL, `flex_duration` INTEGER NOT NULL, `run_attempt_count` INTEGER NOT NULL, `backoff_policy` INTEGER NOT NULL, `backoff_delay_duration` INTEGER NOT NULL, `last_enqueue_time` INTEGER NOT NULL, `minimum_retention_duration` INTEGER NOT NULL, `schedule_requested_at` INTEGER NOT NULL, `run_in_foreground` INTEGER NOT NULL, `out_of_quota_policy` INTEGER NOT NULL, `period_count` INTEGER NOT NULL DEFAULT 0, `required_network_type` INTEGER NOT NULL, `requires_charging` INTEGER NOT NULL, `requires_device_idle` INTEGER NOT NULL, `requires_battery_not_low` INTEGER NOT NULL, `requires_storage_not_low` INTEGER NOT NULL, `trigger_content_update_delay` INTEGER NOT NULL, `trigger_max_content_delay` INTEGER NOT NULL, `content_uri_triggers` BLOB NOT NULL, PRIMARY KEY(`id`))
+
+CREATE TABLE IF NOT EXISTS `_new_WorkSpec` (`id` TEXT NOT NULL, `state` INTEGER NOT NULL, `worker_class_name` TEXT NOT NULL, `input_merger_class_name` TEXT, `input` BLOB NOT NULL, `output` BLOB NOT NULL, `initial_delay` INTEGER NOT NULL, `interval_duration` INTEGER NOT NULL, `flex_duration` INTEGER NOT NULL, `run_attempt_count` INTEGER NOT NULL, `backoff_policy` INTEGER NOT NULL, `backoff_delay_duration` INTEGER NOT NULL, `period_start_time` INTEGER NOT NULL, `minimum_retention_duration` INTEGER NOT NULL, `schedule_requested_at` INTEGER NOT NULL, `run_in_foreground` INTEGER NOT NULL, `out_of_quota_policy` INTEGER NOT NULL, `required_network_type` INTEGER NOT NULL, `requires_charging` INTEGER NOT NULL, `requires_device_idle` INTEGER NOT NULL, `requires_battery_not_low` INTEGER NOT NULL, `requires_storage_not_low` INTEGER NOT NULL, `trigger_content_update_delay` INTEGER NOT NULL, `trigger_max_content_delay` INTEGER NOT NULL, `content_uri_triggers` BLOB NOT NULL, PRIMARY KEY(`id`))
+
+CREATE TABLE IF NOT EXISTS active_notifications(id integer primary key autoincrement, notificationId integer, packagename text, versioncode integer, type integer);
+
+CREATE TABLE IF NOT EXISTS app_files( id integer primary key autoincrement, app_id integer, sha256 text, size text, path text);
+
+CREATE TABLE IF NOT EXISTS apps ( app_id TEXT NOT NULL, app_instance_id TEXT, gmp_app_id TEXT, resettable_device_id_hash TEXT, last_bundle_index INTEGER NOT NULL, last_bundle_end_timestamp INTEGER NOT NULL, PRIMARY KEY (app_id)) ;
+
+CREATE TABLE IF NOT EXISTS apps( id integer primary key autoincrement, name text, packagename text, versionCode text, issystemapp integer default 0, isSystemService integer default 0, urlFicha text, md5signature text, exclude integer default 0, size text, excludeFromTracking integer default 0, defaultName text, sha256 text, positiveNotified integer default 0, appID integer default 0, hasOldVersions integer default 0, trackInfoRegistered integer default 0);
+
+CREATE TABLE IF NOT EXISTS audience_filter_values ( app_id TEXT NOT NULL, audience_id INTEGER NOT NULL, current_results BLOB, PRIMARY KEY (app_id, audience_id));
+
+CREATE TABLE IF NOT EXISTS conditional_properties ( app_id TEXT NOT NULL, origin TEXT NOT NULL, name TEXT NOT NULL, value BLOB NOT NULL, creation_timestamp INTEGER NOT NULL, active INTEGER NOT NULL, trigger_event_name TEXT, trigger_timeout INTEGER NOT NULL, timed_out_event BLOB,triggered_event BLOB, triggered_timestamp INTEGER NOT NULL, time_to_live INTEGER NOT NULL, expired_event BLOB, PRIMARY KEY (app_id, name)) ;
+
+CREATE TABLE IF NOT EXISTS data_usage(id integer primary key autoincrement, date text, type integer, connection_type integer default 0, bytes integer, UNIQUE(date, type, connection_type));
+
+CREATE TABLE IF NOT EXISTS device_status(id integer primary key autoincrement, timestamp integer, batteryLevel integer, isCharging integer, isWifiConnected integer, uploadSpeedKbps integer);
+
+CREATE TABLE IF NOT EXISTS diagnostic_signals ( app_id TEXT NOT NULL, signal_name TEXT NOT NULL, metadata TEXT NOT NULL, count INTEGER NOT NULL, last_increment_timestamp INTEGER NOT NULL);
+
+CREATE TABLE IF NOT EXISTS download_files(id integer primary key autoincrement, downloadId integer default 0, fileId integer default 0, type text, size integer default 0, size_downloaded integer default 0, filehash text, absolutePath text, attempts integer default 0, nextAttemptTimeStamp integer default 0);
+
+CREATE TABLE IF NOT EXISTS download_promoted(id integer primary key autoincrement, appId integer default 0, categoryFrom text, promotedIndex integer default 1);
+
+CREATE TABLE IF NOT EXISTS downloads(id integer primary key autoincrement, packagename text, checked integer default 0, incomplete integer default 0, versioncode integer default 0, versionname text, attempts integer default 0, idPrograma integer default 0, downloadAnyway integer default 0, md5signature text, supportedAbis text, minsdk integer default 0, urlIcon text, appName text, nextAttemptTimeStamp integer default 0, updateId integer default 0, deeplink integer default 0, is_rollback integer default 0);
+
+CREATE TABLE IF NOT EXISTS event_filters ( app_id TEXT NOT NULL, audience_id INTEGER NOT NULL, filter_id INTEGER NOT NULL, event_name TEXT NOT NULL, data BLOB NOT NULL, PRIMARY KEY (app_id, event_name, audience_id, filter_id));
+
+CREATE TABLE IF NOT EXISTS events ( app_id TEXT NOT NULL, name TEXT NOT NULL, lifetime_count INTEGER NOT NULL, current_bundle_count INTEGER NOT NULL, last_fire_timestamp INTEGER NOT NULL, PRIMARY KEY (app_id, name)) ;
+
+CREATE TABLE IF NOT EXISTS events_snapshot ( app_id TEXT NOT NULL, name TEXT NOT NULL, lifetime_count INTEGER NOT NULL, current_bundle_count INTEGER NOT NULL, last_fire_timestamp INTEGER NOT NULL, last_bundled_timestamp INTEGER, last_bundled_day INTEGER, last_sampled_complex_event_id INTEGER, last_sampling_rate INTEGER, last_exempt_from_sampling INTEGER, current_session_count INTEGER, PRIMARY KEY (app_id, name)) ;
+
+CREATE TABLE IF NOT EXISTS main_event_params ( app_id TEXT NOT NULL, event_id TEXT NOT NULL, children_to_process INTEGER NOT NULL, main_event BLOB NOT NULL, PRIMARY KEY (app_id));
+
+CREATE TABLE IF NOT EXISTS no_data_mode_events ( app_id TEXT NOT NULL, name TEXT NOT NULL, data BLOB NOT NULL, timestamp_millis INTEGER NOT NULL);
+
+CREATE TABLE IF NOT EXISTS notifications(id integer primary key autoincrement, timestamp text, title text, msg text, actions text, extra_info text);
+
+CREATE TABLE IF NOT EXISTS pending_system_messages(id integer primary key autoincrement, title text, body text, url text, action_button_text text, timestamp integer);
+
+CREATE TABLE IF NOT EXISTS property_filters ( app_id TEXT NOT NULL, audience_id INTEGER NOT NULL, filter_id INTEGER NOT NULL, property_name TEXT NOT NULL, data BLOB NOT NULL, PRIMARY KEY (app_id, property_name, audience_id, filter_id));
+
+CREATE TABLE IF NOT EXISTS raw_events ( app_id TEXT NOT NULL, name TEXT NOT NULL, timestamp INTEGER NOT NULL, metadata_fingerprint INTEGER NOT NULL, data BLOB NOT NULL);
+
+CREATE TABLE IF NOT EXISTS raw_events_metadata ( app_id TEXT NOT NULL, metadata_fingerprint INTEGER NOT NULL, metadata BLOB NOT NULL, PRIMARY KEY (app_id, metadata_fingerprint));
+
+CREATE TABLE IF NOT EXISTS remote_installs(id integer primary key autoincrement, appId integer, sourceDeviceName text, downloadId integer);
+
+CREATE TABLE IF NOT EXISTS trigger_uris ( app_id TEXT NOT NULL, trigger_uri TEXT NOT NULL, timestamp_millis INTEGER NOT NULL, source INTEGER NOT NULL);
+
+CREATE TABLE IF NOT EXISTS updates(id integer primary key autoincrement, packagename text, versionCode text, versionName text, notified integer default 0, ignoreVersion integer default 0, isPartialUpdate integer default 0, newFeatures text, installationAttempts integer default 0);
+
+CREATE TABLE IF NOT EXISTS upload_queue ( app_id TEXT NOT NULL, upload_uri TEXT NOT NULL, upload_headers TEXT NOT NULL, upload_type INTEGER NOT NULL, measurement_batch BLOB NOT NULL, retry_count INTEGER NOT NULL, creation_timestamp INTEGER NOT NULL );
+
+CREATE TABLE IF NOT EXISTS user_attributes ( app_id TEXT NOT NULL, name TEXT NOT NULL, set_timestamp INTEGER NOT NULL, value BLOB NOT NULL, PRIMARY KEY (app_id, name)) ;
+
+CREATE TABLE event_metadata (_id INTEGER PRIMARY KEY, event_id INTEGER NOT NULL, name TEXT NOT NULL, value TEXT NOT NULL,FOREIGN KEY (event_id) REFERENCES events(_id) ON DELETE CASCADE)
+
+CREATE TABLE event_payloads (sequence_num INTEGER NOT NULL, event_id INTEGER NOT NULL, bytes BLOB NOT NULL,FOREIGN KEY (event_id) REFERENCES events(_id) ON DELETE CASCADE,PRIMARY KEY (sequence_num, event_id))
+
+CREATE TABLE events (_id INTEGER PRIMARY KEY, context_id INTEGER NOT NULL, transport_name TEXT NOT NULL, timestamp_ms INTEGER NOT NULL, uptime_ms INTEGER NOT NULL, payload BLOB NOT NULL, code INTEGER, num_attempts INTEGER NOT NULL,FOREIGN KEY (context_id) REFERENCES transport_contexts(_id) ON DELETE CASCADE)
+
+CREATE TABLE log_event_dropped (log_source VARCHAR(45) NOT NULL,reason INTEGER NOT NULL,events_dropped_count BIGINT NOT NULL,PRIMARY KEY(log_source, reason))
+
+CREATE TABLE transport_contexts (_id INTEGER PRIMARY KEY, backend_name TEXT NOT NULL, priority INTEGER NOT NULL, next_request_ms INTEGER NOT NULL)
+
+OCREATE TABLE global_log_event_state (last_metrics_upload_ms BIGINT PRIMARY KEY)
+
+Qcreate table if not exists messages ( type INTEGER NOT NULL, entry BLOB NOT NULL)
+
+XCREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)
+
+^CREATE TABLE IF NOT EXISTS installable_files(id integer primary key autoincrement, path text);
+
+fCREATE TABLE IF NOT EXISTS errors(id integer primary key autoincrement, json text, timestamp integer);
+
+fCREATE TABLE IF NOT EXISTS events(id integer primary key autoincrement, json text, timestamp integer);
+
+gCREATE TABLE IF NOT EXISTS `Preference` (`key` TEXT NOT NULL, `long_value` INTEGER, PRIMARY KEY(`key`))
+
+gCREATE TABLE IF NOT EXISTS deep_link_files(id integer primary key autoincrement, path text, date text);
+
+kCREATE TABLE IF NOT EXISTS preregistrations_to_notify(id integer primary key autoincrement, appId integer);
+
+qCREATE TABLE IF NOT EXISTS app2 ( app_id TEXT NOT NULL, first_open_count INTEGER NOT NULL, PRIMARY KEY (app_id));
+
+tCREATE TABLE IF NOT EXISTS queue ( app_id TEXT NOT NULL, bundle_end_timestamp INTEGER NOT NULL, data BLOB NOT NULL);
+
+tCREATE TABLE IF NOT EXISTS responses(id integer primary key autoincrement, type integer, json text, timestamp text);
+
+uCREATE TABLE IF NOT EXISTS recent_searches(id integer primary key autoincrement, search text unique, timestamp text);
+
+wCREATE TABLE IF NOT EXISTS consent_settings ( app_id TEXT NOT NULL, consent_state TEXT NOT NULL, PRIMARY KEY (app_id));
+
+xCREATE TABLE IF NOT EXISTS default_event_params ( app_id TEXT NOT NULL, parameters BLOB NOT NULL, PRIMARY KEY (app_id));
+
+xCREATE TABLE IF NOT EXISTS download_required_features(id integer primary key autoincrement, name text, downloadId text);
+
+|CREATE TABLE IF NOT EXISTS preregistrations(id integer primary key autoincrement, appId integer, automaticDownload integer);
+
+~CREATE TABLE IF NOT EXISTS app_installers(id integer primary key autoincrement, packagename text, installer_packagename text);
+
+
+
+ALTER TABLE STATEMENTS:
+--------------------------------------------------------------------------------
+'ALTER TABLE apps ADD COLUMN e_tag TEXT;
+(ALTER TABLE apps ADD COLUMN day INTEGER;
++ALTER TABLE apps ADD COLUMN app_store TEXT;
++ALTER TABLE apps ADD COLUMN ga_app_id TEXT;
+-ALTER TABLE apps ADD COLUMN app_version TEXT;
+.ALTER TABLE apps ADD COLUMN admob_app_id TEXT;
+/ALTER TABLE apps ADD COLUMN android_id INTEGER;
+/ALTER TABLE apps ADD COLUMN remote_config BLOB;
+0ALTER TABLE `_new_WorkSpec` RENAME TO `WorkSpec`
+0ALTER TABLE apps ADD COLUMN gmp_version INTEGER;
+0ALTER TABLE events ADD COLUMN product_id INTEGER
+1ALTER TABLE messages ADD COLUMN app_version TEXT;
+1ALTER TABLE queue ADD COLUMN retry_count INTEGER;
+2ALTER TABLE apps ADD COLUMN ad_campaign_info BLOB;
+2ALTER TABLE apps ADD COLUMN dev_cert_hash INTEGER;
+2ALTER TABLE apps ADD COLUMN sgtm_preview_key TEXT;
+2ALTER TABLE apps ADD COLUMN unmatched_pfo INTEGER;
+2ALTER TABLE apps ADD COLUMN unmatched_uwa INTEGER;
+2ALTER TABLE events ADD COLUMN pseudonymous_id TEXT
+2ALTER TABLE queue ADD COLUMN has_realtime INTEGER;
+3ALTER TABLE apps ADD COLUMN safelisted_events TEXT;
+3ALTER TABLE events ADD COLUMN payload_encoding TEXT
+3ALTER TABLE raw_events ADD COLUMN realtime INTEGER;
+3ALTER TABLE user_attributes ADD COLUMN origin TEXT;
+4ALTER TABLE apps ADD COLUMN app_version_int INTEGER;
+5ALTER TABLE apps ADD COLUMN dynamite_version INTEGER;
+5ALTER TABLE apps ADD COLUMN linked_admob_app_id TEXT;
+5ALTER TABLE transport_contexts ADD COLUMN extras BLOB
+6ALTER TABLE apps ADD COLUMN dma_consent_state INTEGER;
+6ALTER TABLE apps ADD COLUMN firebase_instance_id TEXT;
+6ALTER TABLE apps ADD COLUMN target_os_version INTEGER;
+7ALTER TABLE apps ADD COLUMN daily_events_count INTEGER;
+7ALTER TABLE apps ADD COLUMN health_monitor_sample TEXT;
+7ALTER TABLE apps ADD COLUMN npa_metadata_value INTEGER;
+7ALTER TABLE events ADD COLUMN last_bundled_day INTEGER;
+7ALTER TABLE raw_events ADD COLUMN elapsed_time INTEGER;
+8ALTER TABLE `_new_SystemIdInfo` RENAME TO `SystemIdInfo`
+8ALTER TABLE apps ADD COLUMN ad_services_version INTEGER;
+8ALTER TABLE apps ADD COLUMN config_fetched_time INTEGER;
+8ALTER TABLE apps ADD COLUMN measurement_enabled INTEGER;
+8ALTER TABLE apps ADD COLUMN sgtm_upload_enabled INTEGER;
+8ALTER TABLE messages ADD COLUMN app_version_int INTEGER;
+9ALTER TABLE apps ADD COLUMN serialized_npa_metadata TEXT;
+9ALTER TABLE apps ADD COLUMN session_stitching_token TEXT;
+9ALTER TABLE events ADD COLUMN last_sampling_rate INTEGER;
+:ALTER TABLE apps ADD COLUMN bundle_delivery_index INTEGER;
+;ALTER TABLE app2 ADD COLUMN previous_install_count INTEGER;
+;ALTER TABLE apps ADD COLUMN adid_reporting_enabled INTEGER;
+;ALTER TABLE apps ADD COLUMN config_last_modified_time TEXT;
+<ALTER TABLE apps ADD COLUMN daily_conversions_count INTEGER;
+<ALTER TABLE apps ADD COLUMN ssaid_reporting_enabled INTEGER;
+<ALTER TABLE event_filters ADD COLUMN session_scoped BOOLEAN;
+<ALTER TABLE events ADD COLUMN current_session_count INTEGER;
+<ALTER TABLE events ADD COLUMN experiment_ids_clear_blob BLOB
+=ALTER TABLE apps ADD COLUMN daily_error_events_count INTEGER;
+=ALTER TABLE apps ADD COLUMN daily_realtime_dcu_count INTEGER;
+=ALTER TABLE apps ADD COLUMN failed_config_fetch_time INTEGER;
+=ALTER TABLE events ADD COLUMN last_bundled_timestamp INTEGER;
+>ALTER TABLE apps ADD COLUMN client_upload_eligibility INTEGER;
+>ALTER TABLE apps ADD COLUMN daily_public_events_count INTEGER;
+>ALTER TABLE downloads ADD COLUMN is_rollback integer default 0
+>ALTER TABLE upload_queue ADD COLUMN associated_row_id INTEGER;
+?ALTER TABLE `WorkSpec` ADD COLUMN `trace_tag` TEXT DEFAULT NULL
+?ALTER TABLE consent_settings ADD COLUMN consent_source INTEGER;
+?ALTER TABLE events ADD COLUMN inline BOOLEAN NOT NULL DEFAULT 1
+?ALTER TABLE property_filters ADD COLUMN session_scoped BOOLEAN;
+@ALTER TABLE apps ADD COLUMN daily_realtime_events_count INTEGER;
+@ALTER TABLE apps ADD COLUMN last_bundle_start_timestamp INTEGER;
+@ALTER TABLE events ADD COLUMN experiment_ids_encrypted_blob BLOB
+@ALTER TABLE events ADD COLUMN last_exempt_from_sampling INTEGER;
+AALTER TABLE apps ADD COLUMN session_stitching_token_hash INTEGER;
+BALTER TABLE apps ADD COLUMN gmp_version_for_remote_config INTEGER;
+BALTER TABLE consent_settings ADD COLUMN dma_consent_settings TEXT;
+BALTER TABLE upload_queue ADD COLUMN last_upload_timestamp INTEGER;
+CALTER TABLE apps ADD COLUMN attribution_eligibility_status INTEGER;
+DALTER TABLE apps ADD COLUMN daily_registered_triggers_count INTEGER;
+DALTER TABLE events ADD COLUMN last_sampled_complex_event_id INTEGER;
+FALTER TABLE pending_system_messages ADD COLUMN action_button_text text
+GALTER TABLE apps ADD COLUMN unmatched_first_open_without_ad_id INTEGER;
+IALTER TABLE `WorkSpec` ADD COLUMN `generation` INTEGER NOT NULL DEFAULT 0
+IALTER TABLE consent_settings ADD COLUMN storage_consent_at_bundling TEXT;
+MALTER TABLE `WorkSpec` ADD COLUMN `stop_reason` INTEGER NOT NULL DEFAULT -256
+MALTER TABLE apps ADD COLUMN last_diagnostics_signal_upload_timestamp INTEGER;
+NALTER TABLE workspec ADD COLUMN `run_in_foreground` INTEGER NOT NULL DEFAULT 0
+PALTER TABLE workspec ADD COLUMN `out_of_quota_policy` INTEGER NOT NULL DEFAULT 0
+VALTER TABLE `WorkSpec` ADD COLUMN `required_network_request` BLOB NOT NULL DEFAULT x''
+WALTER TABLE workspec ADD COLUMN `trigger_max_content_delay` INTEGER NOT NULL DEFAULT -1
+XALTER TABLE `WorkSpec` ADD COLUMN `backoff_on_system_interruptions` INTEGER DEFAULT NULL
+ZALTER TABLE workspec ADD COLUMN `trigger_content_update_delay` INTEGER NOT NULL DEFAULT -1
+eALTER TABLE `WorkSpec` ADD COLUMN `next_schedule_time_override_generation` INTEGER NOT NULL DEFAULT 0
+lALTER TABLE `WorkSpec` ADD COLUMN `next_schedule_time_override` INTEGER NOT NULL DEFAULT 9223372036854775807
+
+
+DROP TABLE STATEMENTS:
+--------------------------------------------------------------------------------
+!DROP TABLE IF EXISTS `Dependency`
+!DROP TABLE IF EXISTS `Preference`
+"DROP TABLE IF EXISTS device_status
+"DROP TABLE IF EXISTS notifications
+#DROP TABLE IF EXISTS `SystemIdInfo`
+#DROP TABLE IF EXISTS `WorkProgress`
+#DROP TABLE IF EXISTS app_installers
+#DROP TABLE IF EXISTS download_files
+#DROP TABLE IF EXISTS event_payloads
+$DROP TABLE IF EXISTS deep_link_files
+$DROP TABLE IF EXISTS recent_searches
+$DROP TABLE IF EXISTS remote_installs
+%DROP TABLE IF EXISTS preregistrations
+&DROP TABLE IF EXISTS download_promoted
+&DROP TABLE IF EXISTS installable_files
+&DROP TABLE IF EXISTS log_event_dropped
+)DROP TABLE IF EXISTS active_notifications
++DROP TABLE IF EXISTS global_log_event_state
+,DROP TABLE IF EXISTS pending_system_messages
+/DROP TABLE IF EXISTS download_required_features
+/DROP TABLE IF EXISTS preregistrations_to_notify
+0DROP TABLE IF EXISTS room_table_modification_log
+DROP TABLE IF EXISTS
+DROP TABLE IF EXISTS `WorkName`
+DROP TABLE IF EXISTS `WorkSpec`
+DROP TABLE IF EXISTS `WorkTag`
+DROP TABLE IF EXISTS alarmInfo
+DROP TABLE IF EXISTS app_files
+DROP TABLE IF EXISTS apps
+DROP TABLE IF EXISTS data_usage
+DROP TABLE IF EXISTS downloads
+DROP TABLE IF EXISTS errors
+DROP TABLE IF EXISTS events
+DROP TABLE IF EXISTS responses
+DROP TABLE IF EXISTS updates
+DROP TABLE `SystemIdInfo`
+DROP TABLE `WorkSpec`
+DROP TABLE event_metadata
+DROP TABLE events
+DROP TABLE transport_contexts
+
+
+DATABASE FILES:
+--------------------------------------------------------------------------------
+!Landroid/database/AbstractCursor;
+!Landroidx/core/database/CursorKt;
+!Landroidx/work/impl/WorkDatabase;
+!dispatchOnOpenPrepackagedDatabase
+"Landroid/database/CharArrayBuffer;
+"Landroid/database/ContentObserver;
+"Landroid/database/DataSetObserver;
+#CANNOT_CREATE_VERIFICATION_DATABASE
+#Landroidx/work/impl/WorkDatabaseKt;
+#QueryInterceptorDatabase.android.kt
+$Landroid/database/DataSetObservable;
+$Landroidx/room/RoomDatabase$Builder;
+$Landroidx/room/RoomDatabase$Builder<
+%Error writing entry to local database
+%Landroid/database/sqlite/SQLiteQuery;
+%Landroidx/room/DatabaseConfiguration;
+%Landroidx/room/RoomDatabase$Callback;
+%Unknown record type in local database
+&Can't downgrade database from version
+&Database error querying filters. appId
+&Landroid/database/sqlite/SQLiteCursor;
+&Landroidx/room/Room$databaseBuilder$3;
+&Landroidx/room/RoomDatabase$Companion;
+&Landroidx/work/impl/WorkDatabase_Impl;
+&findAndInstantiateDatabaseImpl$default
+'Failed to open freshly created database
+'Failed to write entry to local database
+'Landroid/database/DatabaseErrorHandler;
+'Landroid/database/sqlite/SQLiteProgram;
+'Landroidx/room/RoomDatabaseConstructor;
+'Loaded invalid null value from database
+(Error writing entry; local database full
+(Failed to load event from local database
+(Landroid/database/sqlite/SQLiteClosable;
+(Landroid/database/sqlite/SQLiteDatabase;
+(Landroidx/room/RoomDatabase$JournalMode;
+(ROOM_CANNOT_CREATE_VERIFICATION_DATABASE
+(getDelegateDatabase$room_runtime_release
+(setDelegateDatabase$room_runtime_release
+)Database error getting next bundle app id
+)Error reading entries from local database
+)Landroid/database/AbstractWindowedCursor;
+)Landroid/database/sqlite/SQLiteException;
+)Landroid/database/sqlite/SQLiteStatement;
+)Landroidx/leanback/database/CursorMapper;
+)Landroidx/work/impl/WorkDatabaseVersions;
+)[Landroidx/room/RoomDatabase$JournalMode;
+)androidx.room.RoomDatabase$performClear$1
+* is missing in the database configuration.
+*Landroid/database/sqlite/SQLiteOpenHelper;
+*Landroidx/room/RoomDatabase$QueryCallback;
+*Landroidx/sqlite/db/SupportSQLiteDatabase;
++) is missing in the database configuration.
++Attempting to open already closed database.
++Corruption reported by sqlite on database:
++Failed to turn off database read permission
++Landroidx/core/database/CursorWindowCompat;
++Landroidx/room/RoomDatabase$closeBarrier$1;
++Landroidx/room/RoomDatabase$performClear$1;
++Landroidx/work/impl/WorkDatabase$Companion;
++Landroidx/work/impl/WorkDatabasePathHelper;
++androidx.room.RoomDatabase$performClear$1$1
+,Failed to turn off database write permission
+,Landroid/database/sqlite/SQLiteCursorDriver;
+,Landroidx/core/database/DatabaseUtilsCompat;
+,Logging telemetry for logEvent from database
+,androidx.room.RoomDatabaseKt__RoomDatabaseKt
+-Database error querying filter results. appId
+-Database error querying scoped filters. appId
+-Exception while computing database live data.
+-Landroid/database/sqlite/SQLiteFullException;
+-Landroidx/room/RoomDatabase$performClear$1$1;
+-Landroidx/work/impl/WorkDatabaseMigrationsKt;
+-Landroidx/work/impl/WorkDatabasePathHelperKt;
+-Pre-packaged database has an invalid schema:
+-androidx.room.RoomDatabase$performClear$1$1$1
+.Landroidx/room/Room$inMemoryDatabaseBuilder$1;
+.Landroidx/room/RoomDatabaseKt__RoomDatabaseKt;
+/Invalid database parent file, not a directory:
+/Landroid/database/sqlite/SQLiteDiskIOException;
+/Landroidx/room/RoomDatabase$MigrationContainer;
+/Landroidx/room/RoomDatabase$performClear$1$1$1;
+0Failed to load user property from local database
+0Landroidx/core/database/sqlite/SQLiteDatabaseKt;
+0Landroidx/room/support/QueryInterceptorDatabase;
+0Malformed database file, unable to read version.
+1Migrating WorkDatabase to the no-backup directory
+2Landroidx/core/database/sqlite/SQLiteCursorCompat;
+3Error deleting app launch break from local database
+3Landroid/database/sqlite/SQLiteAccessPermException;
+3Landroid/database/sqlite/SQLiteConstraintException;
+3Landroid/database/sqlite/SQLiteTransactionListener;
+4Error opening database for diagnostic signals. appId
+4Failed to turn on database read permission for owner
+4Landroid/database/sqlite/SQLiteTableLockedException;
+4Lokhttp3/internal/publicsuffix/PublicSuffixDatabase;
+5Failed to turn on database write permission for owner
+5Landroidx/core/database/CursorWindowCompat$Api28Impl;
+6Database error while trying to delete uploaded bundles
+6Failed to read events from database in reasonable time
+6Landroid/database/sqlite/SQLiteDatabase$CursorFactory;
+6Landroidx/room/RoomDatabaseKt__RoomDatabase_androidKt;
+6Landroidx/sqlite/db/framework/FrameworkSQLiteDatabase;
+6Null default event parameters; not writing to database
+6Populate EES config from database on cache miss. appId
+6androidx.room.support.QueryInterceptorDatabase$query$1
+6androidx.room.support.QueryInterceptorDatabase$query$2
+6androidx.room.support.QueryInterceptorDatabase$query$3
+6androidx.room.support.QueryInterceptorDatabase$query$4
+7Fewer entries removed from local database than expected
+7Landroid/database/sqlite/SQLiteDatabaseLockedException;
+7Opening the database failed, dropping and recreating it
+8Bad database header, unable to read 4 bytes at offset 60
+8Landroid/database/sqlite/SQLiteDatabaseCorruptException;
+8Landroidx/room/RoomDatabase$PrepackagedDatabaseCallback;
+8Landroidx/room/support/QueryInterceptorDatabase$query$1;
+8Landroidx/room/support/QueryInterceptorDatabase$query$2;
+8Landroidx/room/support/QueryInterceptorDatabase$query$3;
+8Landroidx/room/support/QueryInterceptorDatabase$query$4;
+8androidx.room.support.QueryInterceptorDatabase$execSQL$1
+8androidx.room.support.QueryInterceptorDatabase$execSQL$2
+9Landroid/database/sqlite/SQLiteCantOpenDatabaseException;
+:Landroidx/room/support/QueryInterceptorDatabase$execSQL$1;
+:Landroidx/room/support/QueryInterceptorDatabase$execSQL$2;
+:Landroidx/work/impl/WorkDatabase_AutoMigration_13_14_Impl;
+:Landroidx/work/impl/WorkDatabase_AutoMigration_14_15_Impl;
+:Landroidx/work/impl/WorkDatabase_AutoMigration_16_17_Impl;
+:Landroidx/work/impl/WorkDatabase_AutoMigration_17_18_Impl;
+:Landroidx/work/impl/WorkDatabase_AutoMigration_18_19_Impl;
+:Landroidx/work/impl/WorkDatabase_AutoMigration_19_20_Impl;
+:Landroidx/work/impl/WorkDatabase_AutoMigration_20_21_Impl;
+:Landroidx/work/impl/WorkDatabase_AutoMigration_22_23_Impl;
+:Landroidx/work/impl/WorkDatabase_AutoMigration_23_24_Impl;
+;Cannot create from asset or file for an in-memory database.
+;Failed to load default event parameters from local database
+<'. Was a proper path / name used in Room's database builder?
+<Failed to load conditional user property from local database
+<Landroidx/core/database/sqlite/SQLiteCursorCompat$Api28Impl;
+=Opening the local database failed, dropping and recreating it
+>Cannot create auto-closing database for an in-memory database.
+>New GMP App Id passed in. Removing cached database data. appId
+?Failed to open local database. Events will bypass local storage
+?Unable to acquire a thread to perform the database transaction.
+?androidx.room.support.QueryInterceptorDatabase$endTransaction$1
+?createTransactionContext$RoomDatabaseKt__RoomDatabase_androidKt
+@Landroidx/sqlite/db/framework/FrameworkSQLiteDatabase$Api30Impl;
+@Landroidx/sqlite/db/framework/FrameworkSQLiteDatabase$Companion;
+@startTransactionCoroutine$RoomDatabaseKt__RoomDatabase_androidKt
+ALandroidx/room/support/QueryInterceptorDatabase$endTransaction$1;
+Aandroidx.room.support.QueryInterceptorDatabase$beginTransaction$1
+AutoClosingSupportSQLiteDatabase
+Bandroidx.room.RoomDatabaseKt__RoomDatabaseKt$useReaderConnection$2
+Bandroidx.room.RoomDatabaseKt__RoomDatabaseKt$useWriterConnection$2
+CLandroidx/room/support/QueryInterceptorDatabase$beginTransaction$1;
+CREATED_FROM_DATABASE
+D jobs tracked by WorkManager's database;
+DATABASE_EXTRA_FILES
+DLandroidx/room/RoomDatabaseKt__RoomDatabaseKt$useReaderConnection$2;
+DLandroidx/room/RoomDatabaseKt__RoomDatabaseKt$useWriterConnection$1;
+DLandroidx/room/RoomDatabaseKt__RoomDatabaseKt$useWriterConnection$2;
+Database error
+Database open failed
+Database returned empty set
+Error opening database
+Error querying database.
+FError deleting app launch break from local database in reasonable time
+FUser property too long for local database. Sending directly to service
+Failed to delete database file (
+Fandroidx.room.RoomDatabaseKt__RoomDatabase_androidKt$withTransaction$2
+GEvent is too long for local database. Sending event directly to service
+Gaccess$startTransactionCoroutine$RoomDatabaseKt__RoomDatabase_androidKt
+HLandroidx/room/RoomDatabaseKt__RoomDatabase_androidKt$withTransaction$2;
+ILandroidx/work/impl/WorkDatabase_Impl$createOpenDelegate$_openDelegate$1;
+IPre-Package Database is not supported when an SQLiteDriver is configured.
+Iandroidx.room.support.QueryInterceptorDatabase$setTransactionSuccessful$1
+JAuto Closing Database is not supported when an SQLiteDriver is configured.
+KLandroidx/room/support/QueryInterceptorDatabase$setTransactionSuccessful$1;
+Landroid/database/Cursor;
+Landroid/database/CursorWindow;
+Landroid/database/CursorWrapper;
+Landroid/database/MatrixCursor;
+Landroid/database/Observable;
+Landroid/database/Observable<
+Landroid/database/SQLException;
+Landroidx/room/Database;
+Landroidx/room/DatabaseView;
+Landroidx/room/RoomDatabase;
+Landroidx/room/RoomDatabaseKt;
+Mandroidx.room.support.QueryInterceptorDatabase$beginTransactionNonExclusive$1
+Mandroidx.room.support.QueryInterceptorDatabase$beginTransactionWithListener$1
+OLandroidx/room/support/QueryInterceptorDatabase$beginTransactionNonExclusive$1;
+OLandroidx/room/support/QueryInterceptorDatabase$beginTransactionWithListener$1;
+PrepackagedDatabaseCallback
+QDefault event parameters too long for local database. Sending directly to service
+QRetrieved last session number from database does not contain a valid (long) value
+RConditional user property too long for local database. Sending directly to service
+RLandroidx/room/support/AutoClosingRoomOpenHelper$AutoClosingSupportSQLiteDatabase;
+RoomDatabase.android.kt
+RoomDatabase.kt
+TLandroidx/room/RoomDatabaseKt__RoomDatabase_androidKt$startTransactionCoroutine$2$1;
+Tandroidx.room.RoomDatabaseKt__RoomDatabase_androidKt$startTransactionCoroutine$2$1$1
+Unable to copy database file.
+Unable to open database '
+Unable to read database version.
+VLandroidx/room/RoomDatabaseKt__RoomDatabase_androidKt$startTransactionCoroutine$2$1$1;
+WMust set a non-null database name to a configuration that uses the no backup directory.
+WORK_DATABASE_NAME
+YEnable/disable write ahead logging on the OpenHelper instead of on the database directly.
+YLandroidx/room/support/AutoClosingRoomOpenHelper$AutoClosingSupportSQLiteDatabase$path$1;
+Yandroidx.room.support.QueryInterceptorDatabase$beginTransactionWithListenerNonExclusive$1
+[Landroidx/room/support/QueryInterceptorDatabase$beginTransactionWithListenerNonExclusive$1;
+\Landroidx/room/support/AutoClosingRoomOpenHelper$AutoClosingSupportSQLiteDatabase$version$1;
+]A RoomDatabase cannot be configured with both a SQLiteDriver and a SupportOpenHelper.Factory.
+]Landroidx/room/support/AutoClosingRoomOpenHelper$AutoClosingSupportSQLiteDatabase$pageSize$1;
+^androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$withTransactionContext$transactionBlock$1
+_Landroidx/room/support/AutoClosingRoomOpenHelper$AutoClosingSupportSQLiteDatabase$isReadOnly$1;
+`Cannot access database on a different coroutine context inherited from a suspending transaction.
+`Landroidx/room/RoomDatabaseKt__RoomDatabase_androidKt$withTransactionContext$transactionBlock$1;
+`Landroidx/room/support/AutoClosingRoomOpenHelper$AutoClosingSupportSQLiteDatabase$attachedDbs$1;
+`Landroidx/room/support/AutoClosingRoomOpenHelper$AutoClosingSupportSQLiteDatabase$maximumSize$1;
+access$autoCloseDatabase
+access$configureDatabase
+access$getDATABASE_EXTRA_FILES$p
+access$getDatabase$p
+access$getWorkDatabase$p
+access$setSupportDatabase$p
+addToDatabase
+autoCloseDatabase
+bLandroidx/room/support/AutoClosingRoomOpenHelper$AutoClosingSupportSQLiteDatabase$inTransaction$1;
+closeDatabase
+closeDatabaseIfOpen
+configureDatabase
+copyDatabaseFile
+database
+databaseBuilder
+databaseBuilder$default
+databaseConfiguration
+databaseUrl
+databaseVersion
+delegateDatabase
+deleteDatabase
+deleteDatabaseFile
+deleting the database file:
+findAndInstantiateDatabaseImpl
+firebase_database_url
+getDatabase
+getDatabase$room_runtime_release
+getDatabaseName
+getDatabasePath
+getDefaultDatabasePath
+getMDatabase$annotations
+getReadableDatabase
+getSupportDatabase
+getWorkDatabase
+getWritableDatabase
+getWritableOrReadableDatabase
+inMemoryDatabaseBuilder
+inMemoryDatabaseBuilder$default
+innerGetDatabase
+isDatabaseIntegrityOk
+isDatabaseIntegrityOk()Z
+isSupportDatabaseOpen
+mDatabase
+mWorkDatabase
+migrateDatabase
+onOpenPrepackagedDatabase
+openOrCreateDatabase
+prepackagedDatabaseCallback
+setDatabaseConfiguration
+setDatabaseEnabled
+supportDatabase
+verifyDatabaseFile
+workDatabase
+
+
+ROOM CLASSES:
+--------------------------------------------------------------------------------
+!Landroidx/room/ForeignKey$Action;
+!Landroidx/room/driver/ResultCode;
+!Landroidx/room/util/FtsTableInfo;
+!Landroidx/room/util/RelationUtil;
+![Landroidx/room/FtsOptions$Order;
+"Landroidx/room/ColumnInfo$Collate;
+"Landroidx/room/OnConflictStrategy;
+"Landroidx/room/TransactionElement;
+"Landroidx/room/support/AutoCloser;
+"Landroidx/room/util/MigrationUtil;
+#Landroidx/room/DeleteTable$Entries;
+#Landroidx/room/EntityInsertAdapter;
+#Landroidx/room/EntityInsertAdapter<
+#Landroidx/room/EntityUpsertAdapter;
+#Landroidx/room/ExperimentalRoomApi;
+#Landroidx/room/InvalidationTracker;
+#Landroidx/room/ObservedTableStates;
+#Landroidx/room/RenameTable$Entries;
+#Landroidx/room/TransactionExecutor;
+#Landroidx/room/concurrent/FileLock;
+#Landroidx/room/coroutines/FlowUtil;
+#Landroidx/room/migration/Migration;
+#Landroidx/room/util/FtsTableInfoKt;
+$Landroidx/room/ColumnInfo$Companion;
+$Landroidx/room/DelegatingOpenHelper;
+$Landroidx/room/DeleteColumn$Entries;
+$Landroidx/room/ForeignKey$Companion;
+$Landroidx/room/FtsOptions$MatchInfo;
+$Landroidx/room/RenameColumn$Entries;
+$Landroidx/room/RoomDatabase$Builder;
+$Landroidx/room/RoomDatabase$Builder<
+$Landroidx/room/RoomTrackingLiveData;
+$Landroidx/room/RoomTrackingLiveData<
+$Landroidx/room/concurrent/AtomicsKt;
+$Landroidx/room/util/TableInfo$Index;
+$[Landroidx/room/migration/Migration;
+%Landroidx/room/BuiltInTypeConverters;
+%Landroidx/room/DatabaseConfiguration;
+%Landroidx/room/ObservedTableVersions;
+%Landroidx/room/ProvidedTypeConverter;
+%Landroidx/room/RoomConnectionManager;
+%Landroidx/room/RoomDatabase$Callback;
+%Landroidx/room/SharedSQLiteStatement;
+%Landroidx/room/SkipQueryVerification;
+%Landroidx/room/migration/MigrationKt;
+%Landroidx/room/util/ByteArrayWrapper;
+%Landroidx/room/util/DBUtil__DBUtilKt;
+%Landroidx/room/util/SQLiteResultCode;
+%Landroidx/room/util/SchemaInfoUtilKt;
+%Landroidx/room/util/TableInfo$Column;
+%[Landroidx/room/FtsOptions$MatchInfo;
+&Landroidx/room/EntityInsertionAdapter;
+&Landroidx/room/EntityInsertionAdapter<
+&Landroidx/room/EntityUpsertionAdapter;
+&Landroidx/room/Room$databaseBuilder$3;
+&Landroidx/room/RoomDatabase$Companion;
+&Landroidx/room/RoomOpenDelegateMarker;
+&Landroidx/room/RoomWarnings$Companion;
+&Landroidx/room/TransactionElement$Key;
+'Landroidx/room/AmbiguousColumnResolver;
+'Landroidx/room/BindOnlySQLiteStatement;
+'Landroidx/room/RoomDatabaseConstructor;
+'Landroidx/room/RoomOpenHelper$Delegate;
+'Landroidx/room/RoomSQLiteQuery$Binding;
+'Landroidx/room/concurrent/CloseBarrier;
+'Landroidx/room/migration/MigrationImpl;
+'Landroidx/room/util/ViewInfo$Companion;
+(Landroidx/room/CoroutinesRoom$Companion;
+(Landroidx/room/RoomDatabase$JournalMode;
+(Landroidx/room/RoomOpenHelper$Companion;
+(Landroidx/room/concurrent/ExclusiveLock;
+(Landroidx/room/support/AutoCloser$Watch;
+(Landroidx/room/util/SQLiteStatementUtil;
+(Landroidx/room/util/TableInfo$Companion;
+)Landroidx/room/BaseRoomConnectionManager;
+)Landroidx/room/ProvidedAutoMigrationSpec;
+)Landroidx/room/RoomSQLiteQuery$Companion;
+)Landroidx/room/concurrent/CloseBarrierKt;
+)Landroidx/room/coroutines/ConnectionPool;
+)Landroidx/room/coroutines/Pool$acquire$1;
+)Landroidx/room/util/SQLiteConnectionUtil;
+)Landroidx/room/util/TableInfo$ForeignKey;
+)[Landroidx/room/RoomDatabase$JournalMode;
+)androidx.room.RoomDatabase$performClear$1
+*Landroidx/room/RoomDatabase$QueryCallback;
+*Landroidx/room/RoomLambdaTrackingLiveData;
+*Landroidx/room/concurrent/ReentrantLockKt;
+*Landroidx/room/driver/SupportSQLiteDriver;
+*Landroidx/room/util/TableInfo$CreatedFrom;
++Landroidx/room/BuiltInTypeConverters$State;
++Landroidx/room/EntityDeleteOrUpdateAdapter;
++Landroidx/room/EntityDeleteOrUpdateAdapter<
++Landroidx/room/RoomDatabase$closeBarrier$1;
++Landroidx/room/RoomDatabase$performClear$1;
++Landroidx/room/coroutines/ConnectionPoolKt;
++Landroidx/room/migration/AutoMigrationSpec;
++Landroidx/room/util/ForeignKeyWithSequence;
++Landroidx/room/util/FtsTableInfo$Companion;
++androidx.room.RoomDatabase$performClear$1$1
+,Landroidx/room/InvalidationTracker$Observer;
+,Landroidx/room/OnConflictStrategy$Companion;
+,Landroidx/room/RoomCallableTrackingLiveData;
+,Landroidx/room/coroutines/ConnectionElement;
+,Landroidx/room/paging/CursorSQLiteStatement;
+,Landroidx/room/paging/LimitOffsetDataSource;
+,Landroidx/room/support/AutoCloser$Companion;
+,[Landroidx/room/BuiltInTypeConverters$State;
+,androidx.room.RoomDatabaseKt__RoomDatabaseKt
+-Landroidx/room/AmbiguousColumnResolver$Match;
+-Landroidx/room/ColumnInfo$SQLiteTypeAffinity;
+-Landroidx/room/EntityDeletionOrUpdateAdapter;
+-Landroidx/room/EntityDeletionOrUpdateAdapter<
+-Landroidx/room/EntityUpsertAdapter$Companion;
+-Landroidx/room/InvalidationLiveDataContainer;
+-Landroidx/room/InvalidationTracker$Companion;
+-Landroidx/room/ObservedTableStates$ObserveOp;
+-Landroidx/room/RoomDatabase$performClear$1$1;
+-Landroidx/room/coroutines/ConnectionPoolImpl;
+-Landroidx/room/coroutines/ConnectionWithLock;
+-Landroidx/room/driver/SupportSQLiteStatement;
+-Landroidx/room/util/DBUtil__DBUtil_androidKt;
+-androidx.room.RoomDatabase$performClear$1$1$1
+.Landroidx/room/Room$inMemoryDatabaseBuilder$1;
+.Landroidx/room/RoomDatabaseKt__RoomDatabaseKt;
+.Landroidx/room/RoomTrackingLiveData$refresh$1;
+.Landroidx/room/driver/SupportSQLiteConnection;
+.Landroidx/room/paging/LimitOffsetDataSource$1;
+.Landroidx/room/util/TableInfo$Index$Companion;
+.[Landroidx/room/ObservedTableStates$ObserveOp;
+.[Landroidx/room/coroutines/ConnectionWithLock;
+/Landroidx/room/MultiInstanceInvalidationClient;
+/Landroidx/room/ObservedTableVersions$collect$1;
+/Landroidx/room/RoomDatabase$MigrationContainer;
+/Landroidx/room/RoomDatabase$performClear$1$1$1;
+/Landroidx/room/RoomOpenHelper$ValidationResult;
+/Landroidx/room/RoomTrackingLiveData$observer$1;
+/Landroidx/room/RoomTrackingLiveData$onActive$1;
+/Landroidx/room/TriggerBasedInvalidationTracker;
+/Landroidx/room/concurrent/Atomics_jvmAndroidKt;
+/Landroidx/room/coroutines/PooledConnectionImpl;
+/Landroidx/room/support/QueryInterceptorProgram;
+/Landroidx/room/util/TableInfo$Column$Companion;
+0Landroidx/room/AmbiguousColumnResolver$Solution;
+0Landroidx/room/EntityUpsertionAdapter_androidKt;
+0Landroidx/room/MultiInstanceInvalidationService;
+0Landroidx/room/Transactor$SQLiteTransactionType;
+0Landroidx/room/coroutines/ConnectionElement$Key;
+0Landroidx/room/coroutines/RawConnectionAccessor;
+0Landroidx/room/support/QueryInterceptorDatabase;
+1Landroidx/room/BindOnlySQLiteStatement$Companion;
+1Landroidx/room/IMultiInstanceInvalidationService;
+1Landroidx/room/InvalidationTracker$addObserver$1;
+1Landroidx/room/RewriteQueriesToDropUnusedColumns;
+1Landroidx/room/RoomOpenDelegate$ValidationResult;
+1Landroidx/room/support/AutoClosingRoomOpenHelper;
+1Landroidx/room/support/PrePackagedCopyOpenHelper;
+1Landroidx/room/support/QueryInterceptorStatement;
+1Landroidx/room/util/RelationUtil__RelationUtilKt;
+1[Landroidx/room/Transactor$SQLiteTransactionType;
+2Landroidx/room/CoroutinesRoom$Companion$execute$1;
+2Landroidx/room/CoroutinesRoom$Companion$execute$2;
+2Landroidx/room/CoroutinesRoom$Companion$execute$3;
+2Landroidx/room/IMultiInstanceInvalidationCallback;
+2Landroidx/room/InvalidationTracker$syncBlocking$1;
+2Landroidx/room/RoomTrackingLiveData$invalidated$1;
+2Landroidx/room/concurrent/ExclusiveLock$Companion;
+2Landroidx/room/driver/SupportSQLiteConnectionPool;
+2Landroidx/room/support/QueryInterceptorOpenHelper;
+3Landroidx/room/BaseRoomConnectionManager$Companion;
+3Landroidx/room/InvalidationTracker$setAutoCloser$1;
+3Landroidx/room/concurrent/ThreadLocal_jvmAndroidKt;
+3Landroidx/room/util/CursorUtil$wrapMappedColumns$2;
+4Landroidx/room/AmbiguousColumnResolver$ResultColumn;
+4Landroidx/room/CoroutinesRoom$Companion$execute$4$1;
+4Landroidx/room/InvalidationTracker$implementation$1;
+4Landroidx/room/InvalidationTracker$removeObserver$1;
+4Landroidx/room/RoomSQLiteQuery$Companion$copyFrom$1;
+4Landroidx/room/concurrent/Synchronized_jvmAndroidKt;
+4Landroidx/room/driver/SupportSQLitePooledConnection;
+5Landroidx/room/concurrent/ReentrantLock_jvmAndroidKt;
+6Landroidx/room/BaseRoomConnectionManager$WhenMappings;
+6Landroidx/room/IMultiInstanceInvalidationService$Stub;
+6Landroidx/room/RoomConnectionManager$NoOpOpenDelegate;
+6Landroidx/room/RoomDatabaseKt__RoomDatabase_androidKt;
+6Landroidx/room/paging/CursorSQLiteStatement$Companion;
+7Landroidx/room/BaseRoomConnectionManager$DriverWrapper;
+7Landroidx/room/IMultiInstanceInvalidationCallback$Stub;
+7Landroidx/room/driver/SupportSQLiteStatement$Companion;
+7Landroidx/room/driver/SupportSQLiteStatement_androidKt;
+7Landroidx/room/util/DBUtil__DBUtilKt$internalPerform$2;
+8Landroidx/room/CoroutinesRoom$Companion$execute$4$job$1;
+8Landroidx/room/RoomDatabase$PrepackagedDatabaseCallback;
+8Landroidx/room/support/AutoClosingRoomOpenHelperFactory;
+8Landroidx/room/support/PrePackagedCopyOpenHelperFactory;
+8Landroidx/room/support/QueryInterceptorDatabase$query$1;
+8Landroidx/room/support/QueryInterceptorDatabase$query$2;
+8Landroidx/room/support/QueryInterceptorDatabase$query$3;
+8Landroidx/room/support/QueryInterceptorDatabase$query$4;
+8Landroidx/room/util/MappedColumnsSQLiteStatementWrapper;
+9Landroidx/room/IMultiInstanceInvalidationService$Default;
+9Landroidx/room/InvalidationTracker$refreshVersionsSync$1;
+9Landroidx/room/MultiInstanceInvalidationService$binder$1;
+9Landroidx/room/TriggerBasedInvalidationTracker$Companion;
+9Landroidx/room/support/QueryInterceptorOpenHelperFactory;
+9Landroidx/room/util/RelationUtil__RelationUtil_androidKt;
+9Landroidx/room/util/SQLiteStatementUtil__StatementUtilKt;
+:Landroidx/room/AmbiguousColumnResolver$Solution$Companion;
+:Landroidx/room/IMultiInstanceInvalidationCallback$Default;
+:Landroidx/room/MultiInstanceInvalidationClient$observer$1;
+:Landroidx/room/support/QueryInterceptorDatabase$execSQL$1;
+:Landroidx/room/support/QueryInterceptorDatabase$execSQL$2;
+;Landroidx/room/coroutines/ConnectionPool$RollbackException;
+;Landroidx/room/support/QueryInterceptorStatement$execute$1;
+<Landroidx/room/IMultiInstanceInvalidationService$Stub$Proxy;
+<Landroidx/room/TriggerBasedInvalidationTracker$createFlow$1;
+<Landroidx/room/coroutines/AndroidSQLiteDriverConnectionPool;
+<Landroidx/room/coroutines/PooledConnectionImpl$WhenMappings;
+=Landroidx/room/IMultiInstanceInvalidationCallback$Stub$Proxy;
+=Landroidx/room/coroutines/ConnectionPoolImpl$useConnection$1;
+=Landroidx/room/coroutines/ConnectionPoolImpl$useConnection$2;
+=Landroidx/room/coroutines/ConnectionPoolImpl$useConnection$4;
+=Landroidx/room/coroutines/FlowUtil$createFlow$$inlined$map$1;
+=Landroidx/room/coroutines/PooledConnectionImpl$transaction$1;
+=Landroidx/room/coroutines/PooledConnectionImpl$usePrepared$1;
+>Landroidx/room/TriggerBasedInvalidationTracker$createFlow$1$1;
+>Landroidx/room/TriggerBasedInvalidationTracker$createFlow$1$2;
+>Landroidx/room/TriggerBasedInvalidationTracker$createFlow$1$2<
+>Landroidx/room/TriggerBasedInvalidationTracker$syncTriggers$1;
+>Landroidx/room/coroutines/AndroidSQLiteDriverPooledConnection;
+?Landroidx/room/MultiInstanceInvalidationService$callbackList$1;
+?Landroidx/room/RoomConnectionManager$SupportOpenHelperCallback;
+?Landroidx/room/coroutines/FlowUtil$createFlow$$inlined$map$1$2;
+?Landroidx/room/coroutines/PooledConnectionImpl$TransactionImpl;
+?Landroidx/room/coroutines/PooledConnectionImpl$TransactionImpl<
+?Landroidx/room/coroutines/PooledConnectionImpl$TransactionItem;
+?Landroidx/room/coroutines/RunBlockingUninterruptible_androidKt;
+?Landroidx/room/util/DBUtil__DBUtil_androidKt$performBlocking$1;
+?createTransactionContext$RoomDatabaseKt__RoomDatabase_androidKt
+@Landroidx/room/InvalidationTracker$MultiInstanceClientInitState;
+@Landroidx/room/TriggerBasedInvalidationTracker$syncTriggers$2$1;
+@Landroidx/room/coroutines/PooledConnectionImpl$StatementWrapper;
+@Landroidx/room/coroutines/PooledConnectionImpl$endTransaction$1;
+@Landroidx/room/util/DBUtil__DBUtilKt$internalPerform$2$result$1;
+@startTransactionCoroutine$RoomDatabaseKt__RoomDatabase_androidKt
+ALandroidx/room/coroutines/FlowUtil$createFlow$$inlined$map$1$2$1;
+ALandroidx/room/driver/SupportSQLitePooledConnection$WhenMappings;
+ALandroidx/room/support/AutoClosingRoomOpenHelper$KeepAliveCursor;
+ALandroidx/room/support/QueryInterceptorDatabase$endTransaction$1;
+ALandroidx/room/support/QueryInterceptorStatement$executeInsert$1;
+ALandroidx/room/util/DBUtil__DBUtil_androidKt$performSuspending$1;
+ALandroidx/room/util/SQLiteStatementUtil__StatementUtil_androidKt;
+BLandroidx/room/TriggerBasedInvalidationTracker$syncTriggers$2$1$1;
+BLandroidx/room/coroutines/ConnectionPoolImpl$acquireWithTimeout$2;
+BLandroidx/room/coroutines/PooledConnectionImpl$beginTransaction$1;
+BLandroidx/room/driver/SupportSQLitePooledConnection$transaction$1;
+Bandroidx.room.RoomDatabaseKt__RoomDatabaseKt$useReaderConnection$2
+Bandroidx.room.RoomDatabaseKt__RoomDatabaseKt$useWriterConnection$2
+CLandroidx/room/MultiInstanceInvalidationClient$serviceConnection$1;
+CLandroidx/room/TriggerBasedInvalidationTracker$stopTrackingTable$1;
+CLandroidx/room/support/AutoCloser$decrementCountAndScheduleClose$2;
+CLandroidx/room/support/QueryInterceptorDatabase$beginTransaction$1;
+CLandroidx/room/util/TableInfoKt$toStringCommon$$inlined$sortedBy$1;
+CLandroidx/room/util/TableInfoKt$toStringCommon$$inlined$sortedBy$2;
+DLandroidx/room/BaseRoomConnectionManager$DriverWrapper$openLocked$2;
+DLandroidx/room/RoomDatabaseKt__RoomDatabaseKt$useReaderConnection$2;
+DLandroidx/room/RoomDatabaseKt__RoomDatabaseKt$useWriterConnection$1;
+DLandroidx/room/RoomDatabaseKt__RoomDatabaseKt$useWriterConnection$2;
+DLandroidx/room/TriggerBasedInvalidationTracker$notifyInvalidation$1;
+DLandroidx/room/TriggerBasedInvalidationTracker$startTrackingTable$1;
+ELandroidx/room/TriggerBasedInvalidationTracker$createFlow$1$2$emit$1;
+ELandroidx/room/TriggerBasedInvalidationTracker$refreshInvalidation$1;
+FLandroidx/room/MultiInstanceInvalidationClient$invalidationCallback$1;
+FLandroidx/room/support/QueryInterceptorStatement$simpleQueryForLong$1;
+FLandroidx/room/util/DBUtil__DBUtil_androidKt$compatCoroutineExecute$2;
+Fandroidx.room.RoomDatabaseKt__RoomDatabase_androidKt$withTransaction$2
+GLandroidx/room/support/QueryInterceptorStatement$executeUpdateDelete$1;
+Gaccess$startTransactionCoroutine$RoomDatabaseKt__RoomDatabase_androidKt
+HLandroidx/room/RoomDatabaseKt__RoomDatabase_androidKt$withTransaction$2;
+HLandroidx/room/TriggerBasedInvalidationTracker$checkInvalidatedTables$1;
+HLandroidx/room/support/QueryInterceptorStatement$simpleQueryForString$1;
+JLandroidx/room/RoomConnectionManager$installOnOpenCallback$newCallbacks$1;
+JLandroidx/room/TriggerBasedInvalidationTracker$refreshInvalidationAsync$3;
+JLandroidx/room/coroutines/PooledConnectionImpl$TransactionImpl$rollback$1;
+KLandroidx/room/coroutines/AndroidSQLiteDriverPooledConnection$WhenMappings;
+KLandroidx/room/driver/SupportSQLiteStatement$SupportAndroidSQLiteStatement;
+KLandroidx/room/support/QueryInterceptorDatabase$setTransactionSuccessful$1;
+LLandroidx/room/coroutines/AndroidSQLiteDriverPooledConnection$transaction$1;
+LLandroidx/room/driver/SupportSQLitePooledConnection$SupportSQLiteTransactor;
+Landroidx/room/AutoMigration;
+Landroidx/room/ColumnInfo;
+Landroidx/room/ConstructedBy;
+Landroidx/room/CoroutinesRoom;
+Landroidx/room/Dao;
+Landroidx/room/Database;
+Landroidx/room/DatabaseView;
+Landroidx/room/Delete;
+Landroidx/room/DeleteColumn;
+Landroidx/room/DeleteTable;
+Landroidx/room/Embedded;
+Landroidx/room/Entity;
+Landroidx/room/ForeignKey;
+Landroidx/room/Fts3;
+Landroidx/room/Fts4;
+Landroidx/room/FtsOptions$Order;
+Landroidx/room/FtsOptions;
+Landroidx/room/Ignore;
+Landroidx/room/Index$Order;
+Landroidx/room/Index;
+Landroidx/room/Insert;
+Landroidx/room/Junction;
+Landroidx/room/MapColumn;
+Landroidx/room/MapInfo;
+Landroidx/room/ObserverWrapper;
+Landroidx/room/PooledConnection;
+Landroidx/room/PrimaryKey;
+Landroidx/room/Query;
+Landroidx/room/R;
+Landroidx/room/RawQuery;
+Landroidx/room/Relation;
+Landroidx/room/RenameColumn;
+Landroidx/room/RenameTable;
+Landroidx/room/Room;
+Landroidx/room/RoomDatabase;
+Landroidx/room/RoomDatabaseKt;
+Landroidx/room/RoomMasterTable;
+Landroidx/room/RoomOpenDelegate;
+Landroidx/room/RoomOpenHelper;
+Landroidx/room/RoomRawQuery;
+Landroidx/room/RoomSQLiteQuery;
+Landroidx/room/RoomWarnings;
+Landroidx/room/Transaction;
+Landroidx/room/TransactionScope;
+Landroidx/room/TransactionScope<
+Landroidx/room/Transactor;
+Landroidx/room/TransactorKt;
+Landroidx/room/TypeConverter;
+Landroidx/room/TypeConverters;
+Landroidx/room/Update;
+Landroidx/room/Upsert;
+Landroidx/room/WeakObserver;
+Landroidx/room/a;
+Landroidx/room/b;
+Landroidx/room/c;
+Landroidx/room/coroutines/Pool;
+Landroidx/room/coroutines/a;
+Landroidx/room/support/a;
+Landroidx/room/support/b;
+Landroidx/room/support/c;
+Landroidx/room/support/d;
+Landroidx/room/support/e;
+Landroidx/room/support/f;
+Landroidx/room/util/CursorUtil;
+Landroidx/room/util/DBUtil;
+Landroidx/room/util/FileUtil;
+Landroidx/room/util/KClassUtil;
+Landroidx/room/util/StringUtil;
+Landroidx/room/util/TableInfo;
+Landroidx/room/util/TableInfoKt;
+Landroidx/room/util/UUIDUtil;
+Landroidx/room/util/ViewInfo;
+Landroidx/room/util/ViewInfoKt;
+MLandroidx/room/util/SchemaInfoUtilKt$readIndex$lambda$13$$inlined$sortedBy$1;
+MLandroidx/room/util/SchemaInfoUtilKt$readIndex$lambda$13$$inlined$sortedBy$2;
+NLandroidx/room/util/DBUtil__DBUtil_androidKt$performInTransactionSuspending$2;
+NLandroidx/room/util/DBUtil__DBUtil_androidKt$performInTransactionSuspending$3;
+OLandroidx/room/TriggerBasedInvalidationTracker$syncTriggers$2$1$1$WhenMappings;
+OLandroidx/room/support/QueryInterceptorDatabase$beginTransactionNonExclusive$1;
+OLandroidx/room/support/QueryInterceptorDatabase$beginTransactionWithListener$1;
+PLandroidx/room/MultiInstanceInvalidationClient$createFlow$$inlined$mapNotNull$1;
+PLandroidx/room/driver/SupportSQLiteStatement$SupportOtherAndroidSQLiteStatement;
+RLandroidx/room/MultiInstanceInvalidationClient$createFlow$$inlined$mapNotNull$1$2;
+RLandroidx/room/support/AutoClosingRoomOpenHelper$AutoClosingSupportSQLiteDatabase;
+RoomDatabase.android.kt
+RoomDatabase.kt
+SLandroidx/room/support/AutoClosingRoomOpenHelper$AutoClosingSupportSQLiteStatement;
+TLandroidx/room/MultiInstanceInvalidationClient$createFlow$$inlined$mapNotNull$1$2$1;
+TLandroidx/room/RoomDatabaseKt__RoomDatabase_androidKt$startTransactionCoroutine$2$1;
+Tandroidx.room.RoomDatabaseKt__RoomDatabase_androidKt$startTransactionCoroutine$2$1$1
+This builder has already been configured with a CoroutineContext. A RoomDatabasecan only be configured with either an Executor or a CoroutineContext.
+This builder has already been configured with an Executor. A RoomDatabase canonly be configured with either an Executor or a CoroutineContext.
+ULandroidx/room/driver/SupportSQLiteStatement$SupportAndroidSQLiteStatement$Companion;
+VLandroidx/room/RoomDatabaseKt__RoomDatabase_androidKt$startTransactionCoroutine$2$1$1;
+WLandroidx/room/MultiInstanceInvalidationClient$invalidationCallback$1$onInvalidation$1;
+YLandroidx/room/support/AutoClosingRoomOpenHelper$AutoClosingSupportSQLiteDatabase$path$1;
+ZLandroidx/room/TriggerBasedInvalidationTracker$notifyInvalidation$2$invalidatedTableIds$1;
+ZLandroidx/room/driver/SupportSQLiteStatement$SupportAndroidSQLiteStatement$ensureCursor$1;
+[Landroidx/room/AutoMigration;
+[Landroidx/room/DeleteColumn;
+[Landroidx/room/DeleteTable;
+[Landroidx/room/ForeignKey;
+[Landroidx/room/Index$Order;
+[Landroidx/room/Index;
+[Landroidx/room/RenameColumn;
+[Landroidx/room/RenameTable;
+[Landroidx/room/support/PrePackagedCopyOpenHelper$createFrameworkOpenHelper$configuration$1;
+[Landroidx/room/support/QueryInterceptorDatabase$beginTransactionWithListenerNonExclusive$1;
+\Landroidx/room/TriggerBasedInvalidationTracker$notifyInvalidation$2$invalidatedTableIds$1$1;
+\Landroidx/room/coroutines/AndroidSQLiteDriverPooledConnection$AndroidSQLiteDriverTransactor;
+\Landroidx/room/coroutines/RunBlockingUninterruptible_androidKt$runBlockingUninterruptible$1;
+\Landroidx/room/support/AutoClosingRoomOpenHelper$AutoClosingSupportSQLiteDatabase$version$1;
+]A RoomDatabase cannot be configured with both a SQLiteDriver and a SupportOpenHelper.Factory.
+]Landroidx/room/support/AutoClosingRoomOpenHelper$AutoClosingSupportSQLiteDatabase$pageSize$1;
+]Landroidx/room/support/AutoClosingRoomOpenHelper$AutoClosingSupportSQLiteStatement$Companion;
+^Landroidx/room/coroutines/RunBlockingUninterruptible_androidKt$runBlockingUninterruptible$1$1;
+^Landroidx/room/coroutines/RunBlockingUninterruptible_androidKt$runBlockingUninterruptible$1$2;
+^androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$withTransactionContext$transactionBlock$1
+_Landroidx/room/support/AutoClosingRoomOpenHelper$AutoClosingSupportSQLiteDatabase$isReadOnly$1;
+`Landroidx/room/RoomDatabaseKt__RoomDatabase_androidKt$withTransactionContext$transactionBlock$1;
+`Landroidx/room/support/AutoClosingRoomOpenHelper$AutoClosingSupportSQLiteDatabase$attachedDbs$1;
+`Landroidx/room/support/AutoClosingRoomOpenHelper$AutoClosingSupportSQLiteDatabase$maximumSize$1;
+bLandroidx/room/support/AutoClosingRoomOpenHelper$AutoClosingSupportSQLiteDatabase$inTransaction$1;
+cLandroidx/room/util/DBUtil__DBUtil_androidKt$performSuspending$lambda$1$$inlined$internalPerform$1;
+eLandroidx/room/util/DBUtil__DBUtil_androidKt$performSuspending$lambda$1$$inlined$internalPerform$1$1;
+hLandroidx/room/util/DBUtil__DBUtil_androidKt$performBlocking$1$invokeSuspend$$inlined$internalPerform$1;
+jLandroidx/room/support/AutoClosingRoomOpenHelper$AutoClosingSupportSQLiteDatabase$isDatabaseIntegrityOk$1;
+jLandroidx/room/util/DBUtil__DBUtil_androidKt$performBlocking$1$invokeSuspend$$inlined$internalPerform$1$1;
+kLandroidx/room/support/AutoClosingRoomOpenHelper$AutoClosingSupportSQLiteDatabase$yieldIfContendedSafely$1;
+kLandroidx/room/support/AutoClosingRoomOpenHelper$AutoClosingSupportSQLiteDatabase$yieldIfContendedSafely$2;
+nLandroidx/room/support/AutoClosingRoomOpenHelper$AutoClosingSupportSQLiteDatabase$isDbLockedByCurrentThread$1;
+oLandroidx/room/support/AutoClosingRoomOpenHelper$AutoClosingSupportSQLiteDatabase$isWriteAheadLoggingEnabled$1;
+wLandroidx/room/util/DBUtil__DBUtil_androidKt$performInTransactionSuspending$2$invokeSuspend$$inlined$internalPerform$1;
+wLandroidx/room/util/DBUtil__DBUtil_androidKt$performInTransactionSuspending$3$invokeSuspend$$inlined$internalPerform$1;
+was required but not found. Please provide the necessary Migration path via RoomDatabase.Builder.addMigration(...) or allow for destructive migrations via one of the RoomDatabase.Builder.fallbackToDestructiveMigration* functions.
+was required but not found. Please provide the necessary Migration path via RoomDatabase.Builder.addMigration(Migration ...) or allow for destructive migrations via one of the RoomDatabase.Builder.fallbackToDestructiveMigration* methods.
+yLandroidx/room/util/DBUtil__DBUtil_androidKt$performInTransactionSuspending$2$invokeSuspend$$inlined$internalPerform$1$1;
+yLandroidx/room/util/DBUtil__DBUtil_androidKt$performInTransactionSuspending$3$invokeSuspend$$inlined$internalPerform$1$1;
+zLandroidx/room/util/DBUtil__DBUtil_androidKt$performSuspending$$inlined$compatCoroutineExecute$DBUtil__DBUtil_androidKt$1;
+
+
+PREFERENCE FILES:
+--------------------------------------------------------------------------------
+!OnPreferenceStartFragmentCallback
+!activity_choser_model_history.xml
+!getGroupReferenceSlotStartAddress
+"Landroidx/datastore/preferences/R;
+"SharedPreferencesMigration$default
+"Unable to parse preferences proto.
+#Landroid/content/SharedPreferences;
+#LeanbackPreference_PreferenceScreen
+$Preference_PreferenceScreen_Material
+$sharedPreferencesName
+%PreferenceTheme_dialogPreferenceStyle
+%PreferenceTheme_preferenceScreenStyle
+%PreferenceTheme_switchPreferenceStyle
+%SharedPreferencesMigration.android.kt
+&Landroidx/preference/PreferenceScreen;
+&PreferenceTheme_seekBarPreferenceStyle
+'Landroidx/datastore/preferences/core/R;
+'PreferenceTheme_checkBoxPreferenceStyle
+'PreferenceTheme_dropdownPreferenceStyle
+'PreferenceTheme_editTextPreferenceStyle
+(INTENT_CATEGORY_NOTIFICATION_PREFERENCES
+)freeze$datastore_preferences_core_release
+)getKey$datastore_preferences_core_release
+*Landroid/content/SharedPreferences$Editor;
++Landroidx/core/content/SharedPreferencesKt;
++Landroidx/core/text/util/LocalePreferences;
++getValue$datastore_preferences_core_release
+, otherPreferencesText=
+-Landroidx/core/text/util/LocalePreferences$1;
+-Landroidx/datastore/preferences/protobuf/Any;
+-Landroidx/datastore/preferences/protobuf/Api;
+-PreferencesSerializer does not support type:
+.Landroidx/datastore/preferences/protobuf/Enum;
+.Landroidx/datastore/preferences/protobuf/Type;
+.Landroidx/datastore/preferences/protobuf/Utf8;
+.preferences_pb
+.xml
+.xml:
+/Landroidx/core/content/SharedPreferencesCompat;
+/Landroidx/datastore/preferences/protobuf/Any$1;
+/Landroidx/datastore/preferences/protobuf/Api$1;
+/Landroidx/datastore/preferences/protobuf/Empty;
+/Landroidx/datastore/preferences/protobuf/Field;
+/Landroidx/datastore/preferences/protobuf/Mixin;
+/Landroidx/datastore/preferences/protobuf/Value;
+/setUnchecked$datastore_preferences_core_release
+0Landroidx/datastore/preferences/protobuf/Enum$1;
+0Landroidx/datastore/preferences/protobuf/Method;
+0Landroidx/datastore/preferences/protobuf/Option;
+0Landroidx/datastore/preferences/protobuf/Parser;
+0Landroidx/datastore/preferences/protobuf/Parser<
+0Landroidx/datastore/preferences/protobuf/Reader;
+0Landroidx/datastore/preferences/protobuf/Schema;
+0Landroidx/datastore/preferences/protobuf/Schema<
+0Landroidx/datastore/preferences/protobuf/Struct;
+0Landroidx/datastore/preferences/protobuf/Syntax;
+0Landroidx/datastore/preferences/protobuf/Type$1;
+0Landroidx/datastore/preferences/protobuf/Writer;
+0android.intent.category.NOTIFICATION_PREFERENCES
+1Do mutate preferences once returned to DataStore.
+1Landroidx/datastore/preferences/PreferencesProto;
+1Landroidx/datastore/preferences/core/Preferences;
+1Landroidx/datastore/preferences/protobuf/Android;
+1Landroidx/datastore/preferences/protobuf/Empty$1;
+1Landroidx/datastore/preferences/protobuf/Field$1;
+1Landroidx/datastore/preferences/protobuf/Mixin$1;
+1Landroidx/datastore/preferences/protobuf/Value$1;
+1[Landroidx/datastore/preferences/protobuf/Syntax;
+1androidx.datastore.preferences.protobuf.Extension
+1checkNotFrozen$datastore_preferences_core_release
+2Cannot serialize bundle value to SharedPreferences
+2Landroidx/datastore/preferences/protobuf/AnyProto;
+2Landroidx/datastore/preferences/protobuf/ApiProto;
+2Landroidx/datastore/preferences/protobuf/Duration;
+2Landroidx/datastore/preferences/protobuf/FieldSet;
+2Landroidx/datastore/preferences/protobuf/FieldSet<
+2Landroidx/datastore/preferences/protobuf/InlineMe;
+2Landroidx/datastore/preferences/protobuf/Internal;
+2Landroidx/datastore/preferences/protobuf/JavaType;
+2Landroidx/datastore/preferences/protobuf/Method$1;
+2Landroidx/datastore/preferences/protobuf/Option$1;
+2Landroidx/datastore/preferences/protobuf/Protobuf;
+2Landroidx/datastore/preferences/protobuf/Struct$1;
+2Landroidx/datastore/preferences/protobuf/Syntax$1;
+2Lcom/uptodown/tv/preferences/TvPrivacyPreferences;
+3Landroidx/datastore/preferences/PreferencesProto$1;
+3Landroidx/datastore/preferences/core/AtomicBoolean;
+3Landroidx/datastore/preferences/core/PreferencesKt;
+3Landroidx/datastore/preferences/protobuf/BoolValue;
+3Landroidx/datastore/preferences/protobuf/EnumValue;
+3Landroidx/datastore/preferences/protobuf/FieldInfo;
+3Landroidx/datastore/preferences/protobuf/FieldMask;
+3Landroidx/datastore/preferences/protobuf/FieldType;
+3Landroidx/datastore/preferences/protobuf/LazyField;
+3Landroidx/datastore/preferences/protobuf/ListValue;
+3Landroidx/datastore/preferences/protobuf/NullValue;
+3Landroidx/datastore/preferences/protobuf/OneofInfo;
+3Landroidx/datastore/preferences/protobuf/Timestamp;
+3Landroidx/datastore/preferences/protobuf/TypeProto;
+3[Landroidx/datastore/preferences/protobuf/JavaType;
+4Landroidx/datastore/preferences/protobuf/ByteOutput;
+4Landroidx/datastore/preferences/protobuf/ByteString;
+4Landroidx/datastore/preferences/protobuf/BytesValue;
+4Landroidx/datastore/preferences/protobuf/Duration$1;
+4Landroidx/datastore/preferences/protobuf/EmptyProto;
+4Landroidx/datastore/preferences/protobuf/Field$Kind;
+4Landroidx/datastore/preferences/protobuf/FieldSet$1;
+4Landroidx/datastore/preferences/protobuf/FloatValue;
+4Landroidx/datastore/preferences/protobuf/Int32Value;
+4Landroidx/datastore/preferences/protobuf/Int64Value;
+4Landroidx/datastore/preferences/protobuf/SchemaUtil;
+4Landroidx/datastore/preferences/protobuf/UnsafeUtil;
+4Landroidx/datastore/preferences/protobuf/WireFormat;
+4Lcom/uptodown/tv/preferences/TvPrivacyPreferences$a;
+4[Landroidx/datastore/preferences/protobuf/FieldInfo;
+4[Landroidx/datastore/preferences/protobuf/FieldType;
+4[Landroidx/datastore/preferences/protobuf/NullValue;
+4getPreferencesMap$datastore_preferences_core_release
+5Landroidx/core/text/util/LocalePreferences$Api24Impl;
+5Landroidx/core/text/util/LocalePreferences$Api33Impl;
+5Landroidx/core/text/util/LocalePreferences$HourCycle;
+5Landroidx/datastore/migrations/SharedPreferencesView;
+5Landroidx/datastore/preferences/PreferencesMapCompat;
+5Landroidx/datastore/preferences/core/Preferences$Key;
+5Landroidx/datastore/preferences/core/Preferences$Key<
+5Landroidx/datastore/preferences/core/PreferencesKeys;
+5Landroidx/datastore/preferences/protobuf/Any$Builder;
+5Landroidx/datastore/preferences/protobuf/Api$Builder;
+5Landroidx/datastore/preferences/protobuf/BoolValue$1;
+5Landroidx/datastore/preferences/protobuf/DoubleValue;
+5Landroidx/datastore/preferences/protobuf/EnumValue$1;
+5Landroidx/datastore/preferences/protobuf/FieldInfo$1;
+5Landroidx/datastore/preferences/protobuf/FieldMask$1;
+5Landroidx/datastore/preferences/protobuf/FieldType$1;
+5Landroidx/datastore/preferences/protobuf/LazyField$1;
+5Landroidx/datastore/preferences/protobuf/ListValue$1;
+5Landroidx/datastore/preferences/protobuf/MessageInfo;
+5Landroidx/datastore/preferences/protobuf/MessageLite;
+5Landroidx/datastore/preferences/protobuf/NullValue$1;
+5Landroidx/datastore/preferences/protobuf/ProtoSyntax;
+5Landroidx/datastore/preferences/protobuf/StringValue;
+5Landroidx/datastore/preferences/protobuf/StructProto;
+5Landroidx/datastore/preferences/protobuf/Timestamp$1;
+5Landroidx/datastore/preferences/protobuf/UInt32Value;
+5Landroidx/datastore/preferences/protobuf/UInt64Value;
+5[Landroidx/datastore/preferences/protobuf/ByteString;
+5[Landroidx/datastore/preferences/protobuf/Field$Kind;
+6Landroidx/datastore/preferences/core/Preferences$Pair;
+6Landroidx/datastore/preferences/core/Preferences$Pair<
+6Landroidx/datastore/preferences/protobuf/AnyOrBuilder;
+6Landroidx/datastore/preferences/protobuf/ApiOrBuilder;
+6Landroidx/datastore/preferences/protobuf/BinaryReader;
+6Landroidx/datastore/preferences/protobuf/BinaryWriter;
+6Landroidx/datastore/preferences/protobuf/ByteString$1;
+6Landroidx/datastore/preferences/protobuf/ByteString$2;
+6Landroidx/datastore/preferences/protobuf/BytesValue$1;
+6Landroidx/datastore/preferences/protobuf/Enum$Builder;
+6Landroidx/datastore/preferences/protobuf/Field$Kind$1;
+6Landroidx/datastore/preferences/protobuf/FloatValue$1;
+6Landroidx/datastore/preferences/protobuf/Int32Value$1;
+6Landroidx/datastore/preferences/protobuf/Int64Value$1;
+6Landroidx/datastore/preferences/protobuf/IntArrayList;
+6Landroidx/datastore/preferences/protobuf/MapEntryLite;
+6Landroidx/datastore/preferences/protobuf/MapEntryLite<
+6Landroidx/datastore/preferences/protobuf/MapFieldLite;
+6Landroidx/datastore/preferences/protobuf/MapFieldLite<
+6Landroidx/datastore/preferences/protobuf/Type$Builder;
+6Landroidx/datastore/preferences/protobuf/UnsafeUtil$1;
+6Landroidx/datastore/preferences/protobuf/WireFormat$1;
+6Unable to delete migrated keys from SharedPreferences.
+6[Landroidx/datastore/preferences/protobuf/ProtoSyntax;
+7Landroidx/datastore/preferences/PreferencesProto$Value;
+7Landroidx/datastore/preferences/protobuf/ArrayDecoders;
+7Landroidx/datastore/preferences/protobuf/DoubleValue$1;
+7Landroidx/datastore/preferences/protobuf/DurationProto;
+7Landroidx/datastore/preferences/protobuf/Empty$Builder;
+7Landroidx/datastore/preferences/protobuf/EnumOrBuilder;
+7Landroidx/datastore/preferences/protobuf/ExtensionLite;
+7Landroidx/datastore/preferences/protobuf/ExtensionLite<
+7Landroidx/datastore/preferences/protobuf/Field$Builder;
+7Landroidx/datastore/preferences/protobuf/LazyFieldLite;
+7Landroidx/datastore/preferences/protobuf/LongArrayList;
+7Landroidx/datastore/preferences/protobuf/MessageSchema;
+7Landroidx/datastore/preferences/protobuf/MessageSchema<
+7Landroidx/datastore/preferences/protobuf/Mixin$Builder;
+7Landroidx/datastore/preferences/protobuf/SchemaFactory;
+7Landroidx/datastore/preferences/protobuf/SourceContext;
+7Landroidx/datastore/preferences/protobuf/StringValue$1;
+7Landroidx/datastore/preferences/protobuf/TypeOrBuilder;
+7Landroidx/datastore/preferences/protobuf/UInt32Value$1;
+7Landroidx/datastore/preferences/protobuf/UInt64Value$1;
+7Landroidx/datastore/preferences/protobuf/Value$Builder;
+7Landroidx/datastore/preferences/protobuf/WrappersProto;
+7[Landroidx/datastore/preferences/core/Preferences$Pair;
+8Cannot serialize bundle value to SharedPreferences. Type
+8Landroidx/core/text/util/LocalePreferences$CalendarType;
+8Landroidx/datastore/preferences/PreferenceDataStoreFile;
+8Landroidx/datastore/preferences/core/MutablePreferences;
+8Landroidx/datastore/preferences/core/PreferencesFactory;
+8Landroidx/datastore/preferences/protobuf/AbstractParser;
+8Landroidx/datastore/preferences/protobuf/AbstractParser<
+8Landroidx/datastore/preferences/protobuf/BinaryReader$1;
+8Landroidx/datastore/preferences/protobuf/BinaryWriter$1;
+8Landroidx/datastore/preferences/protobuf/EmptyOrBuilder;
+8Landroidx/datastore/preferences/protobuf/FieldMaskProto;
+8Landroidx/datastore/preferences/protobuf/FieldOrBuilder;
+8Landroidx/datastore/preferences/protobuf/FloatArrayList;
+8Landroidx/datastore/preferences/protobuf/LazyStringList;
+8Landroidx/datastore/preferences/protobuf/MapEntryLite$1;
+8Landroidx/datastore/preferences/protobuf/MapFieldSchema;
+8Landroidx/datastore/preferences/protobuf/Method$Builder;
+8Landroidx/datastore/preferences/protobuf/MixinOrBuilder;
+8Landroidx/datastore/preferences/protobuf/Option$Builder;
+8Landroidx/datastore/preferences/protobuf/RawMessageInfo;
+8Landroidx/datastore/preferences/protobuf/RopeByteString;
+8Landroidx/datastore/preferences/protobuf/RuntimeVersion;
+8Landroidx/datastore/preferences/protobuf/SmallSortedMap;
+8Landroidx/datastore/preferences/protobuf/SmallSortedMap<
+8Landroidx/datastore/preferences/protobuf/Struct$Builder;
+8Landroidx/datastore/preferences/protobuf/TimestampProto;
+8Landroidx/datastore/preferences/protobuf/Utf8$Processor;
+8Landroidx/datastore/preferences/protobuf/Value$KindCase;
+8Landroidx/datastore/preferences/protobuf/ValueOrBuilder;
+8androidx.datastore.migrations.SharedPreferencesMigration
+8androidx.datastore.preferences.core.PreferencesKt$edit$2
+8androidx.datastore.preferences.protobuf.PreparedMessage
+9Error reading value from SharedPreferences. Value dropped
+9Landroidx/datastore/preferences/core/Actual_jvmAndroidKt;
+9Landroidx/datastore/preferences/core/PreferenceDataStore;
+9Landroidx/datastore/preferences/protobuf/AllocatedBuffer;
+9Landroidx/datastore/preferences/protobuf/ArrayDecoders$1;
+9Landroidx/datastore/preferences/protobuf/BufferAllocator;
+9Landroidx/datastore/preferences/protobuf/DoubleArrayList;
+9Landroidx/datastore/preferences/protobuf/ExperimentalApi;
+9Landroidx/datastore/preferences/protobuf/ExtensionSchema;
+9Landroidx/datastore/preferences/protobuf/ExtensionSchema<
+9Landroidx/datastore/preferences/protobuf/ListFieldSchema;
+9Landroidx/datastore/preferences/protobuf/MapFieldSchemas;
+9Landroidx/datastore/preferences/protobuf/MessageSchema$1;
+9Landroidx/datastore/preferences/protobuf/MethodOrBuilder;
+9Landroidx/datastore/preferences/protobuf/OptionOrBuilder;
+9Landroidx/datastore/preferences/protobuf/SourceContext$1;
+9Landroidx/datastore/preferences/protobuf/StructOrBuilder;
+9Landroidx/datastore/preferences/protobuf/Utf8$DecodeUtil;
+9Lcom/uptodown/activities/preferences/PreferencesActivity;
+9[Landroidx/datastore/preferences/protobuf/Value$KindCase;
+9androidx.datastore.preferences.protobuf.CodedOutputStream
+9androidx.datastore.preferences.protobuf.ExtensionRegistry
+:Landroidx/core/text/util/LocalePreferences$FirstDayOfWeek;
+:Landroidx/datastore/migrations/SharedPreferencesMigration;
+:Landroidx/datastore/migrations/SharedPreferencesMigration<
+:Landroidx/datastore/preferences/core/PreferencesKt$edit$2;
+:Landroidx/datastore/preferences/protobuf/BooleanArrayList;
+:Landroidx/datastore/preferences/protobuf/ByteBufferWriter;
+:Landroidx/datastore/preferences/protobuf/CheckReturnValue;
+:Landroidx/datastore/preferences/protobuf/CodedInputStream;
+:Landroidx/datastore/preferences/protobuf/DescriptorProtos;
+:Landroidx/datastore/preferences/protobuf/Duration$Builder;
+:Landroidx/datastore/preferences/protobuf/ExtensionSchemas;
+:Landroidx/datastore/preferences/protobuf/FieldSet$Builder;
+:Landroidx/datastore/preferences/protobuf/FieldSet$Builder<
+:Landroidx/datastore/preferences/protobuf/Internal$IntList;
+:Landroidx/datastore/preferences/protobuf/ListFieldSchemas;
+:Landroidx/datastore/preferences/protobuf/MessageSetSchema;
+:Landroidx/datastore/preferences/protobuf/MessageSetSchema<
+:Landroidx/datastore/preferences/protobuf/MutabilityOracle;
+:Landroidx/datastore/preferences/protobuf/RopeByteString$1;
+:Landroidx/datastore/preferences/protobuf/SmallSortedMap$1;
+:androidx.datastore.migrations.SharedPreferencesMigration$1
+:androidx.datastore.migrations.SharedPreferencesMigration$2
+:androidx.datastore.migrations.SharedPreferencesMigration$3
+:androidx.datastore.preferences.protobuf.MapFieldSchemaFull
+;Landroidx/core/text/util/LocalePreferences$TemperatureUnit;
+;Landroidx/datastore/preferences/PreferencesProto$StringSet;
+;Landroidx/datastore/preferences/core/PreferencesSerializer;
+;Landroidx/datastore/preferences/protobuf/AllocatedBuffer$1;
+;Landroidx/datastore/preferences/protobuf/AllocatedBuffer$2;
+;Landroidx/datastore/preferences/protobuf/BoolValue$Builder;
+;Landroidx/datastore/preferences/protobuf/BufferAllocator$1;
+;Landroidx/datastore/preferences/protobuf/ByteString$Output;
+;Landroidx/datastore/preferences/protobuf/CodedOutputStream;
+;Landroidx/datastore/preferences/protobuf/DurationOrBuilder;
+;Landroidx/datastore/preferences/protobuf/EnumValue$Builder;
+;Landroidx/datastore/preferences/protobuf/Field$Cardinality;
+;Landroidx/datastore/preferences/protobuf/FieldInfo$Builder;
+;Landroidx/datastore/preferences/protobuf/FieldMask$Builder;
+;Landroidx/datastore/preferences/protobuf/Internal$EnumLite;
+;Landroidx/datastore/preferences/protobuf/Internal$LongList;
+;Landroidx/datastore/preferences/protobuf/JavaFeaturesProto;
+;Landroidx/datastore/preferences/protobuf/ListValue$Builder;
+;Landroidx/datastore/preferences/protobuf/NewInstanceSchema;
+;Landroidx/datastore/preferences/protobuf/ProtobufArrayList;
+;Landroidx/datastore/preferences/protobuf/ProtobufArrayList<
+;Landroidx/datastore/preferences/protobuf/TextFormatEscaper;
+;Landroidx/datastore/preferences/protobuf/Timestamp$Builder;
+;Landroidx/datastore/preferences/protobuf/Writer$FieldOrder;
+;androidx.datastore.preferences.protobuf.ExtensionSchemaFull
+;androidx.datastore.preferences.protobuf.ListFieldSchemaFull
+<Landroidx/core/content/SharedPreferencesCompat$EditorCompat;
+<Landroidx/datastore/migrations/SharedPreferencesMigration$1;
+<Landroidx/datastore/migrations/SharedPreferencesMigration$2;
+<Landroidx/datastore/migrations/SharedPreferencesMigration$3;
+<Landroidx/datastore/migrations/SharedPreferencesMigration$4;
+<Landroidx/datastore/preferences/protobuf/BoolValueOrBuilder;
+<Landroidx/datastore/preferences/protobuf/BytesValue$Builder;
+<Landroidx/datastore/preferences/protobuf/CodedInputStream$1;
+<Landroidx/datastore/preferences/protobuf/DescriptorProtos$1;
+<Landroidx/datastore/preferences/protobuf/EnumValueOrBuilder;
+<Landroidx/datastore/preferences/protobuf/FieldMaskOrBuilder;
+<Landroidx/datastore/preferences/protobuf/FloatValue$Builder;
+<Landroidx/datastore/preferences/protobuf/Int32Value$Builder;
+<Landroidx/datastore/preferences/protobuf/Int64Value$Builder;
+<Landroidx/datastore/preferences/protobuf/Internal$FloatList;
+<Landroidx/datastore/preferences/protobuf/Java8Compatibility;
+<Landroidx/datastore/preferences/protobuf/ListValueOrBuilder;
+<Landroidx/datastore/preferences/protobuf/MapFieldSchemaLite;
+<Landroidx/datastore/preferences/protobuf/MessageInfoFactory;
+<Landroidx/datastore/preferences/protobuf/MutabilityOracle$1;
+<Landroidx/datastore/preferences/protobuf/NewInstanceSchemas;
+<Landroidx/datastore/preferences/protobuf/ProtocolStringList;
+<Landroidx/datastore/preferences/protobuf/SourceContextProto;
+<Landroidx/datastore/preferences/protobuf/TimestampOrBuilder;
+<Landroidx/datastore/preferences/protobuf/UnknownFieldSchema;
+<Landroidx/datastore/preferences/protobuf/UnknownFieldSchema<
+<Landroidx/datastore/preferences/protobuf/Utf8$SafeProcessor;
+<[Landroidx/datastore/preferences/protobuf/Field$Cardinality;
+<[Landroidx/datastore/preferences/protobuf/Writer$FieldOrder;
+=Landroidx/datastore/preferences/SharedPreferencesMigrationKt;
+=Landroidx/datastore/preferences/protobuf/AbstractMessageLite;
+=Landroidx/datastore/preferences/protobuf/AbstractMessageLite<
+=Landroidx/datastore/preferences/protobuf/BytesValueOrBuilder;
+=Landroidx/datastore/preferences/protobuf/CodedOutputStream$1;
+=Landroidx/datastore/preferences/protobuf/CompileTimeConstant;
+=Landroidx/datastore/preferences/protobuf/DoubleValue$Builder;
+=Landroidx/datastore/preferences/protobuf/ExtensionSchemaLite;
+=Landroidx/datastore/preferences/protobuf/Field$Cardinality$1;
+=Landroidx/datastore/preferences/protobuf/FloatValueOrBuilder;
+=Landroidx/datastore/preferences/protobuf/Int32ValueOrBuilder;
+=Landroidx/datastore/preferences/protobuf/Int64ValueOrBuilder;
+=Landroidx/datastore/preferences/protobuf/Internal$DoubleList;
+=Landroidx/datastore/preferences/protobuf/Internal$MapAdapter;
+=Landroidx/datastore/preferences/protobuf/JavaFeaturesProto$1;
+=Landroidx/datastore/preferences/protobuf/LazyField$LazyEntry;
+=Landroidx/datastore/preferences/protobuf/LazyStringArrayList;
+=Landroidx/datastore/preferences/protobuf/ListFieldSchemaLite;
+=Landroidx/datastore/preferences/protobuf/MessageLite$Builder;
+=Landroidx/datastore/preferences/protobuf/MessageLiteToString;
+=Landroidx/datastore/preferences/protobuf/StringValue$Builder;
+=Landroidx/datastore/preferences/protobuf/TextFormatEscaper$1;
+=Landroidx/datastore/preferences/protobuf/TextFormatEscaper$2;
+=Landroidx/datastore/preferences/protobuf/UInt32Value$Builder;
+=Landroidx/datastore/preferences/protobuf/UInt64Value$Builder;
+=Landroidx/datastore/preferences/protobuf/UnknownFieldSetLite;
+=Landroidx/datastore/preferences/protobuf/WireFormat$JavaType;
+=Lcom/uptodown/activities/preferences/MobileDataUsageActivity;
+=[Landroidx/datastore/preferences/protobuf/MessageInfoFactory;
+=androidx.datastore.preferences.protobuf.NewInstanceSchemaFull
+=androidx.datastore.preferences.protobuf.UnknownFieldSetSchema
+>Landroidx/datastore/preferences/PreferenceDataStoreDelegateKt;
+>Landroidx/datastore/preferences/protobuf/AbstractProtobufList;
+>Landroidx/datastore/preferences/protobuf/AbstractProtobufList<
+>Landroidx/datastore/preferences/protobuf/CanIgnoreReturnValue;
+>Landroidx/datastore/preferences/protobuf/DoubleValueOrBuilder;
+>Landroidx/datastore/preferences/protobuf/FieldType$Collection;
+>Landroidx/datastore/preferences/protobuf/PreparedMessageLite;
+>Landroidx/datastore/preferences/protobuf/PreparedMessageLite<
+>Landroidx/datastore/preferences/protobuf/Internal$BooleanList;
+>Landroidx/datastore/preferences/protobuf/Internal$EnumLiteMap;
+>Landroidx/datastore/preferences/protobuf/Internal$EnumLiteMap<
+>Landroidx/datastore/preferences/protobuf/Internal$ListAdapter;
+>Landroidx/datastore/preferences/protobuf/MessageLiteOrBuilder;
+>Landroidx/datastore/preferences/protobuf/SmallSortedMap$Entry;
+>Landroidx/datastore/preferences/protobuf/StringValueOrBuilder;
+>Landroidx/datastore/preferences/protobuf/UInt32ValueOrBuilder;
+>Landroidx/datastore/preferences/protobuf/UInt64ValueOrBuilder;
+>Landroidx/datastore/preferences/protobuf/UnsafeByteOperations;
+>Landroidx/datastore/preferences/protobuf/Utf8$UnsafeProcessor;
+>Landroidx/datastore/preferences/protobuf/WireFormat$FieldType;
+>[Landroidx/datastore/preferences/protobuf/WireFormat$JavaType;
+?Landroidx/core/text/util/LocalePreferences$FirstDayOfWeek$Days;
+?Landroidx/datastore/preferences/PreferencesMapCompat$Companion;
+?Landroidx/datastore/preferences/PreferencesProto$PreferenceMap;
+?Landroidx/datastore/preferences/PreferencesProto$Value$Builder;
+?Landroidx/datastore/preferences/core/PreferencesFileSerializer;
+?Landroidx/datastore/preferences/protobuf/ExtensionRegistryLite;
+?Landroidx/datastore/preferences/protobuf/ExtensionSchemaLite$1;
+?Landroidx/datastore/preferences/protobuf/Internal$EnumVerifier;
+?Landroidx/datastore/preferences/protobuf/Internal$MapAdapter$1;
+?Landroidx/datastore/preferences/protobuf/Internal$ProtobufList;
+?Landroidx/datastore/preferences/protobuf/Internal$ProtobufList<
+?Landroidx/datastore/preferences/protobuf/ManifestSchemaFactory;
+?Landroidx/datastore/preferences/protobuf/MapEntryLite$Metadata;
+?Landroidx/datastore/preferences/protobuf/MapEntryLite$Metadata<
+?Landroidx/datastore/preferences/protobuf/NewInstanceSchemaLite;
+?Landroidx/datastore/preferences/protobuf/SourceContext$Builder;
+?Landroidx/datastore/preferences/protobuf/StructuralMessageInfo;
+?Landroidx/datastore/preferences/protobuf/Syntax$SyntaxVerifier;
+?[Landroidx/datastore/preferences/protobuf/FieldType$Collection;
+?[Landroidx/datastore/preferences/protobuf/WireFormat$FieldType;
+@Error loading bundle from SharedPreferences. Values will be lost
+@Landroidx/datastore/preferences/PreferencesProto$ValueOrBuilder;
+@Landroidx/datastore/preferences/core/PreferenceDataStoreFactory;
+@Landroidx/datastore/preferences/protobuf/CodedInputStreamReader;
+@Landroidx/datastore/preferences/protobuf/PreparedMessageLite$1;
+@Landroidx/datastore/preferences/protobuf/LazyField$LazyIterator;
+@Landroidx/datastore/preferences/protobuf/SourceContextOrBuilder;
+@Landroidx/datastore/preferences/protobuf/WireFormat$FieldType$1;
+@Landroidx/datastore/preferences/protobuf/WireFormat$FieldType$2;
+@Landroidx/datastore/preferences/protobuf/WireFormat$FieldType$3;
+@Landroidx/datastore/preferences/protobuf/WireFormat$FieldType$4;
+ALandroidx/datastore/preferences/PreferencesProto$Value$ValueCase;
+ALandroidx/datastore/preferences/protobuf/ArrayDecoders$Registers;
+ALandroidx/datastore/preferences/protobuf/ByteString$ByteIterator;
+ALandroidx/datastore/preferences/protobuf/ByteString$CodedBuilder;
+ALandroidx/datastore/preferences/protobuf/CodedOutputStreamWriter;
+ALandroidx/datastore/preferences/protobuf/Field$Kind$KindVerifier;
+ALandroidx/datastore/preferences/protobuf/Internal$IntListAdapter;
+ALandroidx/datastore/preferences/protobuf/ManifestSchemaFactory$1;
+ALandroidx/datastore/preferences/protobuf/ManifestSchemaFactory$2;
+ALandroidx/datastore/preferences/protobuf/RopeByteString$Balancer;
+ALandroidx/datastore/preferences/protobuf/SmallSortedMap$EntrySet;
+AndroidManifest.xml
+AndroidManifest.xml. If it is missing or contains tools:node="remove", and you
+BLandroidx/datastore/preferences/PreferencesDataStoreDelegateUtils;
+BLandroidx/datastore/preferences/protobuf/ByteString$NioByteString;
+BLandroidx/datastore/preferences/protobuf/CodedInputStreamReader$1;
+BLandroidx/datastore/preferences/protobuf/DescriptorProtos$Edition;
+BLandroidx/datastore/preferences/protobuf/ExtensionRegistryFactory;
+B[Landroidx/datastore/preferences/PreferencesProto$Value$ValueCase;
+CLandroidx/core/content/SharedPreferencesCompat$EditorCompat$Helper;
+CLandroidx/datastore/preferences/PreferencesProto$StringSet$Builder;
+CLandroidx/datastore/preferences/core/MutablePreferences$toString$1;
+CLandroidx/datastore/preferences/protobuf/ByteString$LeafByteString;
+CLandroidx/datastore/preferences/protobuf/CodedOutputStreamWriter$1;
+CLandroidx/datastore/preferences/protobuf/UnknownFieldSetLiteSchema;
+CLandroidx/datastore/preferences/protobuf/UnsafeUtil$MemoryAccessor;
+CLandroidx/datastore/preferences/protobuf/WireFormat$Utf8Validation;
+C[Landroidx/datastore/preferences/protobuf/DescriptorProtos$Edition;
+DLandroid/content/SharedPreferences$OnSharedPreferenceChangeListener;
+DLandroidx/core/text/util/LocalePreferences$HourCycle$HourCycleTypes;
+DLandroidx/datastore/migrations/SharedPreferencesMigration$Api24Impl;
+DLandroidx/datastore/migrations/SharedPreferencesMigration_androidKt;
+DLandroidx/datastore/preferences/PreferencesProto$StringSetOrBuilder;
+DLandroidx/datastore/preferences/protobuf/ByteString$ByteArrayCopier;
+DLandroidx/datastore/preferences/protobuf/ByteString$NioByteString$1;
+DLandroidx/datastore/preferences/protobuf/DescriptorProtos$Edition$1;
+DLandroidx/datastore/preferences/protobuf/UnmodifiableLazyStringList;
+D[Landroidx/datastore/preferences/protobuf/WireFormat$Utf8Validation;
+Dandroidx.datastore.preferences.core.PreferenceDataStore$updateData$2
+Dandroidx.datastore.preferences.protobuf.DescriptorMessageInfoFactory
+ELandroidx/datastore/preferences/PreferenceDataStoreSingletonDelegate;
+ELandroidx/datastore/preferences/protobuf/AbstractMessageLite$Builder;
+ELandroidx/datastore/preferences/protobuf/AbstractMessageLite$Builder<
+ELandroidx/datastore/preferences/protobuf/BinaryReader$SafeHeapReader;
+ELandroidx/datastore/preferences/protobuf/BinaryWriter$SafeHeapWriter;
+ELandroidx/datastore/preferences/protobuf/DescriptorProtos$FeatureSet;
+ELandroidx/datastore/preferences/protobuf/PreparedMessageInfoFactory;
+ELandroidx/datastore/preferences/protobuf/NullValue$NullValueVerifier;
+ELandroidx/datastore/preferences/protobuf/WireFormat$Utf8Validation$1;
+ELandroidx/datastore/preferences/protobuf/WireFormat$Utf8Validation$2;
+ELandroidx/datastore/preferences/protobuf/WireFormat$Utf8Validation$3;
+FLandroidx/core/text/util/LocalePreferences$CalendarType$CalendarTypes;
+FLandroidx/datastore/preferences/core/PreferenceDataStore$updateData$2;
+FLandroidx/datastore/preferences/protobuf/ByteString$BoundedByteString;
+FLandroidx/datastore/preferences/protobuf/ByteString$LiteralByteString;
+FLandroidx/datastore/preferences/protobuf/DescriptorProtos$EnumOptions;
+FLandroidx/datastore/preferences/protobuf/DescriptorProtos$FileOptions;
+FLandroidx/datastore/preferences/protobuf/FieldSet$FieldDescriptorLite;
+FLandroidx/datastore/preferences/protobuf/FieldSet$FieldDescriptorLite<
+FLandroidx/datastore/preferences/protobuf/PreparedMessageLite$Builder;
+FLandroidx/datastore/preferences/protobuf/PreparedMessageLite$Builder<
+FLandroidx/datastore/preferences/protobuf/PrimitiveNonBoxingCollection;
+FLandroidx/datastore/preferences/protobuf/RopeByteString$PieceIterator;
+FLandroidx/datastore/preferences/protobuf/RuntimeVersion$RuntimeDomain;
+FLandroidx/datastore/preferences/protobuf/SmallSortedMap$EntryIterator;
+FLandroidx/datastore/preferences/protobuf/UnmodifiableLazyStringList$1;
+FLandroidx/datastore/preferences/protobuf/UnmodifiableLazyStringList$2;
+FLandroidx/datastore/preferences/protobuf/UnsafeUtil$JvmMemoryAccessor;
+G does not match required extension for Preferences file: preferences_pb
+GLandroidx/datastore/preferences/PreferencesProto$PreferenceMap$Builder;
+GLandroidx/datastore/preferences/protobuf/BinaryWriter$SafeDirectWriter;
+GLandroidx/datastore/preferences/protobuf/BinaryWriter$UnsafeHeapWriter;
+GLandroidx/datastore/preferences/protobuf/CodedInputStream$ArrayDecoder;
+GLandroidx/datastore/preferences/protobuf/DescriptorProtos$FieldOptions;
+GLandroidx/datastore/preferences/protobuf/DescriptorProtos$OneofOptions;
+GLandroidx/datastore/preferences/protobuf/Internal$MapAdapter$Converter;
+GLandroidx/datastore/preferences/protobuf/Internal$MapAdapter$Converter<
+GLandroidx/datastore/preferences/protobuf/IterableByteBufferInputStream;
+GLandroidx/datastore/preferences/protobuf/StructuralMessageInfo$Builder;
+GLandroidx/datastore/preferences/protobuf/UninitializedMessageException;
+G[Landroidx/datastore/preferences/protobuf/RuntimeVersion$RuntimeDomain;
+HLandroidx/datastore/preferences/PreferencesProto$PreferenceMapOrBuilder;
+HLandroidx/datastore/preferences/core/PreferencesSerializer$WhenMappings;
+HLandroidx/datastore/preferences/protobuf/CodedInputStream$StreamDecoder;
+HLandroidx/datastore/preferences/protobuf/CodedOutputStream$ArrayEncoder;
+HLandroidx/datastore/preferences/protobuf/DescriptorProtos$MethodOptions;
+HLandroidx/datastore/preferences/protobuf/Internal$ListAdapter$Converter;
+HLandroidx/datastore/preferences/protobuf/Internal$ListAdapter$Converter<
+HLandroidx/datastore/preferences/protobuf/Internal$MapAdapter$SetAdapter;
+HLandroidx/datastore/preferences/protobuf/InvalidProtocolBufferException;
+HLandroidx/datastore/preferences/protobuf/JavaFeaturesProto$JavaFeatures;
+HLandroidx/datastore/preferences/protobuf/RopeByteString$RopeInputStream;
+HLandroidx/datastore/preferences/protobuf/TextFormatEscaper$ByteSequence;
+HLandroidx/preference/PreferenceFragment$OnPreferenceStartScreenCallback;
+HLcom/uptodown/activities/preferences/AdvancedPreferencesComposeActivity;
+ILandroidx/datastore/preferences/protobuf/BinaryWriter$UnsafeDirectWriter;
+ILandroidx/datastore/preferences/protobuf/ByteString$AbstractByteIterator;
+ILandroidx/datastore/preferences/protobuf/DescriptorProtos$FieldOptions$1;
+ILandroidx/datastore/preferences/protobuf/DescriptorProtos$MessageOptions;
+ILandroidx/datastore/preferences/protobuf/DescriptorProtos$ServiceOptions;
+ILandroidx/datastore/preferences/protobuf/DescriptorProtos$SourceCodeInfo;
+ILandroidx/datastore/preferences/protobuf/Struct$FieldsDefaultEntryHolder;
+ILandroidx/datastore/preferences/protobuf/Utf8$UnpairedSurrogateException;
+JLandroidx/datastore/migrations/SharedPreferencesMigration$shouldMigrate$1;
+JLandroidx/datastore/preferences/protobuf/ByteString$ArraysByteArrayCopier;
+JLandroidx/datastore/preferences/protobuf/ByteString$SystemByteArrayCopier;
+JLandroidx/datastore/preferences/protobuf/CodedOutputStream$HeapNioEncoder;
+JLandroidx/datastore/preferences/protobuf/DescriptorProtos$DescriptorProto;
+JLandroidx/datastore/preferences/protobuf/Internal$MapAdapter$EntryAdapter;
+JLandroidx/preference/PreferenceFragment$OnPreferenceStartFragmentCallback;
+KLandroidx/datastore/preferences/protobuf/DescriptorProtos$EnumValueOptions;
+KLandroidx/datastore/preferences/protobuf/SmallSortedMap$DescendingEntrySet;
+LLandroidx/core/text/util/LocalePreferences$TemperatureUnit$TemperatureUnits;
+LLandroidx/datastore/preferences/core/PreferencesFileSerializer$WhenMappings;
+LLandroidx/datastore/preferences/protobuf/DescriptorProtos$FileDescriptorSet;
+LLandroidx/datastore/preferences/protobuf/DescriptorProtos$PreparedCodeInfo;
+LLandroidx/datastore/preferences/protobuf/UnsafeUtil$Android32MemoryAccessor;
+LLandroidx/datastore/preferences/protobuf/UnsafeUtil$Android64MemoryAccessor;
+LocalePreferences
+MLandroidx/datastore/preferences/protobuf/CodedOutputStream$ByteOutputEncoder;
+MLandroidx/datastore/preferences/protobuf/DescriptorProtos$FeatureSet$Builder;
+MLandroidx/datastore/preferences/protobuf/DescriptorProtos$FeatureSetDefaults;
+MLandroidx/datastore/preferences/protobuf/DescriptorProtos$FieldOptions$CType;
+MLandroidx/datastore/preferences/protobuf/ExtensionRegistryLite$ObjectIntPair;
+MLandroidx/datastore/preferences/protobuf/PreparedMessageLite$MethodToInvoke;
+MLandroidx/datastore/preferences/protobuf/PreparedMessageLite$SerializedForm;
+MLandroidx/datastore/preferences/protobuf/Internal$MapAdapter$IteratorAdapter;
+MSG_BIND_PREFERENCES
+NLandroidx/datastore/preferences/protobuf/DescriptorProtos$EnumDescriptorProto;
+NLandroidx/datastore/preferences/protobuf/DescriptorProtos$EnumOptions$Builder;
+NLandroidx/datastore/preferences/protobuf/DescriptorProtos$FeatureSet$EnumType;
+NLandroidx/datastore/preferences/protobuf/DescriptorProtos$FeatureSetOrBuilder;
+NLandroidx/datastore/preferences/protobuf/DescriptorProtos$FieldOptions$JSType;
+NLandroidx/datastore/preferences/protobuf/DescriptorProtos$FileDescriptorProto;
+NLandroidx/datastore/preferences/protobuf/DescriptorProtos$FileOptions$Builder;
+NLandroidx/datastore/preferences/protobuf/DescriptorProtos$UninterpretedOption;
+NLandroidx/datastore/preferences/protobuf/Internal$IntListAdapter$IntConverter;
+NLandroidx/datastore/preferences/protobuf/Internal$IntListAdapter$IntConverter<
+NLandroidx/preference/PreferenceFragmentCompat$OnPreferenceStartScreenCallback;
+N[Landroidx/datastore/preferences/protobuf/DescriptorProtos$FieldOptions$CType;
+N[Landroidx/datastore/preferences/protobuf/PreparedMessageLite$MethodToInvoke;
+OLandroidx/datastore/preferences/protobuf/AbstractMessageLite$InternalOneOfEnum;
+OLandroidx/datastore/preferences/protobuf/CodedOutputStream$OutOfSpaceException;
+OLandroidx/datastore/preferences/protobuf/CodedOutputStream$OutputStreamEncoder;
+OLandroidx/datastore/preferences/protobuf/DescriptorProtos$EnumOptionsOrBuilder;
+OLandroidx/datastore/preferences/protobuf/DescriptorProtos$FieldDescriptorProto;
+OLandroidx/datastore/preferences/protobuf/DescriptorProtos$FieldOptions$Builder;
+OLandroidx/datastore/preferences/protobuf/DescriptorProtos$FieldOptions$CType$1;
+OLandroidx/datastore/preferences/protobuf/DescriptorProtos$FileOptionsOrBuilder;
+OLandroidx/datastore/preferences/protobuf/DescriptorProtos$OneofDescriptorProto;
+OLandroidx/datastore/preferences/protobuf/DescriptorProtos$OneofOptions$Builder;
+OLandroidx/datastore/preferences/protobuf/Field$Cardinality$CardinalityVerifier;
+OLandroidx/datastore/preferences/protobuf/LazyStringArrayList$ByteArrayListView;
+O[Landroidx/datastore/preferences/protobuf/DescriptorProtos$FeatureSet$EnumType;
+O[Landroidx/datastore/preferences/protobuf/DescriptorProtos$FieldOptions$JSType;
+OnPreferenceStartScreenCallback
+PLandroidx/datastore/preferences/protobuf/CodedOutputStream$SafeDirectNioEncoder;
+PLandroidx/datastore/preferences/protobuf/DescriptorProtos$ExtensionRangeOptions;
+PLandroidx/datastore/preferences/protobuf/DescriptorProtos$FeatureSet$EnumType$1;
+PLandroidx/datastore/preferences/protobuf/DescriptorProtos$FeatureSet$JsonFormat;
+PLandroidx/datastore/preferences/protobuf/DescriptorProtos$FieldOptions$JSType$1;
+PLandroidx/datastore/preferences/protobuf/DescriptorProtos$FieldOptionsOrBuilder;
+PLandroidx/datastore/preferences/protobuf/DescriptorProtos$MethodDescriptorProto;
+PLandroidx/datastore/preferences/protobuf/DescriptorProtos$MethodOptions$Builder;
+PLandroidx/datastore/preferences/protobuf/DescriptorProtos$OneofOptionsOrBuilder;
+PLandroidx/datastore/preferences/protobuf/PreparedMessageLite$ExtendableBuilder;
+PLandroidx/datastore/preferences/protobuf/PreparedMessageLite$ExtendableBuilder<
+PLandroidx/datastore/preferences/protobuf/PreparedMessageLite$ExtendableMessage;
+PLandroidx/datastore/preferences/protobuf/PreparedMessageLite$ExtendableMessage<
+PLandroidx/datastore/preferences/protobuf/JavaFeaturesProto$JavaFeatures$Builder;
+PLandroidx/datastore/preferences/protobuf/LazyStringArrayList$ByteStringListView;
+PLandroidx/datastore/preferences/protobuf/SmallSortedMap$DescendingEntryIterator;
+PLandroidx/preference/PreferenceFragmentCompat$OnPreferenceStartFragmentCallback;
+PREFERENCES_FIELD_NUMBER
+PREFERENCES_FILE_NAME
+PREFERENCES_TAG
+PreferenceSummaryTextStyle
+PreferenceTheme_preferenceStyle
+Preference_PreferenceScreen
+Preferences.kt
+PreferencesDefaultEntryHolder
+QLandroidx/datastore/preferences/core/PreferenceDataStoreFactory$createWithPath$1;
+QLandroidx/datastore/preferences/protobuf/CodedInputStream$UnsafeDirectNioDecoder;
+QLandroidx/datastore/preferences/protobuf/DescriptorProtos$MessageOptions$Builder;
+QLandroidx/datastore/preferences/protobuf/DescriptorProtos$MethodOptionsOrBuilder;
+QLandroidx/datastore/preferences/protobuf/DescriptorProtos$ServiceDescriptorProto;
+QLandroidx/datastore/preferences/protobuf/DescriptorProtos$ServiceOptions$Builder;
+QLandroidx/datastore/preferences/protobuf/DescriptorProtos$SourceCodeInfo$Builder;
+QLandroidx/datastore/preferences/protobuf/PreparedMessageLite$PreparedExtension;
+QLandroidx/datastore/preferences/protobuf/PreparedMessageLite$PreparedExtension<
+QLandroidx/datastore/preferences/protobuf/JavaFeaturesProto$JavaFeaturesOrBuilder;
+Q[Landroidx/datastore/preferences/protobuf/DescriptorProtos$FeatureSet$JsonFormat;
+RLandroidx/datastore/preferences/PreferenceDataStoreSingletonDelegate$getValue$1$1;
+RLandroidx/datastore/preferences/core/PreferenceDataStoreFactory$create$delegate$1;
+RLandroidx/datastore/preferences/protobuf/CodedOutputStream$UnsafeDirectNioEncoder;
+RLandroidx/datastore/preferences/protobuf/DescriptorProtos$DescriptorProto$Builder;
+RLandroidx/datastore/preferences/protobuf/DescriptorProtos$Edition$EditionVerifier;
+RLandroidx/datastore/preferences/protobuf/DescriptorProtos$FeatureSet$JsonFormat$1;
+RLandroidx/datastore/preferences/protobuf/DescriptorProtos$MessageOptionsOrBuilder;
+RLandroidx/datastore/preferences/protobuf/DescriptorProtos$ServiceOptionsOrBuilder;
+RLandroidx/datastore/preferences/protobuf/DescriptorProtos$SourceCodeInfo$Location;
+RLandroidx/datastore/preferences/protobuf/DescriptorProtos$SourceCodeInfoOrBuilder;
+RLandroidx/datastore/preferences/protobuf/PreparedMessageLite$ExtensionDescriptor;
+Randroidx.datastore.preferences.SharedPreferencesMigrationKt$getMigrationFunction$1
+SLandroidx/datastore/preferences/protobuf/CodedOutputStream$AbstractBufferedEncoder;
+SLandroidx/datastore/preferences/protobuf/DescriptorProtos$DescriptorProtoOrBuilder;
+SLandroidx/datastore/preferences/protobuf/DescriptorProtos$EnumValueDescriptorProto;
+SLandroidx/datastore/preferences/protobuf/DescriptorProtos$EnumValueOptions$Builder;
+SLandroidx/datastore/preferences/protobuf/DescriptorProtos$FeatureSet$FieldPresence;
+SLandroidx/datastore/preferences/protobuf/DescriptorProtos$FileOptions$OptimizeMode;
+Sandroidx.datastore.preferences.SharedPreferencesMigrationKt$getShouldRunMigration$1
+SettingsPreferences
+SharedPreferencesMigration
+SharedPreferencesTracking
+SharedPreferencesUser
+TLandroidx/datastore/preferences/SharedPreferencesMigrationKt$getMigrationFunction$1;
+TLandroidx/datastore/preferences/protobuf/DescriptorProtos$EnumValueOptionsOrBuilder;
+TLandroidx/datastore/preferences/protobuf/DescriptorProtos$FeatureSet$Utf8Validation;
+TLandroidx/datastore/preferences/protobuf/DescriptorProtos$FieldDescriptorProto$Type;
+TLandroidx/datastore/preferences/protobuf/DescriptorProtos$FileDescriptorSet$Builder;
+TLandroidx/datastore/preferences/protobuf/DescriptorProtos$PreparedCodeInfo$Builder;
+TLandroidx/datastore/preferences/protobuf/ExtensionRegistryLite$ExtensionClassHolder;
+T[Landroidx/datastore/preferences/protobuf/DescriptorProtos$FeatureSet$FieldPresence;
+T[Landroidx/datastore/preferences/protobuf/DescriptorProtos$FileOptions$OptimizeMode;
+Tcf preferences read
+ULandroidx/datastore/preferences/PreferenceDataStoreDelegateKt$preferencesDataStore$1;
+ULandroidx/datastore/preferences/SharedPreferencesMigrationKt$getShouldRunMigration$1;
+ULandroidx/datastore/preferences/protobuf/DescriptorProtos$FeatureSet$FieldPresence$1;
+ULandroidx/datastore/preferences/protobuf/DescriptorProtos$FeatureSet$MessageEncoding;
+ULandroidx/datastore/preferences/protobuf/DescriptorProtos$FeatureSetDefaults$Builder;
+ULandroidx/datastore/preferences/protobuf/DescriptorProtos$FieldDescriptorProto$Label;
+ULandroidx/datastore/preferences/protobuf/DescriptorProtos$FileDescriptorSetOrBuilder;
+ULandroidx/datastore/preferences/protobuf/DescriptorProtos$FileOptions$OptimizeMode$1;
+ULandroidx/datastore/preferences/protobuf/DescriptorProtos$PreparedCodeInfoOrBuilder;
+U[Landroidx/datastore/preferences/protobuf/DescriptorProtos$FeatureSet$Utf8Validation;
+U[Landroidx/datastore/preferences/protobuf/DescriptorProtos$FieldDescriptorProto$Type;
+VLandroidx/datastore/preferences/protobuf/DescriptorProtos$EnumDescriptorProto$Builder;
+VLandroidx/datastore/preferences/protobuf/DescriptorProtos$FeatureSet$Utf8Validation$1;
+VLandroidx/datastore/preferences/protobuf/DescriptorProtos$FeatureSetDefaultsOrBuilder;
+VLandroidx/datastore/preferences/protobuf/DescriptorProtos$FieldDescriptorProto$Type$1;
+VLandroidx/datastore/preferences/protobuf/DescriptorProtos$FieldOptions$EditionDefault;
+VLandroidx/datastore/preferences/protobuf/DescriptorProtos$FieldOptions$FeatureSupport;
+VLandroidx/datastore/preferences/protobuf/DescriptorProtos$FileDescriptorProto$Builder;
+VLandroidx/datastore/preferences/protobuf/DescriptorProtos$UninterpretedOption$Builder;
+V[Landroidx/datastore/preferences/protobuf/DescriptorProtos$FeatureSet$MessageEncoding;
+V[Landroidx/datastore/preferences/protobuf/DescriptorProtos$FieldDescriptorProto$Label;
+WLandroidx/datastore/preferences/protobuf/CodedInputStream$StreamDecoder$RefillCallback;
+WLandroidx/datastore/preferences/protobuf/DescriptorProtos$EnumDescriptorProtoOrBuilder;
+WLandroidx/datastore/preferences/protobuf/DescriptorProtos$FeatureSet$MessageEncoding$1;
+WLandroidx/datastore/preferences/protobuf/DescriptorProtos$FieldDescriptorProto$Builder;
+WLandroidx/datastore/preferences/protobuf/DescriptorProtos$FieldDescriptorProto$Label$1;
+WLandroidx/datastore/preferences/protobuf/DescriptorProtos$FieldOptions$OptionRetention;
+WLandroidx/datastore/preferences/protobuf/DescriptorProtos$FileDescriptorProtoOrBuilder;
+WLandroidx/datastore/preferences/protobuf/DescriptorProtos$PreparedCodeInfo$Annotation;
+WLandroidx/datastore/preferences/protobuf/DescriptorProtos$OneofDescriptorProto$Builder;
+WLandroidx/datastore/preferences/protobuf/DescriptorProtos$UninterpretedOption$NamePart;
+WLandroidx/datastore/preferences/protobuf/DescriptorProtos$UninterpretedOptionOrBuilder;
+WLandroidx/datastore/preferences/protobuf/JavaFeaturesProto$JavaFeatures$Utf8Validation;
+XLandroidx/datastore/preferences/protobuf/AbstractMessageLite$Builder$LimitedInputStream;
+XLandroidx/datastore/preferences/protobuf/CodedInputStream$StreamDecoder$SkippedDataSink;
+XLandroidx/datastore/preferences/protobuf/DescriptorProtos$DescriptorProto$ReservedRange;
+XLandroidx/datastore/preferences/protobuf/DescriptorProtos$ExtensionRangeOptions$Builder;
+XLandroidx/datastore/preferences/protobuf/DescriptorProtos$FieldDescriptorProtoOrBuilder;
+XLandroidx/datastore/preferences/protobuf/DescriptorProtos$FieldOptions$OptionTargetType;
+XLandroidx/datastore/preferences/protobuf/DescriptorProtos$MethodDescriptorProto$Builder;
+XLandroidx/datastore/preferences/protobuf/DescriptorProtos$OneofDescriptorProtoOrBuilder;
+XLandroidx/datastore/preferences/protobuf/RuntimeVersion$ProtobufRuntimeVersionException;
+X[Landroidx/datastore/preferences/protobuf/DescriptorProtos$FieldOptions$OptionRetention;
+X[Landroidx/datastore/preferences/protobuf/JavaFeaturesProto$JavaFeatures$Utf8Validation;
+YLandroidx/datastore/preferences/protobuf/DescriptorProtos$DescriptorProto$ExtensionRange;
+YLandroidx/datastore/preferences/protobuf/DescriptorProtos$ExtensionRangeOptionsOrBuilder;
+YLandroidx/datastore/preferences/protobuf/DescriptorProtos$FieldOptions$OptionRetention$1;
+YLandroidx/datastore/preferences/protobuf/DescriptorProtos$MethodDescriptorProtoOrBuilder;
+YLandroidx/datastore/preferences/protobuf/DescriptorProtos$MethodOptions$IdempotencyLevel;
+YLandroidx/datastore/preferences/protobuf/DescriptorProtos$ServiceDescriptorProto$Builder;
+YLandroidx/datastore/preferences/protobuf/PreparedMessageLite$DefaultInstanceBasedParser;
+YLandroidx/datastore/preferences/protobuf/PreparedMessageLite$ExtendableMessageOrBuilder;
+YLandroidx/datastore/preferences/protobuf/PreparedMessageLite$ExtendableMessageOrBuilder<
+YLandroidx/datastore/preferences/protobuf/JavaFeaturesProto$JavaFeatures$Utf8Validation$1;
+Y[Landroidx/datastore/preferences/protobuf/DescriptorProtos$FieldOptions$OptionTargetType;
+Ycom.uptodown.activities.preferences.TosScreen (AdvancedPreferencesComposeActivity.kt:217)
+ZLandroidx/datastore/preferences/protobuf/CodedInputStream$IterableDirectByteBufferDecoder;
+ZLandroidx/datastore/preferences/protobuf/DescriptorProtos$FieldOptions$OptionTargetType$1;
+ZLandroidx/datastore/preferences/protobuf/DescriptorProtos$ServiceDescriptorProtoOrBuilder;
+ZLandroidx/datastore/preferences/protobuf/DescriptorProtos$SourceCodeInfo$Location$Builder;
+Z[Landroidx/datastore/preferences/protobuf/DescriptorProtos$MethodOptions$IdempotencyLevel;
+[Landroidx/datastore/preferences/protobuf/DescriptorProtos$EnumValueDescriptorProto$Builder;
+[Landroidx/datastore/preferences/protobuf/DescriptorProtos$FeatureSet$RepeatedFieldEncoding;
+[Landroidx/datastore/preferences/protobuf/DescriptorProtos$FieldOptions$CType$CTypeVerifier;
+[Landroidx/datastore/preferences/protobuf/DescriptorProtos$MethodOptions$IdempotencyLevel$1;
+[Landroidx/datastore/preferences/protobuf/DescriptorProtos$SourceCodeInfo$LocationOrBuilder;
+[Landroidx/datastore/preferences/protobuf/ManifestSchemaFactory$CompositeMessageInfoFactory;
+\Landroidx/datastore/preferences/protobuf/DescriptorProtos$EnumValueDescriptorProtoOrBuilder;
+\Landroidx/datastore/preferences/protobuf/DescriptorProtos$ExtensionRangeOptions$Declaration;
+\[Landroidx/datastore/preferences/protobuf/DescriptorProtos$FeatureSet$RepeatedFieldEncoding;
+]Landroidx/datastore/preferences/PreferencesProto$PreferenceMap$PreferencesDefaultEntryHolder;
+]Landroidx/datastore/preferences/protobuf/DescriptorProtos$FeatureSet$RepeatedFieldEncoding$1;
+]Landroidx/datastore/preferences/protobuf/DescriptorProtos$FieldOptions$JSType$JSTypeVerifier;
+]The meta-data tag in your app's AndroidManifest.xml does not have the right value.  Expected
+]com.uptodown.activities.preferences.SupportScreen (AdvancedPreferencesComposeActivity.kt:239)
+^Landroidx/datastore/preferences/protobuf/DescriptorProtos$FieldOptions$EditionDefault$Builder;
+^Landroidx/datastore/preferences/protobuf/DescriptorProtos$FieldOptions$FeatureSupport$Builder;
+^com.uptodown.activities.preferences.AboutAppScreen (AdvancedPreferencesComposeActivity.kt:269)
+^com.uptodown.activities.preferences.PreferenceItem (AdvancedPreferencesComposeActivity.kt:406)
+_Landroidx/datastore/preferences/protobuf/DescriptorProtos$FeatureSet$EnumType$EnumTypeVerifier;
+_Landroidx/datastore/preferences/protobuf/DescriptorProtos$FieldOptions$EditionDefaultOrBuilder;
+_Landroidx/datastore/preferences/protobuf/DescriptorProtos$FieldOptions$FeatureSupportOrBuilder;
+_Landroidx/datastore/preferences/protobuf/DescriptorProtos$PreparedCodeInfo$Annotation$Builder;
+_Landroidx/datastore/preferences/protobuf/DescriptorProtos$UninterpretedOption$NamePart$Builder;
+_preferences
+`Landroidx/datastore/preferences/protobuf/DescriptorProtos$DescriptorProto$ReservedRange$Builder;
+`Landroidx/datastore/preferences/protobuf/DescriptorProtos$EnumDescriptorProto$EnumReservedRange;
+`Landroidx/datastore/preferences/protobuf/DescriptorProtos$PreparedCodeInfo$Annotation$Semantic;
+`Landroidx/datastore/preferences/protobuf/DescriptorProtos$PreparedCodeInfo$AnnotationOrBuilder;
+`Landroidx/datastore/preferences/protobuf/DescriptorProtos$UninterpretedOption$NamePartOrBuilder;
+`Landroidx/datastore/preferences/protobuf/PreparedMessageLite$ExtendableMessage$ExtensionWriter;
+`com.uptodown.activities.preferences.PreferenceSwitch (AdvancedPreferencesComposeActivity.kt:477)
+`com.uptodown.activities.preferences.SocialIconButton (AdvancedPreferencesComposeActivity.kt:599)
+aLandroidx/datastore/preferences/protobuf/DescriptorProtos$DescriptorProto$ExtensionRange$Builder;
+aLandroidx/datastore/preferences/protobuf/DescriptorProtos$DescriptorProto$ReservedRangeOrBuilder;
+aLandroidx/datastore/preferences/protobuf/DescriptorProtos$FieldDescriptorProto$Type$TypeVerifier;
+aLandroidx/datastore/preferences/protobuf/InvalidProtocolBufferException$InvalidWireTypeException;
+a[Landroidx/datastore/preferences/protobuf/DescriptorProtos$PreparedCodeInfo$Annotation$Semantic;
+acom.uptodown.activities.preferences.SocialNetworksRow (AdvancedPreferencesComposeActivity.kt:551)
+addPreferencesFromResource
+addProtoEntryToPreferences
+android:preferences
+androidx.work.util.preferences
+bLandroidx/datastore/preferences/protobuf/DescriptorProtos$DescriptorProto$ExtensionRangeOrBuilder;
+bLandroidx/datastore/preferences/protobuf/DescriptorProtos$ExtensionRangeOptions$VerificationState;
+bLandroidx/datastore/preferences/protobuf/DescriptorProtos$PreparedCodeInfo$Annotation$Semantic$1;
+bcom.uptodown.activities.preferences.MoreSettingsScreen (AdvancedPreferencesComposeActivity.kt:354)
+bcom.uptodown.activities.preferences.PreferenceCategory (AdvancedPreferencesComposeActivity.kt:527)
+bindPreferences
+checkBoxPreferenceStyle
+clearPreferences
+containsPreferences
+createPreferenceScreen
+createVisiblePreferencesList
+deleteSharedPreferences
+dialogPreferenceStyle
+dropdownPreferenceStyle
+editTextPreferenceStyle
+either explicitly in AndroidManifest.xml, or by including
+getDefaultSharedPreferences
+getDefaultSharedPreferencesMode
+getDefaultSharedPreferencesName
+getMutablePreferencesMap
+getPreferenceScreen
+getPreferences
+getPreferencesCount
+getPreferencesMap
+getPreferencesOrDefault
+getPreferencesOrThrow
+getSharedPreferences
+getSharedPreferencesMode
+getSharedPreferencesName
+internalGetMutablePreferences
+internalGetPreferences
+is not a PreferenceScreen
+leanback_preferences_list
+mPreferenceScreen
+mPreferences
+mSharedPreferences
+mSharedPreferencesMode
+mSharedPreferencesName
+mVisiblePreferences
+migrateLegacyPreferences
+onBindPreferences
+onCreatePreferences
+onPreferenceStartFragment
+onPreferenceStartInitialScreen
+onPreferenceStartScreen
+onUnbindPreferences
+postBindPreferences
+preferenceScreenStyle
+preferenceStyle
+preferencesDataStore
+preferencesDataStore$default
+preferencesDataStoreFile
+preferencesMap
+preferences_
+preferences_detail
+preferences_detail_pane_weight
+preferences_detail_width
+preferences_header
+preferences_header_pane_weight
+preferences_header_width
+preferences_pb
+preferences_sliding_pane_layout
+putAllPreferences
+putPreferences
+removePreferences
+seekBarPreferenceStyle
+setPreferenceScreen
+setPreferences
+setPreferencesFromResource
+setSharedPreferencesMode
+setSharedPreferencesName
+share_history.xml
+sortPreferences
+switchPreferenceStyle
+toMutablePreferences
+toPreferences
+unbindPreferences
+under InitializationProvider in your AndroidManifest.xml
+updatePreferences

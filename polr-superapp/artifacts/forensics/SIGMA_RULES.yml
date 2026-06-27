@@ -1,0 +1,141 @@
+author: Kenshin Himura - DTrust
+date: 2026/06/28
+description: Detects network communication with Uptodown tracker server
+detection:
+  condition: selection
+  selection:
+    dst_ip|endswith: .uptodown.app
+    dst_port: 443
+falsepositives:
+- Legitimate Uptodown usage
+fields:
+- src_ip
+- dst_ip
+- dst_port
+- protocol
+id: f47ac10b-58cc-4372-a567-0e02b2c3d479
+level: high
+logsource:
+  category: network
+  product: firewall
+references:
+- Uptodown App Store v7.32 Analysis
+status: experimental
+tags:
+- attack.collection
+- attack.t1071.001
+title: Uptodown Tracker Server Communication
+---
+author: Kenshin Himura - DTrust
+date: 2026/06/28
+description: Detects telemetry upload paths to Uptodown servers
+detection:
+  condition: selection
+  selection:
+    cs-uri|contains:
+    - /eapi/v2/tracker/device
+    - /eapi/androidtracker/device-apps-installed
+    - /eapi/user-data/native-app-usage
+    - /eapi/v3/device/daily-stats
+falsepositives:
+- Legitimate Uptodown API calls
+fields:
+- src_ip
+- dst_ip
+- cs-uri
+- cs-method
+id: f47ac10b-58cc-4372-a567-0e02b2c3d480
+level: high
+logsource:
+  category: network
+  product: proxy
+references:
+- Uptodown App Store v7.32 Analysis
+status: experimental
+tags:
+- attack.telemetry upload
+- attack.t1048.002
+title: Uptodown Telemetry Upload Patterns
+---
+author: Kenshin Himura - DTrust
+date: 2026/06/28
+description: Detects Uptodown background tracker service
+detection:
+  condition: selection
+  selection:
+    CommandLine|contains:
+    - com.uptodown.services.TrackerService
+    - com.uptodown.services.SyncService
+falsepositives:
+- Legitimate Uptodown usage
+fields:
+- CommandLine
+- ParentCommandLine
+- User
+id: f47ac10b-58cc-4372-a567-0e02b2c3d481
+level: high
+logsource:
+  category: process
+  product: android
+references:
+- Uptodown App Store v7.32 Analysis
+status: experimental
+tags:
+- attack.persistence
+- attack.t1547.001
+title: Uptodown Background Tracker Service
+---
+author: Kenshin Himura - DTrust
+date: 2026/06/28
+description: Detects creation of Uptodown tracker database
+detection:
+  condition: selection
+  selection:
+    TargetFilename|contains:
+    - /data/data/com.uptodown/databases/tracker.db
+    - /data/data/com.uptodown/databases/apps.db
+falsepositives:
+- Legitimate Uptodown installation
+fields:
+- TargetFilename
+- Image
+- CommandLine
+id: f47ac10b-58cc-4372-a567-0e02b2c3d482
+level: high
+logsource:
+  category: file
+  product: android
+references:
+- Uptodown App Store v7.32 Analysis
+status: experimental
+tags:
+- attack.collection
+- attack.t1083
+title: Uptodown Tracker Database Creation
+---
+author: Kenshin Himura - DTrust
+date: 2026/06/28
+description: Detects Uptodown boot persistence mechanism
+detection:
+  condition: selection
+  selection:
+    CommandLine|contains: BOOT_COMPLETED
+    ParentCommandLine|contains: com.uptodown
+falsepositives:
+- Legitimate Uptodown auto-start
+fields:
+- CommandLine
+- ParentCommandLine
+- User
+id: f47ac10b-58cc-4372-a567-0e02b2c3d483
+level: medium
+logsource:
+  category: process
+  product: android
+references:
+- Uptodown App Store v7.32 Analysis
+status: experimental
+tags:
+- attack.persistence
+- attack.t1547.001
+title: Uptodown Boot Persistence

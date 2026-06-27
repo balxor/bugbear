@@ -1,0 +1,177 @@
+================================================================================
+UPTODOWN APP STORE v7.32 - COMPONENTS DOCUMENTATION
+================================================================================
+
+PACKAGE INFORMATION:
+--------------------------------------------------------------------------------
+  Package Name: com.uptodown
+  Version Name: 7.32
+  Version Code: 732
+  Min SDK: 23
+  Target SDK: 35
+  App Name: Uptodown App Store
+  Main Activity: com.uptodown.activities.MainActivity
+
+PERMISSIONS:
+--------------------------------------------------------------------------------
+  android.permission.ACCESS_ADSERVICES_AD_ID
+  android.permission.ACCESS_ADSERVICES_ATTRIBUTION
+  android.permission.ACCESS_NETWORK_STATE
+  android.permission.ACCESS_SUPERUSER
+  android.permission.ACCESS_WIFI_STATE
+  android.permission.AUTHENTICATE_ACCOUNTS
+  android.permission.DELETE_PACKAGES
+  android.permission.ENFORCE_UPDATE_OWNERSHIP
+  android.permission.FOREGROUND_SERVICE
+  android.permission.GET_ACCOUNTS
+  android.permission.GET_PACKAGE_SIZE
+  android.permission.INSTALL_PACKAGES
+  android.permission.INTERNET
+  android.permission.MANAGE_ACCOUNTS
+  android.permission.MANAGE_EXTERNAL_STORAGE
+  android.permission.PACKAGE_USAGE_STATS
+  android.permission.POST_NOTIFICATIONS
+  android.permission.QUERY_ALL_PACKAGES
+  android.permission.RECEIVE_BOOT_COMPLETED
+  android.permission.RECORD_AUDIO
+  android.permission.REQUEST_DELETE_PACKAGES
+  android.permission.REQUEST_INSTALL_PACKAGES
+  android.permission.UPDATE_PACKAGES_WITHOUT_USER_ACTION
+  android.permission.USE_BIOMETRIC
+  android.permission.USE_CREDENTIALS
+  android.permission.USE_FINGERPRINT
+  android.permission.WAKE_LOCK
+  android.permission.WRITE_EXTERNAL_STORAGE
+  com.google.android.c2dm.permission.RECEIVE
+  com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE
+  com.google.android.gms.permission.AD_ID
+  com.uptodown.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+
+
+ACTIVITIES:
+--------------------------------------------------------------------------------
+  androidx.credentials.playservices.controllers.identityauth.HiddenActivity
+  androidx.credentials.playservices.controllers.identitycredentials.IdentityCredentialApiHiddenActivity
+  com.google.android.gms.auth.api.signin.internal.SignInHubActivity
+  com.google.android.gms.common.api.GoogleApiActivity
+  com.inmobi.cmp.presentation.components.CmpActivity
+  com.uptodown.activities.AppDetailActivity
+  com.uptodown.activities.AppFilesActivity
+  com.uptodown.activities.AppInstalledDetailsActivity
+  com.uptodown.activities.ContactUsActivity
+  com.uptodown.activities.CustomWebView
+  com.uptodown.activities.FeedActivity
+  com.uptodown.activities.FollowListActivity
+  com.uptodown.activities.FreeUpSpaceActivity
+  com.uptodown.activities.Gallery
+  com.uptodown.activities.GdprPrivacySettings
+  com.uptodown.activities.InformationActivity
+  com.uptodown.activities.LanguageSettingsActivity
+  com.uptodown.activities.ListsActivity
+  com.uptodown.activities.LoginActivity
+  com.uptodown.activities.MainActivity
+  com.uptodown.activities.MoreInfo
+  com.uptodown.activities.MyApps
+  com.uptodown.activities.MyDownloads
+  com.uptodown.activities.MyStatsActivity
+  com.uptodown.activities.NotificationsRegistryActivity
+  com.uptodown.activities.OldVersionsActivity
+  com.uptodown.activities.OrganizationActivity
+  com.uptodown.activities.PasswordEditActivity
+  com.uptodown.activities.PasswordRecoveryActivity
+  com.uptodown.activities.PreregistrationActivity
+  com.uptodown.activities.PublicListActivity
+  com.uptodown.activities.PublicProfileActivity
+  com.uptodown.activities.RecommendedActivity
+  com.uptodown.activities.RepliesActivity
+  com.uptodown.activities.ReviewsActivity
+  com.uptodown.activities.RollbackActivity
+  com.uptodown.activities.SearchActivity
+  com.uptodown.activities.SecurityActivity
+  com.uptodown.activities.Updates
+  com.uptodown.activities.UserActivity
+  com.uptodown.activities.UserAvatarActivity
+  com.uptodown.activities.UserCommentsActivity
+  com.uptodown.activities.UserDeviceDetailsActivity
+  com.uptodown.activities.UserDevicesActivity
+  com.uptodown.activities.UserEditProfileActivity
+  com.uptodown.activities.UsernameEditActivity
+  com.uptodown.activities.VirusTotalReport
+  com.uptodown.activities.WishlistActivity
+  com.uptodown.activities.YouTubeActivity
+  com.uptodown.activities.preferences.AdvancedPreferencesComposeActivity
+  com.uptodown.activities.preferences.MobileDataUsageActivity
+  com.uptodown.activities.preferences.PreferencesActivity
+  com.uptodown.core.activities.ConfirmDeleteActivity
+  com.uptodown.core.activities.ConfirmationIntentWrapperActivity
+  com.uptodown.core.activities.FileExplorerActivity
+  com.uptodown.core.activities.InstallerActivity
+  com.uptodown.tv.preferences.TvPrivacyPreferences
+  com.uptodown.tv.ui.activity.TvAppDetailActivity
+  com.uptodown.tv.ui.activity.TvAppsListActivity
+  com.uptodown.tv.ui.activity.TvMainActivity
+  com.uptodown.tv.ui.activity.TvMyAppsActivity
+  com.uptodown.tv.ui.activity.TvMyDownloadsActivity
+  com.uptodown.tv.ui.activity.TvOldVersionsActivity
+  com.uptodown.tv.ui.activity.TvSearchActivity
+
+
+SERVICES:
+--------------------------------------------------------------------------------
+  androidx.credentials.playservices.CredentialProviderMetadataHolder
+  androidx.room.MultiInstanceInvalidationService
+  androidx.work.impl.background.systemjob.SystemJobService
+  androidx.work.impl.foreground.SystemForegroundService
+  com.google.android.datatransport.runtime.backends.TransportBackendDiscovery
+  com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService
+  com.google.android.gms.auth.api.signin.RevocationBoundService
+  com.google.android.gms.measurement.AppMeasurementJobService
+  com.google.android.gms.measurement.AppMeasurementService
+  com.google.firebase.components.ComponentDiscoveryService
+  com.google.firebase.messaging.FirebaseMessagingService
+  com.google.firebase.sessions.SessionLifecycleService
+  com.uptodown.core.service.SplitApksEventsService
+  com.uptodown.gcm.MyFirebaseMessagingService
+  com.uptodown.services.AuthenticatorService
+
+
+RECEIVERS:
+--------------------------------------------------------------------------------
+  androidx.profileinstaller.ProfileInstallReceiver
+  androidx.work.impl.background.systemalarm.RescheduleReceiver
+  androidx.work.impl.diagnostics.DiagnosticsReceiver
+  androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver
+  com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver
+  com.google.android.gms.measurement.AppMeasurementReceiver
+  com.google.firebase.iid.FirebaseInstanceIdReceiver
+  com.uptodown.receivers.BootDeviceReceiver
+  com.uptodown.receivers.DownloadNotificationReceiver
+  com.uptodown.receivers.DownloadUpdateNotificationReceiver
+  com.uptodown.receivers.MyAppUpdatedReceiver
+
+
+PROVIDERS:
+--------------------------------------------------------------------------------
+  androidx.core.content.FileProvider
+  androidx.startup.InitializationProvider
+  com.google.firebase.provider.FirebaseInitProvider
+  com.squareup.picasso.PicassoProvider
+
+
+NATIVE LIBRARIES:
+--------------------------------------------------------------------------------
+  android.ext.adservices
+  androidx.window.extensions
+  androidx.window.sidecar
+
+
+FEATURES:
+--------------------------------------------------------------------------------
+  android.hardware.camera
+  android.hardware.faketouch
+  android.hardware.location.gps
+  android.hardware.microphone
+  android.hardware.sensor
+  android.hardware.touchscreen
+  android.hardware.wifi
+  android.software.leanback

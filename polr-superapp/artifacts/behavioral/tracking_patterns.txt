@@ -1,0 +1,80 @@
+================================================================================
+UPTODOWN APP STORE v7.32 - TRACKING & DATA COLLECTION PATTERNS
+================================================================================
+
+
+Device Identifiers:
+--------------------------------------------------------------------------------
+  [4x] getDeviceId
+       Example: getDeviceId
+       Example: sGetDeviceIdMethod
+  [1x] getIMEI
+       Example: getImei
+
+App List:
+--------------------------------------------------------------------------------
+  [1x] getInstalledApplications
+       Example: getInstalledApplications
+  [3x] queryIntentActivities
+       Example: queryIntentActivities
+
+Location:
+--------------------------------------------------------------------------------
+  [2x] ACCESS_FINE_LOCATION
+       Example: 'android.permission.ACCESS_FINE_LOCATION
+  [2x] ACCESS_COARSE_LOCATION
+       Example: )android.permission.ACCESS_COARSE_LOCATION
+  [3x] getLastKnownLocation
+       Example: getLastKnownLocationForProvider
+       Example: getLastKnownLocation
+
+Network:
+--------------------------------------------------------------------------------
+  [1x] getNetworkOperatorName
+       Example: getNetworkOperatorName
+
+Hardware:
+--------------------------------------------------------------------------------
+
+FCM:
+--------------------------------------------------------------------------------
+  [1x] fcm-token
+       Example: /eapi/v3/device/fcm-token
+  [9x] FirebaseMessaging
+       Example: 1Lcom/google/firebase/messaging/FirebaseMessaging;
+       Example: FirebaseMessaging
+       Example: 8Lcom/google/firebase/messaging/FirebaseMessagingService;
+  [8x] getToken
+       Example: getToken
+       Example: getTokenField
+       Example: getTokenStore
+  [1x] sendFcmToken
+       Example: sendFcmToken
+
+Screenshots:
+--------------------------------------------------------------------------------
+  [6x] screenshot
+       Example: /screenshots
+       Example: /eapi/app/appId/screenshots
+       Example: , screenShots=
+  [4x] screenShots
+       Example: /screenshots
+       Example: /eapi/app/appId/screenshots
+       Example: , screenShots=
+  [1x] screenShotURL
+       Example: screenshotURL
+
+Usage Stats:
+--------------------------------------------------------------------------------
+  [8x] usagestats
+       Example: %Landroid/app/usage/UsageStatsManager;
+       Example: Landroid/app/usage/UsageStats;
+       Example: usagestats
+  [107x] usage
+       Example: BanParcelableUsage
+       Example: getUsage
+       Example: =Lcom/uptodown/activities/preferences/MobileDataUsageActivity;
+  [1x] native-app-usage
+       Example:  /eapi/user-data/native-app-usage
+  [1x] daily-stats
+       Example: /eapi/v3/device/daily-stats

@@ -1,0 +1,1365 @@
+{
+  "type": "bundle",
+  "id": "bundle--7bedd964-b81a-42a0-b8ed-3086580514e0",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--109816f5-cdb7-4ab4-8f24-dea7d235882c",
+      "name": "Kenshin Himura - DTrust",
+      "identity_class": "system",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--5bc5bef9-b540-4eef-8e3c-103be436ce25",
+      "created_by_ref": "identity--109816f5-cdb7-4ab4-8f24-dea7d235882c",
+      "name": "Uptodown App Store v7.32",
+      "description": "Privacy-invasive Android application with broad tracking capabilities",
+      "malware_types": [
+        "tracker",
+        "spyware"
+      ],
+      "is_family": false,
+      "first_seen": "2026-06-28T00:58:07.404547",
+      "last_seen": "2026-06-28T00:58:07.404547",
+      "os_execution_envs": [
+        "android"
+      ],
+      "capabilities": [
+        "captures-input-peripherals",
+        "captures-system-state",
+        "communicates-with-c2",
+        "collects-host-state",
+        "exfiltrates-data"
+      ],
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "file",
+      "spec_version": "2.1",
+      "id": "file--dd749448-a49d-4ba5-a655-d9a79f6376f9",
+      "name": "uptodown-superapps.polri.presisi.presisi.apk",
+      "size": 15168415,
+      "hashes": {
+        "SHA-256": "863f05e8c42a2fbf870388bba81383c05469a387f1e6e92707198fe89cd38c5e"
+      },
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "file",
+      "spec_version": "2.1",
+      "id": "file--f496fbb1-1204-4371-986e-28ec908d50f0",
+      "name": "libuptodown-native.so",
+      "hashes": {
+        "SHA-256": "d983047fde75ec2afd2764595d72f3dc3b35737c3af54e747814f17e9d49f900"
+      },
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "file",
+      "spec_version": "2.1",
+      "id": "file--5288b16d-5941-4734-8b34-cbd6a99f728d",
+      "name": "libandroidx.graphics.path.so",
+      "hashes": {
+        "SHA-256": "41e9a793c43a0f4fddb19e33f346bace464f30f888ba7b9eaf96294ea115bfb6"
+      },
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "file",
+      "spec_version": "2.1",
+      "id": "file--630e3e30-4430-408d-8948-49a1954b7127",
+      "name": "libdatastore_shared_counter.so",
+      "hashes": {
+        "SHA-256": "d3e48717c9aa147e0ab21063ba0e8e0211cabf8bf40b222640829519edbf58e1"
+      },
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "file",
+      "spec_version": "2.1",
+      "id": "file--e3e0addd-2c32-4121-b29c-7a93d8820824",
+      "name": "libuptodown-native.so",
+      "hashes": {
+        "SHA-256": "8546d5e4158874a05223c2f8e069325f4a1a05a00abff90ae13cd3a19b7aaa70"
+      },
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "file",
+      "spec_version": "2.1",
+      "id": "file--33411fe3-dd7d-4c08-9fc5-9ff2d8048d28",
+      "name": "libandroidx.graphics.path.so",
+      "hashes": {
+        "SHA-256": "41399eba6fc2a60f6f14642375c1824f3cf25eb8fec7397d753730a3ceda3e2b"
+      },
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "file",
+      "spec_version": "2.1",
+      "id": "file--3a84252d-9823-4cc6-9a2d-11b21ee6f68f",
+      "name": "libdatastore_shared_counter.so",
+      "hashes": {
+        "SHA-256": "716c5d8d2cac8ca0edf65da8f139c7886b726ac79d542a14edeb94994ba6d3dc"
+      },
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "file",
+      "spec_version": "2.1",
+      "id": "file--16fdf07c-65d4-4f1b-b295-910780efdcb7",
+      "name": "libuptodown-native.so",
+      "hashes": {
+        "SHA-256": "9e8f87b1c5c8778b719647fb8f6bea155cc8d39ada0751e6b8fbd781469c550f"
+      },
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "file",
+      "spec_version": "2.1",
+      "id": "file--455e1ab1-7943-4f25-8299-cbab5c48fed2",
+      "name": "libandroidx.graphics.path.so",
+      "hashes": {
+        "SHA-256": "eb0570b41fd3bff25d8204a967c03bd7550719e768b791f680cc40cbe35f29af"
+      },
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "file",
+      "spec_version": "2.1",
+      "id": "file--e440d507-eaf8-4dd8-995c-d26c21cd3f07",
+      "name": "libdatastore_shared_counter.so",
+      "hashes": {
+        "SHA-256": "cd4a1649e2c8350703146f94a6ee2bf4c3c8c9f172159f805b61a4a2abdf0659"
+      },
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "file",
+      "spec_version": "2.1",
+      "id": "file--6d10c86b-4342-4fb8-96af-971d1ce7f651",
+      "name": "libuptodown-native.so",
+      "hashes": {
+        "SHA-256": "8e68f1899338f719c5038fc08533f3d9bee734e8c59b81f21bb2b9b12a797cb5"
+      },
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "file",
+      "spec_version": "2.1",
+      "id": "file--dcfc158c-9452-4575-b9f7-4abd63a7e289",
+      "name": "libandroidx.graphics.path.so",
+      "hashes": {
+        "SHA-256": "4e56c996f13670e70082658de7880c4020eabf4f25e43387f88ed78a713fc9f0"
+      },
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "file",
+      "spec_version": "2.1",
+      "id": "file--1fcc5e73-b769-458d-ad6e-7f3726f2d3b0",
+      "name": "libdatastore_shared_counter.so",
+      "hashes": {
+        "SHA-256": "fb6c9208988c49ae94943bc3236fa763ba584722e044fa4ea9a12d2941027105"
+      },
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--593f67a7-a9af-417d-a634-a2f6eabc754f",
+      "value": "accounts.google.com",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--4b2bc2dd-bfa0-4d01-8ebd-a6ba4ab953b5",
+      "value": "adservice.google.com",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--d922adf4-fd4c-4cb7-be9e-12a7d856d187",
+      "value": "api.cmp.inmobi.com",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--4e025601-5b5e-4af7-8478-87d00cd054c2",
+      "value": "api.country.is",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--40e575a5-4e98-43af-b0a4-4f7fd7d9e285",
+      "value": "app-measurement.com",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--a91d00c1-c32b-4455-8b64-cde19bbe7989",
+      "value": "choice.inmobi.com",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--802a0461-f634-4f1a-b4c9-0c3b5a3fcd22",
+      "value": "cmp.inmobi.com",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--48c83869-9e65-45ab-8a18-e81ec6a48201",
+      "value": "developer.android.com",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--b9b270e0-a50a-475e-8f02-5b779e09edf1",
+      "value": "dw.uptodown.com",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--2c679ea3-b46f-4ac9-aceb-4079122ae64c",
+      "value": "firebase-settings.crashlytics.com",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--3c7b74b1-f125-4e7d-bc1a-7c250361145b",
+      "value": "firebase.google.com",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--e60d6dc6-6d79-421b-b3d7-83c21b4630da",
+      "value": "firebaseinstallations.googleapis.com",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--a6785b75-a573-4f8d-9e16-a5a8b1dcc88e",
+      "value": "github.com",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--61970162-dfd3-4454-a2a9-7812c364e9ad",
+      "value": "goo.gl",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--e576b798-1201-4df4-8d83-6f43b299cfd1",
+      "value": "goo.gle",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--90c9799c-cafb-4a30-8f8f-07f8ae96bb26",
+      "value": "google.com",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--9594f3e0-85cf-42ea-aca7-eadd4401fb42",
+      "value": "issuetracker.google.com",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--31f2a5ee-5ac6-4d6d-94f3-2740410870b9",
+      "value": "pagead2.googlesyndication.com",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--482582f2-a13a-4882-b71d-7fbb635d0354",
+      "value": "play.google.com",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--a3c06bcc-07e9-44bd-ad2f-c74776eb6123",
+      "value": "schemas.android.com",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--e31b88f8-5d81-4c8d-a2c0-e75c9d373c74",
+      "value": "t.uptodown.app",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--10d64edf-7c07-46db-8a8f-b2be76c11571",
+      "value": "u.uptodown.app",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--d4caa8d6-11cc-4a04-aff5-bd6a4a5ab1d2",
+      "value": "uptodown-android.uptodown.com",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--c646aa9e-52bd-4728-8e35-16d7826068cc",
+      "value": "visit-server.inmobi-choice.io",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--a9b9f927-fb09-485c-ae5e-b0889d78523e",
+      "value": "www.example.com",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--64f3b925-8c0d-4ed7-b0a9-1b019b14fb7c",
+      "value": "www.googleadservices.com",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--14fa2009-7b18-459f-b268-d76206b47777",
+      "value": "www.googleapis.com",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--77c5dc68-8de4-4b05-9aa6-5b6a9527f06c",
+      "value": "www.uptodown.app",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--40e90e5a-6361-417e-abce-871a7ac24807",
+      "value": "www.uptodown.com",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--84d8ec73-052a-4202-ad89-86d5b0301b77",
+      "value": "www.virustotal.com",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--ab3c9477-e86b-44c4-9bab-a9e4680a8df9",
+      "value": "www.w3.org",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--7944bcd4-dad2-4339-84d4-3444f1b3de51",
+      "value": "youtrack.jetbrains.com",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--c708fe1e-cee9-4fb0-91d5-d595a655c1c4",
+      "value": "http://play.google.com",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--8e66b9df-bd59-4fdd-a052-beaccc1f122b",
+      "value": "http://schemas.android.com/apk/res-auto",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--ef676cc6-1da3-4bfa-ac59-49fb872018ff",
+      "value": "http://schemas.android.com/apk/res/android",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--d74c981a-2cd9-4a91-a882-09146d7249b7",
+      "value": "http://www.w3.org/2000/svg",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--202cb1a5-3742-47ab-9b08-740fa808ec77",
+      "value": "https://accounts.google.com/o/oauth2/revoke?token=",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--05de0bd0-0d60-45f3-8480-31916661cb50",
+      "value": "https://adservice.google.com/getconfig/pubvendors",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--c4aa0624-edaf-467a-b6f0-ecc3ba70707d",
+      "value": "https://api.cmp.inmobi.com/",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--96316178-5b2f-4ca5-ab13-129b601726c6",
+      "value": "https://api.country.is/",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--cfa43706-23de-4ec5-87c5-8734c9dbfec1",
+      "value": "https://app-measurement.com/a",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--7cab54cd-d8f6-469f-bdb5-c22526d3968e",
+      "value": "https://app-measurement.com/s/d",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--efd9c47c-8040-4359-9f47-6f8411dbf483",
+      "value": "https://choice.inmobi.com/",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--13179f66-0a8a-4b5f-83d2-2c170d0c9f0f",
+      "value": "https://cmp.inmobi.com/",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--e2ea3a1b-7b6a-4d3f-b4e6-c1d2a42ebb18",
+      "value": "https://cmp.inmobi.com/google-basic-consent/v1/purposes-",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--fba5d5de-cead-4080-ac15-43bb2e3012f5",
+      "value": "https://cmp.inmobi.com/tcfv2/translations/",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--b76c73dc-fc53-4f35-8c09-2c4c8c57813b",
+      "value": "https://developer.android.com/build/agp-upgrade-assistant",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--7fb5dc28-1b25-416e-8111-cace1e02548a",
+      "value": "https://developer.android.com/kotlin/add-kotlin",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--d7e8d945-5fd6-4da9-b05f-d3855c560047",
+      "value": "https://developer.android.com/training/articles/direct-boot",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--ec198d4b-abe1-4916-84e8-2e7ca0f2a74a",
+      "value": "https://dw.uptodown.com/dwn/",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--9b8a120c-2fbb-418f-8b63-e8cc9f6eceb2",
+      "value": "https://firebase-settings.crashlytics.com/spi/v2/platforms/android/gmp/",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--49f99cca-b879-412f-89a5-17025f9b46de",
+      "value": "https://firebase.google.com/support/guides/disable-analytics",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--3ea2658c-669c-4bd7-8137-ca129e8e3f3d",
+      "value": "https://firebaseinstallations.googleapis.com/v1/",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--1133311e-df7d-4b9d-b037-9d79afd59166",
+      "value": "https://github.com/google/gson/blob/main/Troubleshooting.md#",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--4c7c17c2-d0cf-46ad-99b1-e4bbfb70f2ee",
+      "value": "https://goo.gl/NAOOOI",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--3fefd8d4-3af9-4b14-b923-a8b692d5e000",
+      "value": "https://goo.gl/NAOOOI.",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--7054b5a7-5fae-4e38-8be5-04973e3635e0",
+      "value": "https://goo.gle/compose-feedback",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--b110a82e-7bf1-41e2-a3dc-5b2aa665fd20",
+      "value": "https://google.com/search?",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--ba7a85c0-c9d8-4952-a871-b927ce0d5cf8",
+      "value": "https://issuetracker.google.com/328687152",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--538155a4-6c18-445f-9ccf-3936bc172aa8",
+      "value": "https://issuetracker.google.com/issues/241760537",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--12cbc86e-d59d-4ac3-90bc-93acfcf7891c",
+      "value": "https://issuetracker.google.com/issues/328687152#comment3",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--a8425b03-38bc-4b20-85e2-34791d864e75",
+      "value": "https://issuetracker.google.com/issues/new?component=413107&template=1096568",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--75bb9d03-09fd-40fa-a0a7-cbfaae0e6381",
+      "value": "https://issuetracker.google.com/issues/new?component=413107&template=1096568.",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--41dc4b79-f35b-4dd9-88bc-1fdc206eca6f",
+      "value": "https://issuetracker.google.com/issues/new?component=907884&template=1466542",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--18a8f37d-d419-4a3d-8895-7bbb4aea3748",
+      "value": "https://pagead2.googlesyndication.com/pagead/gen_204?id=gmob-apps",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--5b375b13-b1ed-43c1-8c36-3dc7a0ac8e32",
+      "value": "https://play.google.com",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--a9e59f2f-41e0-44d1-a587-b6486afbdbed",
+      "value": "https://t.uptodown.app:443",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--80d260ba-f378-4869-a7c4-a0e347d8fba2",
+      "value": "https://t.uptodown.app:443/eapi/androidtracker/device-apps-installed/",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--d53225fd-e905-42ea-a103-1c1e68720ffc",
+      "value": "https://t.uptodown.app:443/eapi/v2/tracker/app-to-upload/",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--0f113c1b-199b-435b-881d-64837ed7e845",
+      "value": "https://t.uptodown.app:443/eapi/v2/tracker/device/",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--45cc2821-520e-4faf-8748-932c36388cb4",
+      "value": "https://t.uptodown.app:443/eapi/v2/tracker/identifier/",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--d6e6f9a6-e049-418b-9e0e-1692e5564946",
+      "value": "https://t.uptodown.app:443/eapi/v3/tracker/updates/",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--5e182253-4865-4cd4-bd00-9a86bd3fd581",
+      "value": "https://u.uptodown.app:443/eapi/v2/tracker/upload-file",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--ed3aa579-40ac-403b-90e7-824c023cdc03",
+      "value": "https://uptodown-android.uptodown.com/android",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--ceade9db-6029-45ac-95bf-7aa4bb6a746a",
+      "value": "https://visit-server.inmobi-choice.io/visit-event",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--7e480786-dbd8-46fd-ba20-c059757eab17",
+      "value": "https://www.example.com",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--0b7d4dc7-0840-4472-aa65-1add015c12c0",
+      "value": "https://www.googleadservices.com/pagead/conversion/app/deeplink?id_type=adid&sdk_version=",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--805f7deb-f0e1-47ef-9e76-ed1dfd42adeb",
+      "value": "https://www.googleapis.com/auth/games",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--f8b5b885-c9b4-49e8-8806-13e2748530a5",
+      "value": "https://www.googleapis.com/auth/games_lite",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--55c6cb30-1c40-49d3-b384-e624fe33609f",
+      "value": "https://www.uptodown.app:443",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--aa6310dc-93d1-4076-ae03-e3e0d80afd5d",
+      "value": "https://www.uptodown.app:443/eapi/",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--bcbb7e32-f8a1-48e6-8001-687963257294",
+      "value": "https://www.uptodown.app:443/eapi/answer/",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--95b73e1f-7e0e-4563-9c36-56688f33dea0",
+      "value": "https://www.uptodown.app:443/eapi/app/",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--3413727e-f4c1-42d8-874d-aee02f866940",
+      "value": "https://www.uptodown.app:443/eapi/apps/",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--ff22f680-7d47-4a63-a7a7-3862b790216b",
+      "value": "https://www.uptodown.app:443/eapi/apps/byPackagename/",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--4ac9df18-575f-4ebe-bac5-c8c6af5d72fd",
+      "value": "https://www.uptodown.app:443/eapi/category/search/",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--68dd928d-fa18-45a2-bff0-c037c4f114b5",
+      "value": "https://www.uptodown.app:443/eapi/comment/",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--08ecaf61-cbc2-491b-9cff-0d90b7740feb",
+      "value": "https://www.uptodown.app:443/eapi/comments/",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--c6b19d78-ee5f-4ba0-836c-fcf087251a6d",
+      "value": "https://www.uptodown.app:443/eapi/floating-categories/app/",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--a1700448-4c3c-46f0-8c3f-7c8a1ddc2eb4",
+      "value": "https://www.uptodown.app:443/eapi/my-remote-apps/",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--c6d0b85d-c766-4520-8a6f-fe2d893f9109",
+      "value": "https://www.uptodown.app:443/eapi/organization/",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--79fe151f-d8bf-453a-bc77-c0dc454dce53",
+      "value": "https://www.uptodown.app:443/eapi/profile/",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--3d5047cb-3d90-4bcf-b8b9-dca0187dd191",
+      "value": "https://www.uptodown.app:443/eapi/turbosubscription/get-url-portal/",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--3b248219-14cf-414b-a261-c0b38ceb3b3b",
+      "value": "https://www.uptodown.app:443/eapi/user-data/device/",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--74d13be2-fc91-4325-8fe3-aaa56bc58c98",
+      "value": "https://www.uptodown.app:443/eapi/user/",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--0e9fdd60-672c-45e7-87ed-3ec7836cbac9",
+      "value": "https://www.uptodown.app:443/eapi/user/follow/",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--57e700ac-1acb-4f6e-ab5e-242dbdd8137e",
+      "value": "https://www.uptodown.app:443/eapi/user/unfollow/",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--3c1b9164-eb4b-44eb-b439-65fb41a4ad73",
+      "value": "https://www.uptodown.app:443/eapi/v2/app/",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--e4f5334f-937a-475e-a48e-a787a533872e",
+      "value": "https://www.uptodown.app:443/eapi/v2/apps/",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--9ec75d96-b444-49b4-bbd3-e0416c04808c",
+      "value": "https://www.uptodown.app:443/eapi/v2/apps/search/",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--5ffa5261-de60-4969-9447-4ac77002485b",
+      "value": "https://www.uptodown.app:443/eapi/v2/virus-total-by-identifier/",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--ceb4c5f6-6d30-425d-a094-b74b3f12c27c",
+      "value": "https://www.uptodown.app:443/eapi/v2/virus-total-by-sha256/",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--d7cb1c28-187b-4d0d-a98b-90be332604fc",
+      "value": "https://www.uptodown.app:443/eapi/v2/virus-total/",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--b134c5b2-ad34-4400-8685-c19656d4caa5",
+      "value": "https://www.uptodown.app:443/eapi/v3/app/",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--63a5ac1f-6b14-4c20-81ea-a9d541a53615",
+      "value": "https://www.uptodown.app:443/eapi/v3/apps/",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--b4448da9-b934-4127-9737-8fd46fe631f3",
+      "value": "https://www.uptodown.com/turbo?platform=android",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--cf923af6-90c1-4e37-a1f7-774ab3ee433c",
+      "value": "https://www.uptodown.com:443/dwn/",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--7c848bea-407a-4da6-b478-79861120d491",
+      "value": "https://www.virustotal.com/gui/file/",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--37615a1d-c32a-495c-b586-64afb3bcd30b",
+      "value": "https://youtrack.jetbrains.com/issue/KT-55980",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--9193071f-0050-41ed-8c49-7bbc0dbbc4cc",
+      "name": "Input Capture: Keylogging",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1056.001",
+          "url": "https://attack.mitre.org/techniques/T1056/001"
+        }
+      ],
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--93097000-947f-4c47-ada2-a05ed13f6ed2",
+      "name": "File and Directory Discovery",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1083",
+          "url": "https://attack.mitre.org/techniques/T1083"
+        }
+      ],
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--5255f0cc-6ff7-4161-8f9e-37cc16d639e4",
+      "name": "Application Layer Protocol: Web Protocols",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1071.001",
+          "url": "https://attack.mitre.org/techniques/T1071/001"
+        }
+      ],
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--c6c478a3-d428-4a24-b4a5-6910ab2e9fce",
+      "name": "Telemetry Upload Over Alternative Protocol",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1048.002",
+          "url": "https://attack.mitre.org/techniques/T1048/002"
+        }
+      ],
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--77191860-833e-4810-ae3a-29cc5fd35426",
+      "name": "Boot or Logon Autostart Execution",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1547.001",
+          "url": "https://attack.mitre.org/techniques/T1547/001"
+        }
+      ],
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--867d78e8-2774-462c-b36f-36614389d726",
+      "created_by_ref": "identity--109816f5-cdb7-4ab4-8f24-dea7d235882c",
+      "name": "Uptodown Tracker Server Communication",
+      "description": "Detects communication with Uptodown tracker server",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[network-traffic:dst_ref.value = 't.uptodown.app']",
+      "pattern_type": "stix",
+      "valid_from": "2026-06-28T00:58:07.404547",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--7ce0ee1e-3acc-4615-bc1a-8d057d5a7e1c",
+      "created_by_ref": "identity--109816f5-cdb7-4ab4-8f24-dea7d235882c",
+      "name": "Uptodown APK Hash",
+      "description": "Detects Uptodown App Store v7.32 APK by SHA-256 hash",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[file:hashes.'SHA-256' = '863f05e8c42a2fbf870388bba81383c05469a387f1e6e92707198fe89cd38c5e']",
+      "pattern_type": "stix",
+      "valid_from": "2026-06-28T00:58:07.404547",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9746eb73-d654-4b23-a03b-282756d87704",
+      "relationship_type": "uses",
+      "source_ref": "malware--5bc5bef9-b540-4eef-8e3c-103be436ce25",
+      "target_ref": "attack-pattern--9193071f-0050-41ed-8c49-7bbc0dbbc4cc",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a74d30d9-9060-4692-b01e-38f2ef7fac87",
+      "relationship_type": "uses",
+      "source_ref": "malware--5bc5bef9-b540-4eef-8e3c-103be436ce25",
+      "target_ref": "attack-pattern--93097000-947f-4c47-ada2-a05ed13f6ed2",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5ca724c1-1f91-4a3c-803c-ac39302f2a5d",
+      "relationship_type": "uses",
+      "source_ref": "malware--5bc5bef9-b540-4eef-8e3c-103be436ce25",
+      "target_ref": "attack-pattern--5255f0cc-6ff7-4161-8f9e-37cc16d639e4",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--1ca57d65-da76-4ea3-a651-61d3227ed441",
+      "relationship_type": "uses",
+      "source_ref": "malware--5bc5bef9-b540-4eef-8e3c-103be436ce25",
+      "target_ref": "attack-pattern--c6c478a3-d428-4a24-b4a5-6910ab2e9fce",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5c68ba4e-b636-47e5-960c-fb7ea0ecf8e7",
+      "relationship_type": "uses",
+      "source_ref": "malware--5bc5bef9-b540-4eef-8e3c-103be436ce25",
+      "target_ref": "attack-pattern--77191860-833e-4810-ae3a-29cc5fd35426",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--1ca2f9c8-2827-4cc6-a304-5b56b61f4a22",
+      "relationship_type": "indicates",
+      "source_ref": "file--dd749448-a49d-4ba5-a655-d9a79f6376f9",
+      "target_ref": "malware--5bc5bef9-b540-4eef-8e3c-103be436ce25",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--43945a53-7aae-4e35-b099-db40298facc4",
+      "relationship_type": "indicates",
+      "source_ref": "file--f496fbb1-1204-4371-986e-28ec908d50f0",
+      "target_ref": "malware--5bc5bef9-b540-4eef-8e3c-103be436ce25",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f4d3a8cf-8a98-47f9-9001-c267ca4120d4",
+      "relationship_type": "indicates",
+      "source_ref": "file--5288b16d-5941-4734-8b34-cbd6a99f728d",
+      "target_ref": "malware--5bc5bef9-b540-4eef-8e3c-103be436ce25",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5d0a930a-95f8-43fb-a690-f33c0e5de242",
+      "relationship_type": "indicates",
+      "source_ref": "file--630e3e30-4430-408d-8948-49a1954b7127",
+      "target_ref": "malware--5bc5bef9-b540-4eef-8e3c-103be436ce25",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--082efab7-5404-425e-9218-6919240d61ac",
+      "relationship_type": "indicates",
+      "source_ref": "file--e3e0addd-2c32-4121-b29c-7a93d8820824",
+      "target_ref": "malware--5bc5bef9-b540-4eef-8e3c-103be436ce25",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9089b0fd-5346-4ab1-8f86-4bef3a0a3b9b",
+      "relationship_type": "indicates",
+      "source_ref": "file--33411fe3-dd7d-4c08-9fc5-9ff2d8048d28",
+      "target_ref": "malware--5bc5bef9-b540-4eef-8e3c-103be436ce25",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--76d8570c-c56b-4b54-bc95-3802404ab93d",
+      "relationship_type": "indicates",
+      "source_ref": "file--3a84252d-9823-4cc6-9a2d-11b21ee6f68f",
+      "target_ref": "malware--5bc5bef9-b540-4eef-8e3c-103be436ce25",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--61d8fc04-a29b-4abd-9397-7bd9c48f83fb",
+      "relationship_type": "indicates",
+      "source_ref": "file--16fdf07c-65d4-4f1b-b295-910780efdcb7",
+      "target_ref": "malware--5bc5bef9-b540-4eef-8e3c-103be436ce25",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--10ac3465-0a36-47d9-89a7-e358c2be5faa",
+      "relationship_type": "indicates",
+      "source_ref": "file--455e1ab1-7943-4f25-8299-cbab5c48fed2",
+      "target_ref": "malware--5bc5bef9-b540-4eef-8e3c-103be436ce25",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--cb71b280-8146-4011-a962-917bddd0e55c",
+      "relationship_type": "indicates",
+      "source_ref": "file--e440d507-eaf8-4dd8-995c-d26c21cd3f07",
+      "target_ref": "malware--5bc5bef9-b540-4eef-8e3c-103be436ce25",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--c0cb8fe9-d4a2-4702-99ad-935195c655b6",
+      "relationship_type": "indicates",
+      "source_ref": "file--6d10c86b-4342-4fb8-96af-971d1ce7f651",
+      "target_ref": "malware--5bc5bef9-b540-4eef-8e3c-103be436ce25",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--0bb1ca50-5008-4b7f-8ffe-3032e5084ee7",
+      "relationship_type": "indicates",
+      "source_ref": "file--dcfc158c-9452-4575-b9f7-4abd63a7e289",
+      "target_ref": "malware--5bc5bef9-b540-4eef-8e3c-103be436ce25",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--3f4c726e-a0f7-4d95-94e6-50e068405685",
+      "relationship_type": "indicates",
+      "source_ref": "file--1fcc5e73-b769-458d-ad6e-7f3726f2d3b0",
+      "target_ref": "malware--5bc5bef9-b540-4eef-8e3c-103be436ce25",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e45eb1ed-1a0f-4d6e-a79b-5fa23efbd43b",
+      "relationship_type": "indicates",
+      "source_ref": "indicator--867d78e8-2774-462c-b36f-36614389d726",
+      "target_ref": "malware--5bc5bef9-b540-4eef-8e3c-103be436ce25",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ba0da74a-2d28-4799-ad78-c372c2134d04",
+      "relationship_type": "indicates",
+      "source_ref": "indicator--7ce0ee1e-3acc-4615-bc1a-8d057d5a7e1c",
+      "target_ref": "malware--5bc5bef9-b540-4eef-8e3c-103be436ce25",
+      "created": "2026-06-28T00:58:07.404547",
+      "modified": "2026-06-28T00:58:07.404547"
+    }
+  ]
+}
